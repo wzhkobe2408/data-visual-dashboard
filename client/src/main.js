@@ -3,8 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 // import router from './router'
-
+import { Map, TileLayer, OsmSource } from 'vuelayers'
+import 'vuelayers/lib/style.css'
 Vue.config.productionTip = false
+
+Vue.use(Map)
+Vue.use(TileLayer)
+Vue.use(OsmSource)
 
 /* eslint-disable no-new */
 new Vue({
