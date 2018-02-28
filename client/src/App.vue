@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <div class="container">
+    <div class="custom-container">
       <SideBar />
       <MainContent />
     </div>
@@ -28,7 +28,8 @@ export default {
     background: #efefef;
     margin:0;
   }
-  .container {
-    margin-top: 20px;
+  .custom-container {
+    margin: 20px auto 0;
+    width: 90%;
   }
 </style>

@@ -38,6 +38,7 @@ export default {
 <style>
     .tab {
         background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
     }
     .tab-header {
         background-color: rgb(92, 125, 218);

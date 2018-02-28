@@ -23,6 +23,14 @@
 						<i class="glyphicon glyphicon-home"></i>
 						Overview </a>
 					</li>
+          <ul class="nav">
+            <li class="sub-nav"><a href="">Child Item 1</a></li>
+            <li class="sub-nav"><a href="">Child Item 2</a></li>
+            <li class="sub-nav"><a href="">Child Item 3</a></li>
+            <li class="sub-nav"><a href="">Child Item 4</a></li>
+            <li class="sub-nav"><a href="">Child Item 5</a></li>
+            <li class="sub-nav"><a href="">Child Item 6</a></li>
+          </ul>
 					<li>
 						<a href="#">
 						<i class="glyphicon glyphicon-user"></i>
@@ -66,6 +74,7 @@ export default {
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .profile-userpic img {
@@ -159,5 +168,9 @@ export default {
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+
+.sub-nav {
+  padding-left: 25px;
 }
 </style>

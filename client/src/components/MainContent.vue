@@ -3,16 +3,16 @@
         <div class="profile-content">
             <div class="grid-container">
                 <div class="graph-item">
-                    <highcharts-component :element="'brick-chart'"></highcharts-component>
+                    <highcharts-component></highcharts-component>
                 </div>
                 <div class="graph-item">
-                    <highcharts-component :element="'brick-chart'"></highcharts-component>
+                    <highcharts-component1></highcharts-component1>
                 </div>
                 <div class="graph-item">
-                    <highcharts-component :element="'brick-chart'"></highcharts-component>
+                    <highcharts-component2></highcharts-component2>
                 </div>
                 <div class="graph-item">
-                    <highcharts-component :element="'brick-chart'"></highcharts-component>
+                    <highcharts-component4></highcharts-component4>
                 </div>                
             </div>
         </div>
@@ -23,11 +23,17 @@
 </template>
 <script>
 import HighchartsComponent from './HighchartsComponent.vue'
+import HighchartsComponent1 from './HighchartsComponent1.vue'
+import HighchartsComponent2 from './HighchartsComponent2.vue'
+import HighchartsComponent4 from './charts4.vue'
 import ChoseTab from './ChoseTab.vue'
 
 export default {
     components: {
         HighchartsComponent,
+        HighchartsComponent1,
+        HighchartsComponent2,
+        HighchartsComponent4,
         ChoseTab
     }
 }
@@ -37,11 +43,11 @@ export default {
         display: grid;
         grid-template-columns: repeat(2,1fr);
         grid-gap: 10px;
-        height:400px;
     }
     .graph-item {
-        background-color: rgb(255, 255, 255);
         text-align: center;
+        margin-top: -30px;
+        margin-bottom: -26px;
     }
     .tab-box {
         margin-top:10px;

@@ -46,6 +46,7 @@ export default {
   } 
   ul li a {
     color:#f4f4f4;
+    font-size: 18px;
     display: inline-block;
     text-decoration: none;
     padding: 10px 15px;
