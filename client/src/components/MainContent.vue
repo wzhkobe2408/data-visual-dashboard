@@ -19,6 +19,7 @@
         <div class="tab-box">
             <chose-tab></chose-tab>
         </div>
+        <Map />
     </div>
 </template>
 <script>
@@ -27,6 +28,7 @@ import HighchartsComponent1 from './HighchartsComponent1.vue'
 import HighchartsComponent2 from './HighchartsComponent2.vue'
 import HighchartsComponent4 from './charts4.vue'
 import ChoseTab from './ChoseTab.vue'
+import Map from './map.vue'
 
 export default {
     components: {
@@ -34,6 +36,7 @@ export default {
         HighchartsComponent1,
         HighchartsComponent2,
         HighchartsComponent4,
+        Map,
         ChoseTab
     }
 }
