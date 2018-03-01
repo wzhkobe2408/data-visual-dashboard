@@ -2,23 +2,18 @@
   <div id="app">
     <Header/>
     <div class="custom-container">
-      <SideBar />
-      <MainContent />
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-import SideBar from './components/SideBar'
-import MainContent from './components/MainContent'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    SideBar,
-    MainContent
+    Header
   }
 }
 </script>

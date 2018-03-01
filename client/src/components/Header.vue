@@ -3,16 +3,16 @@
      <div class="container">
        <div class="left-nav">
          <ul>
-           <li><a href="#">Home</a></li>
-           <li><a href="#">About</a></li>
-           <li><a href="#">New</a></li>
-           <li><a href="#">More</a></li>
+           <li><router-link to="/">Home</router-link></li>
+           <li><router-link to="/about">About</router-link></li>
+           <li><router-link to="/new">New</router-link></li>
+           <li><router-link to="/more">More</router-link></li>
          </ul>
        </div>
        <div class="right-nav">
          <ul>
-           <li><a href="#">Login</a></li>
-           <li><a href="#">Logout</a></li>
+           <li><router-link to="/login">Login</router-link></li>
+           <li><router-link to="/signup">Signup</router-link></li>
          </ul>
        </div>
      </div>

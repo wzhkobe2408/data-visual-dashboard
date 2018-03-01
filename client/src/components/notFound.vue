@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>404 NOT FOUND</h1>
   </div>
 </template>
 
@@ -8,9 +8,6 @@
 export default {
   name: 'notFind',
   data () {
-    return {
-      msg: '对不起，匹配不到对应资源,我是notFind.vue'
-    }
   }
 }
 </script>

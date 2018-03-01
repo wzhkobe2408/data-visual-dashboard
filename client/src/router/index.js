@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import App from '@/App.vue'
+import Home from '@/pages/Home.vue'
 import About from '@/pages/About.vue'
-
+import Login from '@/components/loginForm.vue'
+import Signup from '@/components/signupForm.vue'
 import notFound from '@/components/notFound'
 
 Vue.use(Router)
@@ -11,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'App',
-      component: Hello
+      name: 'Home',
+      component: Home
     },
     {
       path: '/about',
@@ -20,9 +21,14 @@ export default new Router({
       component: About
     },
     {
-      path: '*',
-      name: 'notFind',
-      component: notFind
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
     }
   ]
 })
