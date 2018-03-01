@@ -23,12 +23,12 @@ app.get('/', (req, res) => {
 	res.send('<h1>This is the test<h1>')
 })
 
-app.post('/login', () => {
-
+app.post('/login', (req, res) => {
+    res.send('login work')    
 })
 
-app.post('/signup', () => {
-    
+app.post('/signup', (req, res) => {
+    res.send('signup work')
 })
 
 const apiRoute = require('./api.js')
