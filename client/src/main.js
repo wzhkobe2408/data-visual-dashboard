@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index';
 import { Map, TileLayer, OsmSource } from 'vuelayers'
 import 'vuelayers/lib/style.css'
 Vue.config.productionTip = false
@@ -15,6 +16,7 @@ Vue.use(OsmSource)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

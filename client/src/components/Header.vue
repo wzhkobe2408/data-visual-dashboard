@@ -43,13 +43,15 @@ export default {
   }
   ul > li {
     float:left;
+    font-weight:200;
   } 
   ul li a {
     color:#f4f4f4;
-    font-size: 18px;
+    font-size: 16px;
     display: inline-block;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 14px 15px;
+    font-weight:200;
   }
   ul li a:hover {
     background-color:#5b67a3;

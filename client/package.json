@@ -13,7 +13,8 @@
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue2-highcharts": "^1.1.8",
-    "vuelayers": "^0.9.1"
+    "vuelayers": "^0.9.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

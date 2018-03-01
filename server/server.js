@@ -23,6 +23,18 @@ app.get('/', (req, res) => {
 	res.send('<h1>This is the test<h1>')
 })
 
+app.post('/login', () => {
+
+})
+
+app.post('/signup', () => {
+    
+})
+
+const apiRoute = require('./api.js')
+
+app.use('/api', apiRoute)
+
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`)
 })
