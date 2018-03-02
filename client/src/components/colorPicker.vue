@@ -1,13 +1,9 @@
 <template>
-    <photoshop-picker />
+    <h1>This is the color picker</h1>
 </template>
 <script>
-import { Photoshop } from 'vue-color'
-
 export default {
-  components: {
-    'photoshop-picker': Photoshop
-  }
+  
 }
 </script>
 <style scoped>
