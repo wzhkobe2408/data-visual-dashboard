@@ -5,8 +5,8 @@
          <ul>
            <li><router-link to="/">Home</router-link></li>
            <li><router-link to="/about">About</router-link></li>
-           <li><router-link to="/new">New</router-link></li>
-           <li><router-link to="/more">More</router-link></li>
+           <li><router-link to="/map">Map</router-link></li>
+           <li><router-link to="/3d">3D</router-link></li>
          </ul>
        </div>
        <div class="right-nav">
@@ -57,7 +57,7 @@ export default {
     background-color:#5b67a3;
   }
   .container {
-    width: 80%;
+    width: 90%;
     padding:0;
     margin: auto;
   }

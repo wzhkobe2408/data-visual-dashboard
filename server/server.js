@@ -24,11 +24,47 @@ app.get('/', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    res.send('login work')    
+    res.json({
+        'email': req.body.email,
+        'password': req.body.password
+    })    
 })
 
 app.post('/signup', (req, res) => {
     res.send('signup work')
+})
+
+let bills = [
+    {
+        date: '2017-12-03',
+        fee: 24
+    },
+    {
+        date: '2017-12-03',
+        fee: 24
+    },
+    {
+        date: '2017-12-03',
+        fee: 24
+    },    {
+        date: '2017-12-03',
+        fee: 24
+    },
+    {
+        date: '2017-12-03',
+        fee: 24
+    },
+    {
+        date: '2017-12-03',
+        fee: 24
+    }
+]
+
+// 账单
+app.get('/bills', (req, res) => {
+    res.json({
+        bills: bills
+    })
 })
 
 const apiRoute = require('./api.js')

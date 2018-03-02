@@ -19,7 +19,6 @@
         <div class="tab-box">
             <chose-tab></chose-tab>
         </div>
-        <Map />
     </div>
 </template>
 <script>

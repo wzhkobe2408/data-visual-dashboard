@@ -10,7 +10,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.2.0",
     "vue": "^2.5.2",
+    "vue-color": "^2.4.5",
     "vue-router": "^3.0.1",
     "vue2-highcharts": "^1.1.8",
     "vuelayers": "^0.9.1",
