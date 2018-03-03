@@ -1,5 +1,5 @@
 <template>
-   <div class="header">
+   <div class="header" :style="{backgroundColor:color}">
      <div class="container">
        <div class="left-nav">
          <ul>
@@ -21,14 +21,13 @@
 
 <script>
 export default {
+  props: ['color'],
   data () {
     return {
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   ul {
    margin:0;
@@ -54,7 +53,7 @@ export default {
     font-weight:200;
   }
   ul li a:hover {
-    background-color:#5b67a3;
+    background-color:#424242;
   }
   .container {
     width: 90%;
@@ -65,8 +64,5 @@ export default {
     content:'';
     display: table;
     clear:both;
-  }
-  .header {
-    background-color:#7986cb;
   }
 </style>

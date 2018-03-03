@@ -1,6 +1,7 @@
 <template>
   <div class="charts">
     <vue-highcharts :options="options" ref="lineCharts"></vue-highcharts>
+    <div class="add-button"><i class="fas fa-plus-circle"></i></div>
   </div>
 </template>
  
@@ -87,6 +88,16 @@ export default{
     box-shadow: 0 0 0 rgba(0,0,0,0);
     border-radius: 0;
     padding: 0.8em 0em;
+  }
+  .charts {
+      position: relative;
+  }
+  .add-button {
+      position: absolute;
+      top: 45px;
+      right: 20px;
+      font-size: 20px;
+      color:rgb(72, 192, 92);
   }
 </style>
 

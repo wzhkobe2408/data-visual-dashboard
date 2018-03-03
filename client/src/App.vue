@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header :color="this.headerColor"/>
     <div class="custom-container">
       <router-view></router-view>
     </div>
@@ -9,11 +9,22 @@
 
 <script>
 import Header from './components/Header'
+import EventBus from './components/eventBus.js'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      headerColor:'#1b1b1b'
+    }
+  },
   components: {
     Header
+  },
+  created() {
+    EventBus.$on('color-change', hex => {
+      this.headerColor = hex;
+    })
   }
 }
 </script>
