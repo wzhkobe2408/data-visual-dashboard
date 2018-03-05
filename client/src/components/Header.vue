@@ -4,7 +4,7 @@
        <div class="left-nav">
          <ul>
            <li><router-link to="/">Home</router-link></li>
-           <li><router-link to="/about">About</router-link></li>
+           <li><router-link to="/color">Color</router-link></li>
            <li><router-link to="/map">Map</router-link></li>
            <li><router-link to="/3d">3D</router-link></li>
          </ul>

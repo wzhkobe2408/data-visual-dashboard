@@ -1,4 +1,4 @@
 const state = {
-    msg: '我是原始数据',
+    color: '#194d33'
   }
   export default state;

@@ -9,12 +9,13 @@
     <slider style="margin:20px auto" v-model="colors"
     @change-color="onChange">
     </slider>
+    <button class="btn btn-primary" @click="changeColor('#fff')">Change coolor</button>
   </div>
 </template>
 
 <script>
 import { Photoshop, Chrome, Sketch, Slider } from 'vue-color'
-import EventBus from './eventBus.js'
+import { MapActions, MapGetters, mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -26,7 +27,7 @@ export default {
   data () {
     return {
       colors: {
-        hex: '#194d33',
+        hex: this.gettersColor,
         hsl: {
           h: 150,
           s: 0.5,
@@ -49,10 +50,17 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters([
+      'gettersColor'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'changeColor'
+    ]),
     onChange (val) {
       this.colors = val;
-      EventBus.$emit('color-change', this.colors.hex);
     }
   }
 }

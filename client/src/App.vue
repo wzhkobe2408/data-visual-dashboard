@@ -9,7 +9,6 @@
 
 <script>
 import Header from './components/Header'
-import EventBus from './components/eventBus.js'
 
 export default {
   name: 'App',
@@ -20,11 +19,6 @@ export default {
   },
   components: {
     Header
-  },
-  created() {
-    EventBus.$on('color-change', hex => {
-      this.headerColor = hex;
-    })
   }
 }
 </script>
@@ -37,5 +31,8 @@ export default {
   .custom-container {
     margin: 20px auto 0;
     width: 90%;
+  }
+  #app {
+    min-height: 100vh;
   }
 </style>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/Home.vue'
-import About from '@/pages/About.vue'
+import Color from '@/pages/Color.vue'
 import Login from '@/components/loginForm.vue'
 import Signup from '@/components/signupForm.vue'
 import Mapping from '@/pages/Mapping.vue'
@@ -18,9 +18,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About
+      path: '/color',
+      name: 'Color',
+      component: Color
     },
     {
       path: '/map',

@@ -1,9 +1,4 @@
-export const changeMsg = ({commit}) => {
-    commit({
-      type: 'mutationsMsg',     //对应mutation.js中的mutationsMsg方法
-      msg: '我是修改后的数据~~~'
-    });
-  };
+import * as types from './type'
 
 export const thumbUp = ({commit}) => {
   commit({
@@ -21,4 +16,8 @@ export const thumbDown = ({commit}) => {
 
 export const addComment = ({commit},content) => {
   commit('addComment', content)
+}
+
+export const changeColor =({commit}, color) => {
+  commit(types.CHANGE_COLOR, color)
 }
