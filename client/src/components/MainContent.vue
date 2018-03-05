@@ -50,6 +50,7 @@ export default {
         text-align: center;
         margin-top: -30px;
         margin-bottom: -26px;
+        position: relative;
     }
     .tab-box {
         margin-top:10px;
