@@ -11,34 +11,32 @@
                 </div>
             </div>
           </form>
-          <el-table
-            :data="tableData3"
-            height="250"
-            border
-            style="width: 100%">
-            <el-table-column
-                prop="date"
-                label="日期"
-                width="180">
-            </el-table-column>
-            <el-table-column
-                prop="name"
-                label="姓名"
-                width="180">
-            </el-table-column>
-            <el-table-column
-                prop="address"
-                width="360"
-                label="地址">
-            </el-table-column>
-            <el-table-column
-                label="操作">
-                <template slot-scope="scope">    
-                    <el-button type="text" size="small">查看</el-button>
-                    <el-button type="text" size="small">编辑</el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+         <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>经度</th>
+                    <th>纬度</th>
+                    <th>地址</th>
+                    <th>编辑</th>
+                    <th>删除</th>                     
+                </tr>
+            </thead>
+             <tbody>
+                 <tr :key="index" v-for="(row, index) in tableData">
+                     <td>
+                         <span v-if="!row.edit">{{ row.lat }}</span>
+                         <input type="text" class="form-control" v-if="row.edit" :value="row.lat">
+                     </td>
+                     <td>
+                         <span v-if="!row.edit">{{ row.lng }}</span>
+                         <input type="text" class="form-control" v-if="row.edit" :value="row.lng">
+                     </td>
+                     <td>{{ row.address }}</td>
+                     <td><button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button></td>
+                     <td><button class="btn btn-outline-danger">删除</button></td>
+                 </tr>
+             </tbody>
+         </table>
     </div>
 </template>
 <script>
@@ -50,35 +48,49 @@ export default {
     },
     data() {
         return {
-                    tableData3: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
+                    tableData: [
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                        {
+                            lat: 123,
+                            lng: 35,
+                            address: '陕西省西安市咸宁西路',
+                            edit: false
+                        },
+                    ]
+        }
+    },
+    methods: {
+        edit(row) {
+            row.edit = !row.edit;
         }
     }
 }

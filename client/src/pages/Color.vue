@@ -1,7 +1,6 @@
 <template>
     <div class="about-page">
         <color-picker class="color-picker"></color-picker>
-        <div class="background"></div>
     </div>
 </template>
 <script>
