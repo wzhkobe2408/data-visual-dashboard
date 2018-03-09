@@ -9,7 +9,6 @@
     <slider style="margin:20px auto" v-model="colors"
     @change-color="onChange">
     </slider>
-    <button class="btn btn-primary" @click="changeColor('#fff')">Change coolor</button>
   </div>
 </template>
 

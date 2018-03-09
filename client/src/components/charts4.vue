@@ -161,8 +161,8 @@ export default{
   }
       .social-icon-group {
       position: absolute;
-      top: 88%;
-      left: 5%;
+      top: 86%;
+      left: 35%;
       font-size: 15px;
   }
 </style>

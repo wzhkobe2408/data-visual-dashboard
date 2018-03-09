@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="row">
         <SideBar />
         <MainContent />
     </div>

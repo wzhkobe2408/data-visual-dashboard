@@ -1,6 +1,6 @@
 <template>
-    <div class="panel panel-default col-md-6 col-md-offset-3">
-        <div class="panel-body">
+    <div class="card panel-default col-md-6 mx-auto">
+        <div class="card-body">
             <h1>Sign up</h1>
             <div class="form-group">
                 <label>Email</label>
@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" placeholder="Enter your password">
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary">
+                <input type="submit" value="Login" class="btn btn-block btn-primary">
             </div>
         </div>
     </div>

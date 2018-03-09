@@ -6,6 +6,7 @@ import Login from '@/components/loginForm.vue'
 import Signup from '@/components/signupForm.vue'
 import Mapping from '@/pages/Mapping.vue'
 import ThreeD from '@/pages/ThreeD.vue'
+import Manage from '@/pages/Manage.vue'
 import notFound from '@/components/notFound'
 
 Vue.use(Router)
@@ -41,6 +42,11 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/manage',
+      name: 'Manage',
+      component: Manage
     }
   ]
 })

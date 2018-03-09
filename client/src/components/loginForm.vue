@@ -1,6 +1,6 @@
 <template>
-    <div class="panel panel-default col-md-6 col-md-offset-3">
-        <div class="panel-body">
+    <div class="card col-md-6 mx-auto">
+        <div class="card-body">
             <h1>Log In</h1>
             <form autocomplete="false" action="/login" method="POST">
                 <div class="form-group">
@@ -12,7 +12,7 @@
                     <input type="password" class="form-control" placeholder="Enter your password">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Login" class="btn btn-primary">
+                    <input type="submit" value="Login" class="btn btn-primary btn-block">
                 </div>
             </form>
         </div>

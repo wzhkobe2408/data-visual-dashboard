@@ -2,7 +2,7 @@
   <div class="charts">
     <vue-highcharts :options="options" ref="lineCharts"></vue-highcharts>
         <div class="add-button"><i class="fas fa-plus-circle"></i></div>
-        <div class="social-icon-group">
+        <div class="social-icon-group mx-auto">
             <i class="fas fa-comment-alt"></i> <span style="margin-right:10px">10</span>
             <i class="fas fa-thumbs-up"></i> <span style="margin-right:10px">10</span>
             <i class="fas fa-thumbs-down"></i> <span style="margin-right:10px">10</span>
@@ -96,8 +96,8 @@ export default{
   }
     .social-icon-group {
       position: absolute;
-      top: 88%;
-      left: 5%;
+      top: 86%;
+      left: 35%;
       font-size: 15px;
   }
 </style>

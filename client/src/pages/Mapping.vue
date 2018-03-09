@@ -32,7 +32,10 @@
                          <input type="text" class="form-control" v-if="row.edit" :value="row.lng">
                      </td>
                      <td>{{ row.address }}</td>
-                     <td><button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button></td>
+                     <td>
+                         <button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button>
+                         <button v-if="row.edit" class="btn btn-outline-success">确定</button>
+                    </td>
                      <td><button class="btn btn-outline-danger">删除</button></td>
                  </tr>
              </tbody>
