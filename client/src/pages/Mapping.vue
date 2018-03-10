@@ -25,16 +25,16 @@
                  <tr :key="index" v-for="(row, index) in tableData">
                      <td>
                          <span v-if="!row.edit">{{ row.lat }}</span>
-                         <input type="text" class="form-control" v-if="row.edit" :value="row.lat">
+                         <input :ref="'lat-'+ index" type="text" class="form-control" v-if="row.edit" :value="row.lat">
                      </td>
                      <td>
                          <span v-if="!row.edit">{{ row.lng }}</span>
-                         <input type="text" class="form-control" v-if="row.edit" :value="row.lng">
+                         <input :ref="'lng-'+ index" type="text" class="form-control" v-if="row.edit" :value="row.lng">
                      </td>
                      <td>{{ row.address }}</td>
                      <td>
                          <button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button>
-                         <button v-if="row.edit" class="btn btn-outline-success">确定</button>
+                         <button @click="makeChange(row, index)" v-if="row.edit" class="btn btn-outline-success">确定</button>
                     </td>
                      <td><button class="btn btn-outline-danger">删除</button></td>
                  </tr>
@@ -94,6 +94,13 @@ export default {
     methods: {
         edit(row) {
             row.edit = !row.edit;
+        },
+        makeChange(row, index) {
+            var lat = 'lat-' + index;
+            console.log(this.$refs[lat]);
+            row.edit = false;
+            row.lat = 44;
+            row.lng = 44;
         }
     }
 }

@@ -9,11 +9,26 @@
         <button class="btn btn-outline-primary btn-block">Edit</button>
       </div>
         <ul class="list-group list-group-flush">
-        <li class="list-group-item">List</li>
-        <li class="list-group-item">List</li>
-        <li class="list-group-item">List</li>
-        <li class="list-group-item">List</li>
-        <li class="list-group-item">List</li>
+        <li class="list-group-item" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">List</li>
+        <div id="collapseOne" class="collapse show">
+          This is the test
+        </div>
+        <li class="list-group-item" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">List</li>
+        <div id="collapseTwo" class="collapse">
+          This is the test
+        </div>
+        <li class="list-group-item" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">List</li>
+        <div id="collapseThree" class="collapse">
+          This is the test
+        </div>
+        <li class="list-group-item" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">List</li>
+        <div id="collapseFour" class="collapse">
+          This is the test
+        </div>
+        <li class="list-group-item" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">List</li>
+        <div id="collapseFive" class="collapse">
+          This is the test
+        </div>
         </ul>
 		</div>
   </div>
