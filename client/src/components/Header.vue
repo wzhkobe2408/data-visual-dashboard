@@ -12,8 +12,12 @@
        </div>
        <div class="right-nav">
          <ul>
-           <li><router-link to="/login">Login</router-link></li>
-           <li><router-link to="/signup">Signup</router-link></li>
+           <li v-if="username"><router-link to="/" v-html="username"></router-link><li>
+            <li v-if="username" @click="clearToken">
+              <router-link to="/login">Logout</router-link><li>
+           <li v-if="!username"><router-link to="/login">Login</router-link></li>
+           <li v-if="!username"><router-link to="/signup">Signup</router-link></li>
+            <li @click="getInfo"><router-link to="/">GetInfo</router-link></li>
          </ul>
        </div>
      </div>
@@ -21,15 +25,66 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   props: ['color'],
   data () {
     return {
+      username:'',
+      email:''
     }
+  },
+  computed: {
+    ...mapGetters([
+      'gettersToken'
+    ])
+  },
+  watch: {
+    gettersToken() {
+
+    }
+  },
+  methods: {
+    ...mapActions([
+      'deleteToken'
+    ]),
+    clearToken() {
+      this.deleteToken()
+      localStorage.setItem('jwt','')
+      this.$router.push('/login')
+    },
+    getInfo() {
+    axios.get('/api/userinfo',{ 
+      headers: {'x-access-token': localStorage.getItem('jwt')}
+    })
+      .then(response => {
+        this.email = response.data.userinfo.email;
+        this.username = response.data.userinfo.username;
+      })
+      .catch(err => {
+        console.log('Error happend')
+      })
+    }
+  },
+  mounted() {
+    axios.get('/api/userinfo',{ 
+      headers: {'x-access-token': localStorage.getItem('jwt')}
+    })
+      .then(response => {
+        this.email = response.data.userinfo.email;
+        this.username = response.data.userinfo.username;
+      })
+      .catch(err => {
+        console.log('Error happend')
+      })
   }
 }
 </script>
 <style scoped>
+  * {
+    box-sizing: border-box;
+  }
   ul {
    margin:0;
    padding:0;
@@ -65,5 +120,9 @@ export default {
     content:'';
     display: table;
     clear:both;
+  }
+  .router-link-exact-active.router-link-active {
+    border-bottom: 2px solid #ffbc00;
+    font-weight: bold;
   }
 </style>

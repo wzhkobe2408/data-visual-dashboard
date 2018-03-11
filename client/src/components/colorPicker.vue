@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 :style="{color:colors.hex}">Vue Color pickers</h1>
+  <div :style="{backgroundColor:colors.hex}" class="bg">
+    <h1>Vue Color pickers</h1>
     <div class="color-picker-container">
         <photoshop v-model="colors" class="photoshop" @change-color="onChange"></photoshop>
         <chrome v-model="colors" class="chrome" @change-color="onChange"></chrome>
@@ -69,6 +69,7 @@ export default {
         margin-top: 50px;
         margin-bottom: 30px;
         text-align: center;
+        color: white;
     }
     .color-picker-container {
         display: flex;
@@ -77,6 +78,12 @@ export default {
     }
     .photoshop, .chrome {
         margin-right: 20px;
+    }
+    .bg {
+      margin-top:-20px; 
+      width: 100%;
+      height: 50vh;
+      background: #333333;
     }
 </style>
 

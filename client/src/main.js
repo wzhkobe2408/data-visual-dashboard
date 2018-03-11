@@ -6,6 +6,7 @@ import router from './router'
 import store from './store/index';
 import { Map, TileLayer, OsmSource, Feature } from 'vuelayers'
 import ElementUI from 'element-ui'
+import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'vuelayers/lib/style.css'
 Vue.config.productionTip = false
@@ -15,6 +16,8 @@ Vue.use(Map)
 Vue.use(TileLayer)
 Vue.use(OsmSource)
 Vue.use(Feature)
+
+window.axios = axios; 
 
 /* eslint-disable no-new */
 new Vue({

@@ -21,3 +21,11 @@ export const addComment = ({commit},content) => {
 export const changeColor =({commit}, color) => {
   commit(types.CHANGE_COLOR, color)
 }
+
+export const setToken = ({commit}, token) => {
+  commit(types.SET_TOKEN, token)
+}
+
+export const deleteToken = ({commit}) => {
+  commit(types.DELETE_TOKEN)
+}

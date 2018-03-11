@@ -2,14 +2,14 @@
     <div class="card col-md-6 mx-auto">
         <div class="card-body">
             <h1>Log In</h1>
-            <form autocomplete="false" action="/login" method="POST">
+            <form autocomplete="false" @submit="handleLogin">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="Enter your email">
+                    <input type="text" name="email" class="form-control" placeholder="Enter your email" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" name="password" v-model="password" class="form-control" placeholder="Enter your password">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary btn-block">
@@ -19,8 +19,35 @@
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+      ...mapActions([
+          'setToken'
+      ]),
+      handleLogin(e) {
+          e.preventDefault();
+          axios.post('/api/login', {
+              email: this.email,
+              password: this.password
+          })
+            .then(response => {
+                this.setToken(response.data.token)
+                localStorage.setItem('jwt',response.data.token)
+                this.$router.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+      }
+  }
 }
 </script>
 <style scoped>

@@ -54,6 +54,7 @@ export default {
     }
     .tab-box {
         margin-top:10px;
+        margin-bottom: 20px;
     }
 </style>
 
