@@ -2,9 +2,9 @@
     <model-obj
         :rotation="rotation"
         :backgroundColor="bgColor"
-		controllable="false"
         @on-load="onLoad()"
-        src="static/models/obj/earth.obj"></model-obj>
+        src="static/models/obj/earth.obj"
+		mtl="static/models/obj/earth.mtl"></model-obj>
 </template>
 
 <script>
