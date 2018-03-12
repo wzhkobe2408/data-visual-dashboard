@@ -1,5 +1,6 @@
 <template>
    <div class="header" :style="{backgroundColor:color}">
+   <div class="banner"></div>
      <div class="container">
        <div class="left-nav">
          <ul>
@@ -94,5 +95,11 @@ export default {
   .router-link-exact-active.router-link-active {
     border-bottom: 2px solid #ffbc00;
     font-weight: bold;
+  }
+  .banner {
+	width: 100%;
+	height: 100px;
+	background: url('../assets/banner.png');
+	background-position: 0% 40%;
   }
 </style>

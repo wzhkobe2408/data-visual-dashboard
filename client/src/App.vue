@@ -50,7 +50,7 @@ export default {
   }
   #app {
     min-height: 100vh;
-	margin-top: 70px;
+	margin-top: 170px;
   }
   .top-nav {
 	position: fixed;
