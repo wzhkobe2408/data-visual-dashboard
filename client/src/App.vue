@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :color="this.headerColor" :username="username"/>
+    <Header class="top-nav" :color="this.headerColor" :username="username"/>
     <div class="custom-container">
       <router-view></router-view>
     </div>
@@ -50,5 +50,13 @@ export default {
   }
   #app {
     min-height: 100vh;
+	margin-top: 70px;
+  }
+  .top-nav {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	right: 0;
   }
 </style>

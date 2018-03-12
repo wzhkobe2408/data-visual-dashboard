@@ -3,6 +3,7 @@
 		<div class="card">
       <div class="card-body text-center">
         <img class="profile-img" src="../assets/avatar.png" alt="img">
+		<span class="hint">Click to upload</span>
         <p class="mt-1">{{ gettersUserInfo.username }}</p>
         <p>{{ gettersUserInfo.email }}</p>
         <hr />
@@ -73,6 +74,20 @@ export default {
     width: 120px;
     height: auto;
   }
+  .profile-img:hover {
+	filter: brightness(0.5);
+  }
+  .hint {
+	position: absolute;
+	top: 68px;
+	left: 86px;
+	color: white;
+	opacity: 0;
+	transition: all 0.5s ease-in;
+  }
+  .profile-img:hover + span {
+	opacity: 1;
+  }
   .nested {
     padding-left:40px;
   }
@@ -104,7 +119,7 @@ export default {
     padding: 8px 0 8px 20px;
   }
   .sub-nav li:not(:last-child) {
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid #e7e7e7;
   }
   .active {
     background: #313131;
@@ -113,6 +128,5 @@ export default {
   .sub-nav li:hover {
     background: #686aff;
     color: white;
-
   }
 </style>

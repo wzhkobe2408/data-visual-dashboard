@@ -39,14 +39,14 @@
             <p>This is the data1</p>
           </div>
         </div>
-        <div class="card" data-toggle="modal" data-target="#exampleModalCenter">
+        <div class="card" data-toggle="modal" data-target="#addData">
           <div class="card-body">
             <img src="../assets/add.png" alt="" />
             <p>Add new data set</p>
           </div>
         </div>
       </div>
-      <Modal />
+      <Modal id="addData" :content="options" title="Add data" />
   </div>
 </template>
 <script>

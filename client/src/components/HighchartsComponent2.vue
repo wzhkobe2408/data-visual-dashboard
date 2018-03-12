@@ -1,21 +1,24 @@
 <template>
   <div class="charts">
     <vue-highcharts :options="options" ref="lineCharts"></vue-highcharts>
-    <div class="add-button"><i class="fas fa-plus-circle"></i></div>
+    <div class="add-button" data-toggle="modal" data-target="#editData"><i class="fas fa-plus-circle"></i></div>
     <div class="social-icon-group mx-auto">
         <i class="fas fa-comment-alt"></i> <span style="margin-right:10px">10</span>
         <i class="fas fa-thumbs-up"></i> <span style="margin-right:10px">10</span>
         <i class="fas fa-thumbs-down"></i> <span style="margin-right:10px">10</span>
     </div>
+	<Modal id="editData" :content="options" title="Edit data" />
   </div>
 </template>
  
 <script>
 import VueHighcharts from 'vue2-highcharts'
+import Modal from './modal.vue'
 
 export default{
     components: {
-        VueHighcharts
+        VueHighcharts,
+		Modal
     },
     data(){
       return{
@@ -103,6 +106,7 @@ export default{
       right: 20px;
       font-size: 20px;
       color:rgb(72, 192, 92);
+	  cursor: pointer;
   }
     .social-icon-group {
       position: absolute;
