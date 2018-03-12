@@ -1,5 +1,9 @@
 const state = {
     color: '#194d33',
-    token: ''
+    token: '',
+    userInfo: {
+      username: '',
+      email: ''
+    }
   }
   export default state;

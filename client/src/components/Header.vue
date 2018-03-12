@@ -12,12 +12,11 @@
        </div>
        <div class="right-nav">
          <ul>
-           <li v-if="username"><router-link to="/" v-html="username"></router-link><li>
-            <li v-if="username" @click="clearToken">
+           <li class="username" v-if="gettersUserInfo.username"><router-link to="/user">{{ gettersUserInfo.username }}</router-link><li>
+            <li v-if="gettersUserInfo.username" @click="clearToken">
               <router-link to="/login">Logout</router-link><li>
-           <li v-if="!username"><router-link to="/login">Login</router-link></li>
-           <li v-if="!username"><router-link to="/signup">Signup</router-link></li>
-            <li @click="getInfo"><router-link to="/">GetInfo</router-link></li>
+           <li v-if="!gettersUserInfo.username"><router-link to="/login">Login</router-link></li>
+           <li v-if="!gettersUserInfo.username"><router-link to="/signup">Signup</router-link></li>
          </ul>
        </div>
      </div>
@@ -29,55 +28,23 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
   props: ['color'],
-  data () {
-    return {
-      username:'',
-      email:''
-    }
-  },
   computed: {
     ...mapGetters([
-      'gettersToken'
+      'gettersToken',
+      'gettersUserInfo'
     ])
-  },
-  watch: {
-    gettersToken() {
-
-    }
   },
   methods: {
     ...mapActions([
-      'deleteToken'
+      'deleteToken',
+      'clearUserInfo'
     ]),
     clearToken() {
-      this.deleteToken()
+      this.clearUserInfo()
       localStorage.setItem('jwt','')
+      localStorage.setItem('userinfo','')
       this.$router.push('/login')
     },
-    getInfo() {
-    axios.get('/api/userinfo',{ 
-      headers: {'x-access-token': localStorage.getItem('jwt')}
-    })
-      .then(response => {
-        this.email = response.data.userinfo.email;
-        this.username = response.data.userinfo.username;
-      })
-      .catch(err => {
-        console.log('Error happend')
-      })
-    }
-  },
-  mounted() {
-    axios.get('/api/userinfo',{ 
-      headers: {'x-access-token': localStorage.getItem('jwt')}
-    })
-      .then(response => {
-        this.email = response.data.userinfo.email;
-        this.username = response.data.userinfo.username;
-      })
-      .catch(err => {
-        console.log('Error happend')
-      })
   }
 }
 </script>
@@ -120,6 +87,9 @@ export default {
     content:'';
     display: table;
     clear:both;
+  }
+  .username {
+    border-bottom: none !important;
   }
   .router-link-exact-active.router-link-active {
     border-bottom: 2px solid #ffbc00;

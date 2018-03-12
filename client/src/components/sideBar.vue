@@ -3,7 +3,8 @@
 		<div class="card">
       <div class="card-body text-center">
         <img class="profile-img" src="../assets/avatar.png" alt="img">
-        <p class="mt-1">Wang Zhonghuan</p>
+        <p class="mt-1">{{ gettersUserInfo.username }}</p>
+        <p>{{ gettersUserInfo.email }}</p>
         <hr />
         <p>Developer | Student</p>
         <button class="btn btn-outline-primary btn-block">Edit</button>
@@ -11,8 +12,8 @@
       <div>
         <ul class="main-nav">
           <li :key="index" v-for="(item, index) in lists">
-            <p>{{ item.name }}<span>⏷</span></p>
-            <ul class="sub-nav">
+            <p ref="p" @click="toggleNestBar($event, index)">{{ item.name }}<span>⏷</span></p>
+            <ul v-show="index == showNest.showIndex && showNest.show" class="sub-nav">
               <li :key="index" v-for="(subItem, index) in item.sub">
                 {{ subItem }}
               </li>
@@ -24,21 +25,44 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
+      showNest: {
+        showIndex: -1,
+        show: false
+      },
       lists:[
-        {name:'This is the item 1', sub:['This is the sub1', 'This is the sub2']},
-        {name:'This is the item 2', sub:['This is the sub1', 'This is the sub2']},
-        {name:'This is the item 3', sub:['This is the sub1', 'This is the sub2']},
-        {name:'This is the item 4', sub:['This is the sub1', 'This is the sub2']},
-        {name:'This is the item 5', sub:['This is the sub1', 'This is the sub2']}
+        {name:'This is the item 1', sub:['This is the sub1', 'This is the sub2','This is the sub1', 'This is the sub2']},
+        {name:'This is the item 2', sub:['This is the sub1', 'This is the sub2','This is the sub1', 'This is the sub2','This is the sub1']},
+        {name:'This is the item 3', sub:['This is the sub1', 'This is the sub2','This is the sub1']},
+        {name:'This is the item 4', sub:['This is the sub1', 'This is the sub2','This is the sub1', 'This is the sub2']},
+        {name:'This is the item 5', sub:['This is the sub1', 'This is the sub2','This is the sub1', 'This is the sub2']}
       ]
     }
+  },
+  computed: {
+    ...mapGetters([
+      'gettersUserInfo'
+    ]),
   },
   methods: {
     handleClick() {
       alert("It worked");
+    },
+    toggleNestBar(e, index) {
+      if (this.showNest.showIndex == index) {
+        this.showNest.show = !this.showNest.show;
+      } else {
+        this.showNest.showIndex = index;
+        this.showNest.show = true;
+      }
+      for(var i = 0; i < this.$refs.p.length; i++) {
+        this.$refs.p[i].classList.remove('active')
+      }
+      e.target.classList.toggle('active');
     }
   }
 };
@@ -75,12 +99,20 @@ export default {
   }
   .sub-nav {
     background: #f5f5f5;
-    padding:10px 20px;
   }
   .sub-nav li {
-    padding: 5px 0;
+    padding: 8px 0 8px 20px;
   }
   .sub-nav li:not(:last-child) {
     border-bottom: 1px solid #c4c4c4;
+  }
+  .active {
+    background: #313131;
+    color: #fff;
+  }
+  .sub-nav li:hover {
+    background: #686aff;
+    color: white;
+
   }
 </style>

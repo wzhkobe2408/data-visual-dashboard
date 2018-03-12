@@ -39,7 +39,6 @@ export default {
               password: this.password
           })
             .then(response => {
-                this.setToken(response.data.token)
                 localStorage.setItem('jwt',response.data.token)
                 this.$router.push('/')
             })

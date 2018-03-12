@@ -9,6 +9,14 @@ const mutations = {
   },
   [types.DELETE_TOKEN](state) {
     state.token = null
+  },
+  [types.SET_USER_INFO](state, userinfo) {
+    state.userInfo.username = userinfo.username
+    state.userInfo.email = userinfo.email
+  },
+  [types.CLEAR_USER_INFO](state) {
+    state.userInfo.username = ''
+    state.userInfo.email = ''
   }
 }
 

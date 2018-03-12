@@ -29,3 +29,11 @@ export const setToken = ({commit}, token) => {
 export const deleteToken = ({commit}) => {
   commit(types.DELETE_TOKEN)
 }
+
+export const setUserInfo = ({commit}, userinfo) => {
+  commit(types.SET_USER_INFO, userinfo)
+}
+
+export const clearUserInfo = ({commit}) => {
+  commit(types.CLEAR_USER_INFO)
+}

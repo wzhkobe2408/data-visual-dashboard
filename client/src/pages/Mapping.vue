@@ -1,15 +1,10 @@
 <template>
     <div>
         <Map style="margin-bottom:10px" />
-          <form style="margin-bottom:10px">
-            <div class="row">
-                <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="经度">
-                </div>
-                <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="纬度">
-                </div>
-            </div>
+          <form style="margin-bottom:10px" class="form-inline" @submit="addItem">
+                <input type="text" v-model="addLat" class="form-control mr-2 col" placeholder="经度">
+                <input type="text" v-model="addLng" class="form-control mr-2 col" placeholder="纬度">
+                <input type="submit" value="Add" class="btn btn-success" @click="addItem"> 
           </form>
          <table class="table table-striped table-dark">
             <thead>
@@ -25,18 +20,18 @@
                  <tr :key="index" v-for="(row, index) in tableData">
                      <td>
                          <span v-if="!row.edit">{{ row.lat }}</span>
-                         <input :ref="'lat-'+ index" type="text" class="form-control" v-if="row.edit" :value="row.lat">
+                         <input type="text" class="form-control" v-if="row.edit" :value="row.lat" @change="setLat">
                      </td>
                      <td>
                          <span v-if="!row.edit">{{ row.lng }}</span>
-                         <input :ref="'lng-'+ index" type="text" class="form-control" v-if="row.edit" :value="row.lng">
+                         <input type="text" class="form-control" v-if="row.edit" :value="row.lng" @change="setLng">
                      </td>
                      <td>{{ row.address }}</td>
                      <td>
                          <button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button>
-                         <button @click="makeChange(row, index)" v-if="row.edit" class="btn btn-outline-success">确定</button>
+                         <button @click="makeChange(row)" v-if="row.edit" class="btn btn-outline-success">确定</button>
                     </td>
-                     <td><button class="btn btn-outline-danger">删除</button></td>
+                     <td><button class="btn btn-outline-danger" @click="handleDelete(row, index)">删除</button></td>
                  </tr>
              </tbody>
          </table>
@@ -51,6 +46,10 @@ export default {
     },
     data() {
         return {
+                    addLat:'',
+                    addLng:'',
+                    newlat:'',
+                    newlng:'',
                     tableData: [
                         {
                             lat: 123,
@@ -94,13 +93,35 @@ export default {
     methods: {
         edit(row) {
             row.edit = !row.edit;
+            this.newlat = row.lat
+            this.newlng = row.lng
         },
-        makeChange(row, index) {
-            var lat = 'lat-' + index;
-            console.log(this.$refs[lat]);
-            row.edit = false;
-            row.lat = 44;
-            row.lng = 44;
+        setLat(e) {
+            this.newlat = e.target.value
+        },
+        setLng(e) {
+            this.newlng = e.target.value
+        },
+        makeChange(row) {
+            row.lat = this.newlat
+            row.lng = this.newlng
+            row.edit = false
+            this.newlat = ''
+            this.newlng = ''
+        },
+        handleDelete(row, deleteIndex) {
+            this.tableData = this.tableData.filter((item, index) => index !== deleteIndex)
+        },
+        addItem(e) {
+            e.preventDefault();
+            this.tableData.push({
+                lat: this.addLat,
+                lng: this.addLng,
+                address:'陕西省西安市咸宁西路',
+                edit: false
+            })
+            this.addLat = ''
+            this.addLng = ''
         }
     }
 }

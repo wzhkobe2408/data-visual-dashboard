@@ -1,15 +1,20 @@
 <template>
-    <model-collada
+    <model-obj
         :rotation="rotation"
         :backgroundColor="bgColor"
-        @on-load="onLoad"
-        src="static/models/obj/earth.dae"></model-collada>
+		controllable="false"
+        @on-load="onLoad()"
+        src="static/models/obj/earth.obj"></model-obj>
 </template>
 
 <script>
-    import { ModelCollada } from 'vue-3d-model'
+    import { ModelObj } from 'vue-3d-model'
 
     export default {
+		props:['speed'],
+		components: {
+            ModelObj
+        },
         data(){ 
             return {
                 rotation: {
@@ -25,12 +30,9 @@
                 this.rotate();
             },
             rotate () {
-                this.rotation.z += 0.01;
+                this.rotation.y += 0.01;
                 requestAnimationFrame( this.rotate );
             }
-        },
-        components: {
-            ModelCollada
         }
     }
 </script>

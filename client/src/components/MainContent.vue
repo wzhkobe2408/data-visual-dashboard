@@ -28,6 +28,7 @@ import HighchartsComponent2 from './HighchartsComponent2.vue'
 import HighchartsComponent4 from './charts4.vue'
 import ChoseTab from './ChoseTab.vue'
 import Map from './map.vue'
+import { mapActions } from 'vuex'
 
 export default {
     components: {
@@ -37,6 +38,21 @@ export default {
         HighchartsComponent4,
         Map,
         ChoseTab
+    },
+    methods: {
+        ...mapActions([
+            'setUserInfo'
+        ])
+    },
+    created() {
+        axios.get('/api/userinfo',{
+                headers: {'x-access-token': localStorage.getItem('jwt')}
+        }).then(response => {
+            this.setUserInfo(response.data.userinfo)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 }
 </script>
