@@ -14,7 +14,8 @@ var UserSchema = new Schema({
     admin: {
       type: Boolean,
       default: false
-    }
+    },
+    datasets: [{ type: Schema.Types.ObjectId, ref: 'Dataset' }]
 })
 
 UserSchema.pre('save', function (next) {

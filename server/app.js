@@ -2,10 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
-const config = require('./config')
-const User = require('./models/user')
 const bcrypt = require('bcrypt')
 const app = express()
+
+const config = require('./config')
+
+const User = require('./models/user')
+const Dataset = require('./models/dataset')
+
 var port = process.env.PORT || 3001
 
 mongoose.connect(config.database)
@@ -100,6 +104,18 @@ apiRoutes.post('/login', (req, res) => {
 apiRoutes.get('/userinfo', tokenVerifyMiddleware, (req, res) => {
 	res.json({ userinfo: req.decoded })
 });
+
+apiRoutes.get('/user/:userId/dataset', tokenVerifyMiddleware, (req, res) => {
+	User.findById({ _id: req.params.userId })
+		.populate('datasets')
+		.exec((err, user) => {
+			if(err) {
+				console.log(err)
+			} else {
+				console.log(user)
+			}
+		})
+})
 
 app.use('/api', apiRoutes);
 
