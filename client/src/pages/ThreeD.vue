@@ -72,7 +72,7 @@ export default {
     .threed-container {
         position: relative;
         width: 100%;
-        height: 100vh;
+        height: 480px;
     }
     .control-panel {
         position: absolute;
