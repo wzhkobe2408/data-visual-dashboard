@@ -80,7 +80,7 @@ export default {
         color:#fff;
         top:10px;
         right:0;
-        z-index:10000;
+        z-index:499;
 
     }
     .title {

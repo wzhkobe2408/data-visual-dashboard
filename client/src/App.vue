@@ -50,13 +50,5 @@ export default {
   }
   #app {
     min-height: 100vh;
-	margin-top: 170px;
-  }
-  .top-nav {
-	position: fixed;
-	z-index: 1000;
-	top: 0;
-	left: 0;
-	right: 0;
   }
 </style>

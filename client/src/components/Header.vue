@@ -1,7 +1,7 @@
 <template>
    <div class="header" :style="{backgroundColor:color}">
    <div class="banner"></div>
-     <div class="container">
+     <div class="my-container">
        <div class="left-nav">
          <ul>
            <li><router-link to="/">Home</router-link></li>
@@ -79,12 +79,12 @@ export default {
   ul li a:hover {
     background-color:#424242;
   }
-  .container {
-    width: 90%;
-    padding:0;
+  .my-container {
+    background: rgb(27, 27, 27);
+    padding:0 5%;
     margin: auto;
   }
-  .container:after {
+  .my-container:after {
     content:'';
     display: table;
     clear:both;
@@ -101,5 +101,14 @@ export default {
 	height: 100px;
 	background: url('../assets/banner.png');
 	background-position: 0% 40%;
+  }
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgb(27, 27, 27);
+    border-bottom: 5px solid rgb(70, 70, 70);
+    z-index: 1000;
   }
 </style>
