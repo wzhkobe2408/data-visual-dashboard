@@ -9,8 +9,7 @@ var datasetSchema = new Schema({
   data: {
     type: Array,
     required: true
-  },
-  owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  }
 })
 
-module.exports = mongoose.model('Dataset', datasetSchema)
+module.exports = datasetSchema

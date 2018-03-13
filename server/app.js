@@ -105,15 +105,56 @@ apiRoutes.get('/userinfo', tokenVerifyMiddleware, (req, res) => {
 	res.json({ userinfo: req.decoded })
 });
 
-apiRoutes.get('/user/:userId/dataset', tokenVerifyMiddleware, (req, res) => {
+apiRoutes.post('/user/:userId/dataset', tokenVerifyMiddleware, (req, res) => {
 	User.findById({ _id: req.params.userId })
-		.populate('datasets')
-		.exec((err, user) => {
-			if(err) {
-				console.log(err)
-			} else {
-				console.log(user)
-			}
+		.then(user => {
+			user.datasets.push({
+				series: [],
+				data: []
+			})
+		})
+		.catch(err => {
+			res.status(500).send('Something broke!')
+		})
+})
+
+apiRoutes.delete('/user/:userId/dataset/index', tokenVerifyMiddleware, (req, res) => {
+	User.findById({ _id: req.params.userId })
+		.then(user => {
+			user.datasets[index].remove()
+		})
+		.catch(err => {
+			res.status(500).send('Something broke!')
+		})
+})
+
+apiRoutes.put('/user/:userId/dataset/index', tokenVerifyMiddleware, (req, res) => {
+	User.findOneAndUpdata({ _id: req.params.userId }, req.newData, {upsert:true})
+		.then(user => {
+			res.send('success edit')
+		})
+		.catch(err => {
+			res.status(500).send('Something broke!')
+		})
+})
+
+apiRoutes.get('/user/:userId/dataset/index', tokenVerifyMiddleware, (req, res) => {
+	User.findById({ _id: req.params.userId })
+		.then(user => {
+			res.json({ dataset: user.datasets[index] })
+		})
+		.catch(err => {
+			res.status(500).send('Something broke!')
+		})
+})
+
+apiRoutes.get('/user/:userId/datasets', tokenVerifyMiddleware, (req, res) => {
+	User.findById({ _id: req.params.userId })
+		.then(user => {
+			res.json({ datasets: user.datasets })
+		})
+		.catch(err => {
+			res.status(500).send('Something broke!')
 		})
 })
 

@@ -56,14 +56,15 @@ export default {
     toggleNestBar(e, index) {
       if (this.showNest.showIndex == index) {
         this.showNest.show = !this.showNest.show;
+		e.target.classList.toggle('active')
       } else {
+		for(var i = 0; i < this.$refs.p.length; i++) {
+			this.$refs.p[i].classList.remove('active')
+		}
         this.showNest.showIndex = index;
+		e.target.classList.add('active')
         this.showNest.show = true;
       }
-      for(var i = 0; i < this.$refs.p.length; i++) {
-        this.$refs.p[i].classList.remove('active')
-      }
-      e.target.classList.toggle('active');
     }
   }
 };

@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt')
+var datasetSchema = require('./dataset')
+
 var UserSchema = new Schema({
     email: {
       type: String,
@@ -15,7 +17,7 @@ var UserSchema = new Schema({
       type: Boolean,
       default: false
     },
-    datasets: [{ type: Schema.Types.ObjectId, ref: 'Dataset' }]
+    datasets: [datasetSchema]
 })
 
 UserSchema.pre('save', function (next) {

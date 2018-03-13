@@ -13,7 +13,7 @@
                 </div>
                 <div class="graph-item">
                     <highcharts-component4></highcharts-component4>
-                </div>                
+                </div>           
             </div>
         </div>
         <div class="tab-box">
