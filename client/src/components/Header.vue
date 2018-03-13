@@ -98,9 +98,11 @@ export default {
   }
   .banner {
 	width: 100%;
-	height: 100px;
-	background: url('../assets/banner.png');
-	background-position: 0% 40%;
+	height: 120px;
+	background: url('../assets/banner.jpg');
+	background-position: 0% 10%;
+	background-repeat: no-repeat;
+	background-size: cover;
   }
   .sticky {
     position: fixed;
