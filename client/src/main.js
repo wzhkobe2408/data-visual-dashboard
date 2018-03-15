@@ -5,12 +5,14 @@ import App from './App'
 import router from './router'
 import store from './store/index';
 import { Map, TileLayer, OsmSource, Feature } from 'vuelayers'
+import VueParticles from 'vue-particles'
 import ElementUI from 'element-ui'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'vuelayers/lib/style.css'
 Vue.config.productionTip = false
 
+Vue.use(VueParticles)
 Vue.use(ElementUI)
 Vue.use(Map)
 Vue.use(TileLayer)

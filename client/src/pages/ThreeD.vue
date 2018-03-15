@@ -1,6 +1,25 @@
-s<template>
+<template>
     <div class="threed-container">
         <h1 class="title">This is the 3d scene</h1>
+        <vue-particles
+        class="particle-bg"
+        color="#20c997"
+        :particleOpacity="0.7"
+        :particlesNumber="200"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#20c997"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+      >
+      </vue-particles>
         <div class="control-panel">
             <h3>This is the control-panel</h3>
             <div class="block">
@@ -94,5 +113,10 @@ export default {
         position: absolute;
         top: 70px;
         left: 40px;
+    }
+    .particle-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%
     }
 </style>
