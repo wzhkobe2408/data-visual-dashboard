@@ -3,8 +3,8 @@
 		<div class="card">
       <div class="card-body text-center">
         <img class="profile-img" src="../assets/avatar.png" alt="img">
-        <p class="mt-1">WangZhonghuan</p>
-        <p>wzhkobe2408@gmail.com</p>
+        <p class="mt-1">{{ gettersUserInfo.username }}</p>
+        <p>{{ gettersUserInfo.email }}</p>
         <hr />
         <p>Developer | Student</p>
         <button class="btn btn-outline-primary btn-block">Edit</button>

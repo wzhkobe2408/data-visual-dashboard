@@ -8,15 +8,37 @@
     <div class="tab-content-container">
         <div class="tab-content" v-if="showIndex == 1">
             <h1>Recent Activity</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
+            <hr />
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur <span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+            </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 2">
             <h1>History Record</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
+            <hr />
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
+            </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 3">
             <h1>Playground</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
+            <hr />
+            <div class="playground">
+                <div class="play-item"></div>
+                <div class="play-item"></div>
+                <div class="play-item"></div>
+                <div class="play-item"></div>
+                <div class="play-item"></div>
+                <div class="play-item"></div>                
+            </div>
         </div>
     </div>
   </div>
@@ -58,6 +80,31 @@ export default {
     }
     .tab-content-container {
         padding: 10px;
+    }
+    .tab-content ul {
+        list-style: none;
+        padding: 0 20px;
+        margin: 0;
+        font-size: 20px;
+    }
+    .tab-content li::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .tab-content .playground {
+        display:grid;
+        grid-template-columns:repeat(6,1fr); 
+        grid-gap: 10px;
+    }
+    .tab-content .play-item {
+        width: 100%;
+        height: 100px;
+        background: rgb(36, 36, 36);
+        border-radius: 4px;
+    }
+    .tab-content span {
+        float: right;
     }
 </style>
 

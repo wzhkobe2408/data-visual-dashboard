@@ -1,6 +1,9 @@
 <template>
   <div className="chart-detail-container">
+    <div class="intro">
     <h3>Chart Detail</h3>
+    <span class="date">Created on {{ date }}</span>
+    </div>
     <hr />
       <LineChart />
       <table class="table table-striped table-dark">
@@ -78,12 +81,28 @@ export default {
         DoughNut,
         PolarAreaChart,
         HorizontalBar
+    },
+    data() {
+      return {
+        date: new Date().toGMTString()
+      }
     }
 }
 </script>
 <style scoped>
   .table {
     margin-top: 10px;
+  }
+  h3 {
+    float: left;
+  }
+  .date {
+    float: right;
+  }
+  .intro::after {
+    clear: both;
+    display: block;
+    content: '';
   }
 </style>
 

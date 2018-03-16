@@ -20,6 +20,7 @@
                 <div @click="handleClick" class="chart">
                     <HorizontalBar  class="item"/>
                 </div>
+                <DyMap class="dymap"/>
             </div>
         </div>
         <div class="tab-box">
@@ -38,6 +39,7 @@ import RadarChart from './radarCharts.js'
 import DoughNut from './doughNut.js'
 import PolarAreaChart from './polarAreaCharts.js'
 import HorizontalBar from './horizontalBar.js'
+import DyMap from './dymap.vue'
 import Modal from './modal.vue'
 import ChoseTab from './ChoseTab.vue'
 import { mapActions } from 'vuex'
@@ -50,6 +52,7 @@ export default {
         PolarAreaChart,
         HorizontalBar,
         ChoseTab,
+        DyMap,
         Modal
     },
     methods: {
@@ -89,10 +92,13 @@ export default {
         box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
         padding: 20px;
         box-sizing: border-box;
-        width: 32%;
+        width: 32.5%;
         height: 320px;
-        margin-right: 12px;
+        margin-right: 10px;
         margin-bottom: 10px;
+    }
+    .chart:nth-child(3n) {
+        margin-right: 0;
     }
     .item {
         width: 100%;
@@ -111,6 +117,10 @@ export default {
         border-radius: 50%;
         color: white;
         box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+        z-index: 1000;
+    }
+    .dymap {
+        margin-bottom: 10px;
     }
 </style>
 

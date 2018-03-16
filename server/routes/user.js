@@ -44,6 +44,7 @@ router.post('/login', (req, res) => {
 				res.json({ message:'Password does not match' })
 			} else {
 				const payload = {
+					id: user.id,
 					admin: user.admin,
 					username: user.username,
 					email: user.email
@@ -66,6 +67,16 @@ router.post('/login', (req, res) => {
 // Get userInfo
 router.get('/userinfo', tokenVerifyMiddleware, (req, res) => {
 	res.json({ userinfo: req.decoded })
+});
+
+// Get story
+router.get('/user/story', tokenVerifyMiddleware, (req, res) => {
+	User.findOne({email:req.decoded.email})
+		.populate('story')
+		.exec()
+		.then(({story}) => {
+			res.json({ story: story })
+		})
 });
 
 module.exports = router

@@ -111,6 +111,6 @@ export default {
     right: 0;
     background: rgb(27, 27, 27);
     border-bottom: 5px solid rgb(70, 70, 70);
-    z-index: 1000;
+    z-index: 10000;
   }
 </style>

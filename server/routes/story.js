@@ -14,29 +14,41 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-  var newStory = new Story({
-    title: req.body.title,
-    content: req.body.content
-  })
-  newStory.save()
-    .then(story => {
-      res.json({ story: story })
+router.post('/', tokenVerifyMiddleware, (req, res) => {
+  User.findOne({email:req.decoded.email})
+    .then(user => {
+      var newStory = new Story({
+        title: req.body.title,
+        content: req.body.content
+      })
+      newStory.save()
+        .then(story => {
+          user.story.push(story._id)
+          user.save()
+          res.json({ story: story })
+        })
     })
     .catch(err => {
       res.json({ error: err })
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', tokenVerifyMiddleware, (req, res) => {
   Story.findOneAndUpdate({ _id:req.params.id}, req.body, {upsert:true, returnNewDocument:true})
     .then(story => res.json({ newStory: story }))
     .catch(err => res.json({ error: err }))
 })
 
-router.delete('/:id', (req, res) => {
-  Story.findOneAndRemove({ _id:req.params.id})
-    .then(res.json({ message:'Success delete' }))
+router.delete('/:id', tokenVerifyMiddleware, (req, res) => {
+  User.findOne({email:req.decoded.email})
+    .then(user => {
+      Story.findOneAndRemove({ _id:req.params.id})
+        .then(() => {
+          user.story.remove(req.params.id) 
+          user.save()
+          res.json({ message:'Success delete' })
+        })
+    })
     .catch(err => res.json({ error: err }))
 })
 

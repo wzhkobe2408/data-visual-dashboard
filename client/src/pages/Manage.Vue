@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2 class="text-center">This is the manage page</h2>
+      <h2>This is the manage page</h2>
       <hr />
       <div class="card-container">
         <div class="card">
