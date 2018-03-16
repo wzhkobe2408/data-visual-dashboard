@@ -9,9 +9,9 @@ require('./database/index.js')
 const globalMiddleWare = require('./middleware/global')
 globalMiddleWare(app)
 
-var apiRoute = require('./routes')
+var bundleRoute = require('./routes')
 
-app.use('/api', apiRoute)
+app.use('/', bundleRoute)
 
 var port = process.env.PORT || 3001
 
