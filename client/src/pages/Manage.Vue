@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <Modal id="addData" :content="options" title="Add data" />
+      <Modal id="addData" title="Add data" />
   </div>
 </template>
 <script>

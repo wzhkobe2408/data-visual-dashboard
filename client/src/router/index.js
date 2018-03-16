@@ -7,6 +7,7 @@ import Signup from '@/components/signupForm.vue'
 import Mapping from '@/pages/Mapping.vue'
 import ThreeD from '@/pages/ThreeD.vue'
 import Manage from '@/pages/Manage.vue'
+import ChartDetail from '@/pages/ChartDetail.vue'
 import notFound from '@/components/notFound'
 
 Vue.use(Router)
@@ -47,6 +48,11 @@ export default new Router({
       path: '/manage',
       name: 'Manage',
       component: Manage
+    },
+    {
+      path: '/chart_detail',
+      name: 'ChartDetail',
+      component: ChartDetail
     }
   ]
 })

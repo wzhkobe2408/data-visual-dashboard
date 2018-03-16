@@ -1,20 +1,14 @@
 <template>
     <div class="about-page">
         <color-picker class="color-picker"></color-picker>
-        <RadarCharts class="radar" />
-        <BubbleCharts class="bubble" />
     </div>
 </template>
 <script>
 import ColorPicker from '@/components/colorPicker'
-import RadarCharts from '@/components/radarCharts.js'
-import BubbleCharts from '@/components/bubbleCharts.js'
 
 export default {
     components: {
-        ColorPicker,
-        RadarCharts,
-        BubbleCharts
+        ColorPicker
     }
 }
 </script>
@@ -33,21 +27,5 @@ export default {
         left: 50%;
         transform: translateX(-50%);
         z-index: 100;
-    }
-    .radar {
-        position: relative;
-        top:526px;
-        background: #fff;
-        padding: 10px 0;
-        box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-    }
-    .bubble {
-        position: relative;
-        top:526px;
-        background: #fff;
-        padding: 10px 0;
-        box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
     }
 </style>

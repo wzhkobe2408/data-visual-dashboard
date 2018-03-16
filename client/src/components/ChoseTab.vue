@@ -1,21 +1,21 @@
 <template>
   <div class="tab">
     <div class="tab-header">
-        <div :class="{'tab-item':true,'tab-active':showIndex == 1}" @click="toogleTab(1)">Tab 1</div>
-        <div :class="{'tab-item':true,'tab-active':showIndex == 2}" @click="toogleTab(2)">Tab 2</div>
-        <div :class="{'tab-item':true,'tab-active':showIndex == 3}" @click="toogleTab(3)">Tab 3</div>
+        <div :class="{'tab-item':true,'tab-active':showIndex == 1}" @click="toogleTab(1)">Activity</div>
+        <div :class="{'tab-item':true,'tab-active':showIndex == 2}" @click="toogleTab(2)">History</div>
+        <div :class="{'tab-item':true,'tab-active':showIndex == 3}" @click="toogleTab(3)">Playground</div>
     </div>
     <div class="tab-content-container">
         <div class="tab-content" v-if="showIndex == 1">
-            <h1>This is the tab 1</h1>
+            <h1>Recent Activity</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
         </div>
         <div class="tab-content" v-if="showIndex == 2">
-            <h1>This is the tab 2</h1>
+            <h1>History Record</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
         </div>
         <div class="tab-content" v-if="showIndex == 3">
-            <h1>This is the tab 3</h1>
+            <h1>Playground</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorem temporibus, excepturi voluptas blanditiis mollitia inventore nam, illo nostrum sed amet explicabo modi ipsa illum iste ea accusamus laboriosam itaque.</p>
         </div>
     </div>
@@ -39,9 +39,11 @@ export default {
     .tab {
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
     }
     .tab-header {
-        background-color: rgb(92, 125, 218);
+        background-color: rgb(44, 44, 44);
+        border-radius: 4px 4px 0 0;
     }
     .tab-item {
         padding: 10px;

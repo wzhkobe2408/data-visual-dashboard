@@ -2,47 +2,63 @@
     <div class="col-md-9">
         <div class="profile-content">
             <div class="grid-container">
-                <div class="graph-item">
-                    <highcharts-component></highcharts-component>
+                <div @click="handleClick" class="chart">
+                    <LineChart class="item"/>
                 </div>
-                <div class="graph-item">
-                    <highcharts-component1></highcharts-component1>
+                <div @click="handleClick" class="chart">
+                    <BubbleChart  class="item"/>
                 </div>
-                <div class="graph-item">
-                    <highcharts-component2></highcharts-component2>
+                <div @click="handleClick" class="chart">
+                    <DoughNut  class="item"/>
                 </div>
-                <div class="graph-item">
-                    <highcharts-component4></highcharts-component4>
-                </div>           
+                <div @click="handleClick" class="chart">
+                    <RadarChart  class="item"/>
+                </div>
+                <div @click="handleClick" class="chart">
+                    <PolarAreaChart class="item" />
+                </div>
+                <div @click="handleClick" class="chart">
+                    <HorizontalBar  class="item"/>
+                </div>
             </div>
         </div>
         <div class="tab-box">
             <chose-tab></chose-tab>
         </div>
+        <div class="add-button" data-toggle="modal" data-target="#addData">
+            <i class="fas fa-plus"></i>
+        </div>
+        <Modal id="addData" title="Add data" />
     </div>
 </template>
 <script>
-import HighchartsComponent from './HighchartsComponent.vue'
-import HighchartsComponent1 from './HighchartsComponent1.vue'
-import HighchartsComponent2 from './HighchartsComponent2.vue'
-import HighchartsComponent4 from './charts4.vue'
+import LineChart from './lineCharts.js'
+import BubbleChart from './bubbleCharts.js'
+import RadarChart from './radarCharts.js'
+import DoughNut from './doughNut.js'
+import PolarAreaChart from './polarAreaCharts.js'
+import HorizontalBar from './horizontalBar.js'
+import Modal from './modal.vue'
 import ChoseTab from './ChoseTab.vue'
-import Map from './map.vue'
 import { mapActions } from 'vuex'
-
 export default {
     components: {
-        HighchartsComponent,
-        HighchartsComponent1,
-        HighchartsComponent2,
-        HighchartsComponent4,
-        Map,
-        ChoseTab
+        LineChart,
+        BubbleChart,
+        RadarChart,
+        DoughNut,
+        PolarAreaChart,
+        HorizontalBar,
+        ChoseTab,
+        Modal
     },
     methods: {
         ...mapActions([
             'setUserInfo'
-        ])
+        ]),
+        handleClick() {
+            this.$router.push('/chart_detail')
+        }
     },
     created() {
         axios.get('/api/userinfo',{
@@ -57,20 +73,44 @@ export default {
 }
 </script>
 <style scoped>
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-gap: 10px;
+    .col-md-9 {
+        padding-right: 0 !important;
     }
-    .graph-item {
+    .grid-container::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .chart {
+        float: left;
+        background: #ffffff;
+        border:1px solid #d6d6d6;
+        border-radius:4px;
+        box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+        padding: 20px;
+        box-sizing: border-box;
+        width: 32%;
+        height: 320px;
+        margin-right: 12px;
+        margin-bottom: 10px;
+    }
+    .item {
+        width: 100%;
+        height: 280px;
+    }
+    .add-button {
+        background: #272727;
+        width: 60px;
+        height: 60px;
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
         text-align: center;
-        margin-top: -30px;
-        margin-bottom: -26px;
-        position: relative;
-    }
-    .tab-box {
-        margin-top:10px;
-        margin-bottom: 20px;
+        line-height: 60px;
+        font-size: 24px;
+        border-radius: 50%;
+        color: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.8);
     }
 </style>
 
