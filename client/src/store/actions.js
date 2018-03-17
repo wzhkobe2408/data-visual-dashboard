@@ -37,3 +37,7 @@ export const setUserInfo = ({commit}, userinfo) => {
 export const clearUserInfo = ({commit}) => {
   commit(types.CLEAR_USER_INFO)
 }
+
+export const setChartData = ({commit},chartData) => {
+  commit(types.SET_CHART_DATA, chartData)
+}

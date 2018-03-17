@@ -17,6 +17,9 @@ const mutations = {
   [types.CLEAR_USER_INFO](state) {
     state.userInfo.username = ''
     state.userInfo.email = ''
+  },
+  [types.SET_CHART_DATA](state, chartData) {
+    state.chartData = chartData
   }
 }
 

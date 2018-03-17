@@ -4,6 +4,7 @@ const state = {
     userInfo: {
       username: '',
       email: ''
-    }
+    },
+    chartData:{}
   }
   export default state;

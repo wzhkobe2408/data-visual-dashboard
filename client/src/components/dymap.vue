@@ -6,7 +6,7 @@
 	export default {
 		data() {
 			return {
-				drawLine: false,
+				drawLineControl: false,
 				polygons: []
 			}
 		},

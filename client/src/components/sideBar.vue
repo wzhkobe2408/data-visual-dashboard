@@ -11,19 +11,19 @@
       </div>
       	<div class="profile-usermenu">
           <div class="nav-item">
-            <i class="fas fa-home"></i> <span>Overview</span>
+            <i class="fas fa-home"></i> <span>Overview</span> <span class="badge badge-dark float-right">5</span>
           </div>
           <div class="nav-item">
-            <i class="fas fa-user"></i> <span>Account</span>
+            <i class="fas fa-user"></i> <span>Account</span> <span class="badge badge-dark float-right">3</span>
           </div>
           <div class="nav-item">
-            <i class="fas fa-cog"></i> <span>Settings</span>
+            <i class="fas fa-cog"></i> <span>Settings</span> 
           </div>
           <div class="nav-item">
             <i class="fas fa-thumbtack"></i> <span>TasksHelp</span>
           </div>
           <div class="nav-item">
-            <i class="fas fa-info-circle"></i> <span>About</span>
+            <i class="fas fa-info-circle"></i> <span>About</span> <span class="badge badge-dark float-right">2</span>
           </div>
           <div class="nav-item">
             <i class="fab fa-telegram"></i> <span>Contact</span>
@@ -72,7 +72,7 @@ export default {
 	opacity: 1;
   }
   .nav-item {
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
   }
   .nav-item:hover {

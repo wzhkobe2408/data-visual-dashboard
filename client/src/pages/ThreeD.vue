@@ -5,15 +5,15 @@
         class="particle-bg"
         color="#20c997"
         :particleOpacity="0.7"
-        :particlesNumber="200"
+        :particlesNumber="particlesNumber"
         shapeType="circle"
-        :particleSize="4"
+        :particleSize="particleSize"
         linesColor="#20c997"
-        :linesWidth="1"
+        :linesWidth="linesWidth"
         :lineLinked="true"
         :lineOpacity="0.4"
         :linesDistance="150"
-        :moveSpeed="3"
+        :moveSpeed="moveSpeed"
         :hoverEffect="true"
         hoverMode="grab"
         :clickEffect="true"
@@ -24,19 +24,19 @@
             <h3>This is the control-panel</h3>
             <div class="block">
                 <span class="demonstration">光强</span>
-                <el-slider v-model="value1"></el-slider>
+                <el-slider v-model="particlesNumber" max=300></el-slider>
             </div>
             <div class="block">
                 <span class="demonstration">转速</span>
-                <el-slider v-model="value2"></el-slider>
+                <el-slider v-model="particleSize"></el-slider>
             </div>
             <div class="block">
                 <span class="demonstration">X轴</span>
-                <el-slider v-model="value3" :show-tooltip="false"></el-slider>
+                <el-slider v-model="linesWidth" ></el-slider>
             </div>
             <div class="block">
                 <span class="demonstration">Y轴</span>
-                <el-slider v-model="value4" :format-tooltip="formatTooltip"></el-slider>
+                <el-slider v-model="moveSpeed"></el-slider>
             </div>
             <div class="block">
                 <span class="demonstration">Z轴</span>
@@ -66,10 +66,10 @@ export default {
       data() {
       return {
 		speed: 0.01,
-        value1: 0,
-        value2: 50,
-        value3: 36,
-        value4: 48,
+        particlesNumber: 200,
+        particleSize: 4,
+        linesWidth: 1,
+        moveSpeed: 3,
         value5: 42,
         value6: true
       }

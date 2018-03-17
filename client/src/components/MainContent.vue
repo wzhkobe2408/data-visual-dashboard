@@ -2,23 +2,23 @@
     <div class="col-md-9">
         <div class="profile-content">
             <div class="grid-container">
-                <div @click="handleClick" class="chart">
-                    <LineChart class="item"/>
+                <div @click="handleClick('linechart',0)" class="chart">
+                    <LineChart :data="dataset[0]" class="item"/>
                 </div>
-                <div @click="handleClick" class="chart">
-                    <BubbleChart  class="item"/>
+                <div @click="handleClick('bubblechart',1)" class="chart">
+                    <BubbleChart :data="dataset[1]"  class="item"/>
                 </div>
-                <div @click="handleClick" class="chart">
-                    <DoughNut  class="item"/>
+                <div @click="handleClick('doughnut',2)" class="chart">
+                    <DoughNut :data="dataset[2]"  class="item"/>
                 </div>
-                <div @click="handleClick" class="chart">
-                    <RadarChart  class="item"/>
+                <div @click="handleClick('radarchart',3)" class="chart">
+                    <RadarChart :data="dataset[3]" class="item"/>
                 </div>
-                <div @click="handleClick" class="chart">
-                    <PolarAreaChart class="item" />
+                <div @click="handleClick('polarareachart',4)" class="chart">
+                    <PolarAreaChart :data="dataset[4]" class="item" />
                 </div>
-                <div @click="handleClick" class="chart">
-                    <HorizontalBar  class="item"/>
+                <div @click="handleClick('horizontalbar',5)" class="chart">
+                    <HorizontalBar :data="dataset[5]" class="item"/>
                 </div>
                 <DyMap class="dymap"/>
             </div>
@@ -55,11 +55,150 @@ export default {
         DyMap,
         Modal
     },
+    data() {
+        return {
+                dataset: [
+                    {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [
+                            {
+                            label: 'Data One',
+                            backgroundColor: '#f87979',
+                            data: [40, 39, 10, 40, 39, 80, 40]
+                            }
+                        ]
+                    },
+                    {
+                      datasets:[
+                        {
+                        label: 'Data One',
+                        backgroundColor: '#f87979',
+                        data: [
+                            {
+                            x: 20,
+                            y: 25,
+                            r: 5
+                            },
+                            {
+                            x: 40,
+                            y: 10,
+                            r: 10
+                            },
+                            {
+                            x: 30,
+                            y: 22,
+                            r: 30
+                            }
+                        ]
+                        },
+                        {
+                        label: 'Data Two',
+                        backgroundColor: '#7C8CF8',
+                        data: [
+                            {
+                            x: 10,
+                            y: 30,
+                            r: 15
+                            },
+                            {
+                            x: 20,
+                            y: 20,
+                            r: 10
+                            },
+                            {
+                            x: 15,
+                            y: 8,
+                            r: 30
+                            }
+                        ]
+                        }
+                        ]
+                    },
+                    {
+                        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+                        datasets: [
+                            {
+                            backgroundColor: [
+                                '#41B883',
+                                '#E46651',
+                                '#00D8FF',
+                                '#DD1B16'
+                            ],
+                            data: [40, 20, 80, 10]
+                            }
+                        ]
+                    },
+                    {
+                        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+                        datasets: [
+                            {
+                            label: 'My First dataset',
+                            backgroundColor: 'rgba(179,181,198,0.2)',
+                            borderColor: 'rgba(179,181,198,1)',
+                            pointBackgroundColor: 'rgba(179,181,198,1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(179,181,198,1)',
+                            data: [65, 59, 90, 81, 56, 55, 40]
+                            },
+                            {
+                            label: 'My Second dataset',
+                            backgroundColor: 'rgba(255,99,132,0.2)',
+                            borderColor: 'rgba(255,99,132,1)',
+                            pointBackgroundColor: 'rgba(255,99,132,1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(255,99,132,1)',
+                            data: [28, 48, 40, 19, 96, 27, 100]
+                            }
+                        ]
+                    },
+                    {
+                        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+                        datasets: [
+                            {
+                            label: 'My First dataset',
+                            backgroundColor: 'rgba(179,181,198,0.2)',
+                            pointBackgroundColor: 'rgba(179,181,198,1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(179,181,198,1)',
+                            data: [65, 59, 90, 81, 56, 55, 40]
+                            },
+                            {
+                            label: 'My Second dataset',
+                            backgroundColor: 'rgba(255,99,132,0.2)',
+                            pointBackgroundColor: 'rgba(255,99,132,1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(255,99,132,1)',
+                            data: [28, 48, 40, 19, 96, 27, 100]
+                            }
+                        ]
+                    },
+                    {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                        datasets: [
+                            {
+                            label: 'Data One',
+                            backgroundColor: '#f87979',
+                            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+                            }
+                        ]
+                    }
+                ]
+        }
+    },
     methods: {
         ...mapActions([
-            'setUserInfo'
+            'setUserInfo',
+            'setChartData'
         ]),
-        handleClick() {
+        handleClick(type, index) {
+            this.setChartData({
+                type: type,
+                data: this.dataset[index]
+            })
             this.$router.push('/chart_detail')
         }
     },
@@ -123,4 +262,5 @@ export default {
         margin-bottom: 10px;
     }
 </style>
+
 
