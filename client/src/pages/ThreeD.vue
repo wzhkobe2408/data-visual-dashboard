@@ -5,14 +5,14 @@
         class="particle-bg"
         color="#20c997"
         :particleOpacity="0.7"
-        :particlesNumber="particlesNumber"
+        :particlesNumber="200"
         shapeType="circle"
         :particleSize="particleSize"
         linesColor="#20c997"
         :linesWidth="linesWidth"
         :lineLinked="true"
         :lineOpacity="0.4"
-        :linesDistance="150"
+        :linesDistance="200"
         :moveSpeed="moveSpeed"
         :hoverEffect="true"
         hoverMode="grab"
@@ -24,7 +24,7 @@
             <h3>This is the control-panel</h3>
             <div class="block">
                 <span class="demonstration">光强</span>
-                <el-slider v-model="particlesNumber" max=300></el-slider>
+                <el-slider v-model="particlesNumber" ></el-slider>
             </div>
             <div class="block">
                 <span class="demonstration">转速</span>
@@ -66,7 +66,7 @@ export default {
       data() {
       return {
 		speed: 0.01,
-        particlesNumber: 200,
+        particlesNumber: 350,
         particleSize: 4,
         linesWidth: 1,
         moveSpeed: 3,

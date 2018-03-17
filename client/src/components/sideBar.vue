@@ -34,11 +34,11 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 
 export default {
   data() {
     return {
-
     }
   },
   computed: {
@@ -47,7 +47,6 @@ export default {
     ]),
   },
   methods: {
-
   }
 };
 </script>
@@ -84,5 +83,8 @@ export default {
   }
   .col-md-3 {
     padding-right: 0 !important;
+  }
+  .hidden {
+    display:none;
   }
 </style>

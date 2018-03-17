@@ -8,6 +8,11 @@
       <keep-alive>
         <component class="chart" :is="renderComponent" :data="chartData.data"></component>
       </keep-alive>
+      <div class="button-group">
+        <button class="btn btn-primary">Add Data</button>
+        <button class="btn btn-danger">Remove Data</button>
+        <button class="btn btn-success">Change Data Type</button>        
+      </div>
       <table class="table table-striped table-dark"       v-if="chartData.data.labels.length > 0">
         <thead>
             <tr>
@@ -72,7 +77,7 @@
   </div>
 </template>
 <script>
-import { mapGetters,mapState } from 'vuex'
+import { mapGetters,mapState,mapActions } from 'vuex'
 import LineChart from '../components/lineCharts.js'
 import BubbleChart from '../components/bubbleCharts.js'
 import RadarChart from '../components/radarCharts.js'
@@ -131,6 +136,22 @@ export default {
         renderComponent:''
       }
     },
+    methods: {
+      addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.push(data);
+        });
+        chart.update();
+      },
+      removeData(chart) {
+          chart.data.labels.pop();
+          chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+          });
+          chart.update();
+      }
+    },
     created() {
               switch (this.chartData.type) {
           case 'linechart':
@@ -172,14 +193,25 @@ export default {
     display: block;
     content: '';
   }
-      .chart {
-        background: #ffffff;
-        border:1px solid #d6d6d6;
-        border-radius:4px;
-        box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
-        padding: 20px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
+  .chart {
+      background: #ffffff;
+      border:1px solid #d6d6d6;
+      border-radius:4px;
+      box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      padding-bottom: 80px;
+    }
+    .button-group button {
+      margin-right: 20px;
+    }
+    .button-group {
+      text-align: center;
+      position: absolute;
+      top: 655px;
+      left: 50%;
+      transform: translate(-50%,0);
     }
 </style>
 
