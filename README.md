@@ -19,20 +19,17 @@ npm run build --report
 ```
 # Home page
 
---------------------
 
 ![Home page](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/home.png)
 
 # Map page
 
---------------------
 
 ![Home page](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/map.png)
 
 # 3d page
 
---------------------
 
-![3d](https://github.com/wzhkobe2408/data-visual-dashboard/bold/master/3d.png)
+![3d](https://github.com/wzhkobe2408/data-visual-dashboard/blod/master/3d.png)
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
