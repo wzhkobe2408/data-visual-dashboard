@@ -20,7 +20,24 @@ const mutations = {
   },
   [types.SET_CHART_DATA](state, chartData) {
     state.chartData = chartData
-  }
+  },
+  [types.ADD_CHART_DATA](state, addData, index) {
+    switch (index) {
+      case 0:
+      case 5:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      default:
+        break;
+    }
+  },
 }
 
 

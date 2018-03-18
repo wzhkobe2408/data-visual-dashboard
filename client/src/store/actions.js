@@ -1,23 +1,5 @@
 import * as types from './type'
 
-export const thumbUp = ({commit}) => {
-  commit({
-    type:'thumbUp',
-    payload:1
-  })
-}
-
-export const thumbDown = ({commit}) => {
-  commit({
-    type:'thumbDown',
-    payload:-1
-  })
-}
-
-export const addComment = ({commit},content) => {
-  commit('addComment', content)
-}
-
 export const changeColor =({commit}, color) => {
   commit(types.CHANGE_COLOR, color)
 }
@@ -40,4 +22,8 @@ export const clearUserInfo = ({commit}) => {
 
 export const setChartData = ({commit},chartData) => {
   commit(types.SET_CHART_DATA, chartData)
+}
+
+export const addChartData = ({ commit }, addData, index) => {
+  commit(types.ADD_CHART_DATA, addData, index)
 }

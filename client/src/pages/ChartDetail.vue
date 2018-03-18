@@ -44,10 +44,13 @@
                     <span>{{tableDataItem.label}}</span>
                   </td>
                   <td>
-                    <span>{{tableDataItem.data}}</span>
+                    <input class="form-control" v-if="editIndex == index && editable == true" type="text" :value="tableDataItem.data">
+                    <span v-else >{{tableDataItem.data}}</span>
                   </td>
                   <td>
-                    <button class="btn btn-outline-primary">编辑</button>
+                    <button v-if="editable && index==editIndex" class="btn btn-outline-danger" @click="cancle">取消</button>
+                    <button v-if="editable && index==editIndex" class="btn btn-outline-success">确定</button>
+                    <button @click="edit(index)" v-else class="btn btn-outline-primary">编辑</button>
                   </td>
                   <td><button class="btn btn-outline-danger">删除</button></td>
               </tr>
@@ -90,19 +93,31 @@
         <form>
           <div class="form-group">
             <label for="label">Label</label>
-            <input type="text" id="label" class="form-control" placeholder="Label" />
+            <input type="text" id="label" class="form-control" />
+          </div>
+           <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+            <label for="data">X坐标</label>
+            <input type="text" class="form-control" id="data" />
+          </div>
+          <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+            <label for="data">Y坐标</label>
+            <input type="text" class="form-control" id="data" />
+          </div>
+          <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+            <label for="data">Z坐标</label>
+            <input type="text" class="form-control" id="data" />
           </div>
           <div v-if="this.chartData.data.datasets.length == 1" class="form-group">
             <label for="data">Data</label>
-            <input type="text" class="form-control" placeholder="Data" id="data" />
+            <input type="text" class="form-control" id="data" />
           </div>
-          <div v-if="this.chartData.data.datasets.length !== 1" class="form-group">
+          <div v-if="this.chartData.data.datasets.length !== 1 && this.chartData.data.labels.length > 0" class="form-group">
             <label for="data1">Data Set-1</label>
-            <input type="text" class="form-control" placeholder="Data-one" id="data1" />
+            <input type="text" class="form-control" id="data1" />
           </div>
-          <div v-if="this.chartData.data.datasets.length !== 1" class="form-group">
+          <div v-if="this.chartData.data.datasets.length !== 1 && this.chartData.data.labels.length > 0" class="form-group">
             <label for="data2">Data Set-2</label>
-            <input type="text" class="form-control" placeholder="Data-two" id="data2" />
+            <input type="text" class="form-control" id="data2" />
           </div>
         </form>
       </Modal>
@@ -167,7 +182,9 @@ export default {
     data() {
       return {
         date: new Date().toGMTString(),
-        renderComponent:''
+        renderComponent:'',
+        editable: false,
+        editIndex: -1
       }
     },
     methods: {
@@ -184,6 +201,14 @@ export default {
             dataset.data.pop();
           });
           chart.update();
+      },
+      edit(index) {
+        this.editIndex = index;
+        this.editable = true;
+      },
+      cancle() {
+        this.editIndex = -1;
+        this.editable = false;
       }
     },
     created() {
