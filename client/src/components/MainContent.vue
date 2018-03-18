@@ -29,7 +29,19 @@
         <div class="add-button" data-toggle="modal" data-target="#addData">
             <i class="fas fa-plus"></i>
         </div>
-        <Modal id="addData" title="Add data" />
+        <Modal id="addData" title="Add new chart">
+             <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Chose Datatype
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Bar</a>
+                  <a class="dropdown-item" href="#">Line</a>
+                  <a class="dropdown-item" href="#">Radar</a>
+                  <a class="dropdown-item" href="#">Polar</a>
+                </div>
+              </div>
+        </Modal>
     </div>
 </template>
 <script>

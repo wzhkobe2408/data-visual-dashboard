@@ -1,18 +1,30 @@
 <template>
   <div className="chart-detail-container">
     <div class="intro">
-    <h3>Chart Detail</h3>
+      <router-link to="/"><i class="fas fa-chevron-left"></i></router-link>
+    <h3 class="detail_title">Chart Detail</h3>
     <span class="date">Created on {{ date }}</span>
     </div>
     <hr />
       <keep-alive>
-        <component class="chart" :is="renderComponent" :data="chartData.data"></component>
+        <div class="wrapper">
+          <component class="chart" :is="renderComponent" :data="chartData.data"></component>
+          <div class="button-group">
+              <button class="btn btn-primary" data-toggle="modal" data-target="#addData">Add Data</button>
+              <button class="btn btn-danger">Remove Data</button>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Change Datatype
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Bar</a>
+                  <a class="dropdown-item" href="#">Line</a>
+                  <a class="dropdown-item" href="#">Radar</a>
+                </div>
+              </div>        
+          </div>
+        </div>
       </keep-alive>
-      <div class="button-group">
-        <button class="btn btn-primary">Add Data</button>
-        <button class="btn btn-danger">Remove Data</button>
-        <button class="btn btn-success">Change Data Type</button>        
-      </div>
       <table class="table table-striped table-dark"       v-if="chartData.data.labels.length > 0">
         <thead>
             <tr>
@@ -74,6 +86,26 @@
               </tr>
           </tbody>
       </table>
+      <Modal id="addData" title="Add data">
+        <form>
+          <div class="form-group">
+            <label for="label">Label</label>
+            <input type="text" id="label" class="form-control" placeholder="Label" />
+          </div>
+          <div v-if="this.chartData.data.datasets.length == 1" class="form-group">
+            <label for="data">Data</label>
+            <input type="text" class="form-control" placeholder="Data" id="data" />
+          </div>
+          <div v-if="this.chartData.data.datasets.length !== 1" class="form-group">
+            <label for="data1">Data Set-1</label>
+            <input type="text" class="form-control" placeholder="Data-one" id="data1" />
+          </div>
+          <div v-if="this.chartData.data.datasets.length !== 1" class="form-group">
+            <label for="data2">Data Set-2</label>
+            <input type="text" class="form-control" placeholder="Data-two" id="data2" />
+          </div>
+        </form>
+      </Modal>
   </div>
 </template>
 <script>
@@ -84,6 +116,7 @@ import RadarChart from '../components/radarCharts.js'
 import DoughNut from '../components/doughNut.js'
 import PolarAreaChart from '../components/polarAreaCharts.js'
 import HorizontalBar from '../components/horizontalBar.js'
+import Modal from '../components/modal.vue'
 export default {
    components: {
         LineChart,
@@ -91,7 +124,8 @@ export default {
         RadarChart,
         DoughNut,
         PolarAreaChart,
-        HorizontalBar
+        HorizontalBar,
+        Modal
     },
     computed: {
       ...mapState({
@@ -182,16 +216,17 @@ export default {
   .table {
     margin-top: 10px;
   }
-  h3 {
-    float: left;
+  .detail_title {
+    display:inline-block;
+    margin-left: 20px;
+    margin-bottom: 0;
+    vertical-align: bottom;
   }
   .date {
     float: right;
   }
-  .intro::after {
-    clear: both;
-    display: block;
-    content: '';
+  .wrapper {
+    position: relative;
   }
   .chart {
       background: #ffffff;
@@ -207,11 +242,14 @@ export default {
       margin-right: 20px;
     }
     .button-group {
-      text-align: center;
       position: absolute;
-      top: 655px;
+      bottom: 20px;
       left: 50%;
       transform: translate(-50%,0);
+    }
+    .fa-chevron-left {
+      color:#000 !important;
+      font-size: 20px;
     }
 </style>
 

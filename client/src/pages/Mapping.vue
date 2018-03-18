@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Map style="margin-bottom:10px" />
-          <form style="margin-bottom:10px" class="form-inline" @submit="addItem">
+        <ControlMap class="contorl_map" />
+        <form style="margin-bottom:10px" class="form-inline" @submit="addItem">
                 <input type="text" v-model="addLat" class="form-control mr-2 col" placeholder="经度">
                 <input type="text" v-model="addLng" class="form-control mr-2 col" placeholder="纬度">
                 <input type="submit" value="Add" class="btn btn-success" @click="addItem"> 
-          </form>
+        </form>
          <table class="table table-striped table-dark">
             <thead>
                 <tr>
@@ -38,11 +38,11 @@
     </div>
 </template>
 <script>
-import Map from '@/components/map.vue'
+import ControlMap from '../components/controlMap.vue'
 
 export default {
     components: {
-        Map
+        ControlMap
     },
     data() {
         return {
@@ -126,6 +126,5 @@ export default {
     }
 }
 </script>
-<style>
-
+<style scoped>
 </style>

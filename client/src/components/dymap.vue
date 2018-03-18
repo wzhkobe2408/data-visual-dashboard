@@ -35,6 +35,10 @@
 					fillColor: '#f03',
 					fillOpacity: 0.5
 				}).addTo(mymap).bindPopup("I am a circle.");
+				var lineArr = []
+				var maker = []
+				var index = 0
+				var isNewLine = true
 				// L.polygon([
 				// 	[51.509, -0.08],
 				// 	[51.503, -0.06],
@@ -46,12 +50,26 @@
 				// 	.setLatLng(e.latlng)
 				// 	.setContent("You clicked the map at " + e.latlng.toString())
 				// 	.openOn(mymap);
-				L.marker(e.latlng).addTo(mymap)
-				.bindPopup("<b>Hello!</b><br />You are now located at " + e.latlng.toString()).on('click', () => {alert('xx')}).openPopup();
+				var maker = L.marker(e.latlng, { draggable: true })
+				maker.addTo(mymap)
+				.bindPopup("<b>Hello!</b><br />You are now located at " + e.latlng.toString()).on('click', (e) => {
+					if (!isNewLine) { // draw old line
+						lineArr[index].push([e.latlng.lat, e.latlng.lng])
+					} else { // draw new line
+						lineArr[index] = [];
+						lineArr[index].push([e.latlng.lat, e.latlng.lng])
+						isNewLine = false
+					}
+					L.polyline(lineArr[index]).addTo(mymap)
+				}).openPopup();
 			}
-			mymap.on('click', onMapClick);
+			mymap.on('click', onMapClick)
+			mymap.on('contextmenu',function(e){
+					isNewLine = true
+					index++
+			});
 			}
-				}
+		}
 </script>
 <style scoped>
 	.mapid {	

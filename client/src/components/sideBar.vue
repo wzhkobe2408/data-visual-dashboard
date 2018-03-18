@@ -84,7 +84,8 @@ export default {
   .col-md-3 {
     padding-right: 0 !important;
   }
-  .hidden {
-    display:none;
+  .badge {
+    position: relative;
+    top:3px;
   }
 </style>
