@@ -32,4 +32,23 @@ npm run build --report
 
 ![3d](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/3d.png)
 
+# Dynamic data dashboard
+
+
+站点：bilibili
+
+分类：地点
+
+全中国 => 各省市   表现形式(全国地图，地图省份点击切换)
+
+次级分类：bilibili分区    （分区关注人数） => 饼状图
+
+各个时段观看人数：使用柱状图或者曲线图或者两者结合
+
+矩阵图 => 年龄分布、性别分布
+
+冒泡图 =>  三维数据   笛卡尔坐标   加上圆的大小  
+
+时间范围选择
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
