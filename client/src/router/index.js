@@ -10,6 +10,7 @@ import Manage from '@/pages/Manage.vue'
 import User from '@/pages/User.vue'
 import ChartDetail from '@/pages/ChartDetail.vue'
 import notFound from '@/components/notFound'
+import InterativeDashboard from '@/pages/InteractiveDashboard.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -59,6 +60,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path:'/interativemap',
+      name: 'InterativeDashboard',
+      component: InterativeDashboard
     }
   ]
 })

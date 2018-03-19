@@ -16,7 +16,7 @@ export default {
       var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
         streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
       var map = L.map('map', {
-        center: [34.263, 108.941],
+        center: [34.274808, 108.962997],
         zoom: 13,
         layers: [grayscale, cities]
       });

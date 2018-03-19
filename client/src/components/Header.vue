@@ -9,6 +9,7 @@
            <li><router-link to="/map">Map</router-link></li>
            <li><router-link to="/3d">3D</router-link></li>
            <li><router-link to="/manage">Manage Data</router-link></li>
+           <li><router-link to="/interativemap">Interative Map</router-link></li>
          </ul>
        </div>
        <div class="right-nav">

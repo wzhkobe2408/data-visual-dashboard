@@ -51,6 +51,7 @@
 </template>
 <script>
 import Modal from '../components/modal.vue'
+
 export default {
   components: {
     Modal
