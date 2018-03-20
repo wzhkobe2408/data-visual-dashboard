@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "element-ui": "^2.2.0",
+    "highcharts": "^6.0.7",
     "vue": "^2.5.2",
     "vue-3d-model": "^1.0.0",
     "vue-chartjs": "^3.2.1",

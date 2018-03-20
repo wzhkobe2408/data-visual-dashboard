@@ -5,13 +5,13 @@
         <h3>Average</h3>
       </div>
       <div class="top-graph-item" >
-        <h3>Gender Distribution</h3>
+        <barCharts class="gender-bar" />
       </div>
       <div class="top-graph-item" >
         <h3>Age Distribution</h3>
       </div>
       <div class="top-graph-item" >
-        <h3>Partition Distribution</h3>
+        <highCharts :options="options"  :styles="styles" />
       </div>
     </div>
     <div class="middle-graph">
@@ -30,34 +30,46 @@
     <div class="bottom-graph">
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-
+          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <hr>
         </div>
         <div class="bottom-graph-item-bottom">
-
+          <p><span>up主</span>：★⑥檤轮囬★</p>
+          <p><span>关注人数：</span>105w</p>
+          <p><span>稿件：</span>351</p>
         </div>
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-
+          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <hr>
         </div>
         <div class="bottom-graph-item-bottom">
-
+          <p><span>up主</span>：木鱼水心</p>
+          <p><span>关注人数：</span>156w</p>
+          <p><span>稿件：</span>649</p>
         </div>
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-
+          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <hr>
         </div>
         <div class="bottom-graph-item-bottom">
-
+          <p><span>up主</span>：3Blue1Brown</p>
+          <p><span>关注人数：</span>18.6w</p>
+          <p><span>稿件：</span>58</p>
         </div>
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-
+          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <hr>
         </div>
         <div class="bottom-graph-item-bottom">
-
+          <p><span>up主</span>：水天王x</p>
+          <p><span>关注人数：</span>51</p>
+          <p><span>稿件：</span>14.9w</p>
         </div>
       </div>
     </div>
@@ -67,18 +79,73 @@
 import geojsonMap from '../components/geojsonMap.vue'
 import wordCloud from '../components/wordCloud.vue'
 import lineCharts from '../components/lineCharts.js'
+import barCharts from '../components/barCharts.js'
 import { mapState } from 'vuex'
 
+import Highcharts from 'highcharts/highstock';
+import highCharts from '../components/highCharts.vue'
 export default {
   components: {
     geojsonMap,
     wordCloud,
-    lineCharts
+    lineCharts,
+    barCharts,
+    highCharts
   },
   computed: {
     ...mapState({
       dataSet: state => state.dataset[0]
     })
+  },
+  data() {
+    return {
+       options: {
+          colorAxis: {
+              minColor: '#FFFFFF',
+              maxColor: Highcharts.getOptions().colors[0]
+          },
+          series: [{
+              type: 'treemap',
+              layoutAlgorithm: 'squarified',
+              data: [{
+                  name: 'A',
+                  value: 6,
+                  colorValue: 1
+              }, {
+                  name: 'B',
+                  value: 6,
+                  colorValue: 2
+              }, {
+                  name: 'C',
+                  value: 4,
+                  colorValue: 3
+              }, {
+                  name: 'D',
+                  value: 3,
+                  colorValue: 4
+              }, {
+                  name: 'E',
+                  value: 2,
+                  colorValue: 5
+              }, {
+                  name: 'F',
+                  value: 2,
+                  colorValue: 6
+              }, {
+                  name: 'G',
+                  value: 1,
+                  colorValue: 7
+              }]
+          }],
+          title: {
+              text: 'Partition Distribution'
+          }
+      },
+      styles: {
+        width: 280,
+        height: 220
+      }
+    }
   }
 }
 </script>
@@ -89,7 +156,7 @@ export default {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 180px auto 320px;
+    grid-template-rows: 240px auto 280px;
   }
   .top-graph {
     grid-column: 1 / -1;
@@ -151,11 +218,21 @@ export default {
     padding: 0;
   }
   .bottom-graph-item-top {
-    height: 70%;
-    background-color: rgb(175, 175, 175);
+    height: 154px;
+    margin-bottom: 30px;
+  }
+  .bottom-graph-item-top img {
+    width: 100%;
   }
   .bilibili-linechart {
     width: 100%;
     height: 200px;
+  }
+  .gender-bar {
+    width: 280px;
+    height: 220px;
+  }
+  .bottom-graph-item-bottom p {
+    margin: 6px 0;
   }
 </style>
