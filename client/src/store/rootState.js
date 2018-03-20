@@ -13,7 +13,8 @@ const state = {
                 {
                 label: 'Data One',
                 backgroundColor: '#f87979',
-                data: [40, 39, 10, 40, 39, 80, 40]
+                data: [40, 39, 10, 40, 39, 80, 40],
+                fill: false
                 }
             ]
         },
