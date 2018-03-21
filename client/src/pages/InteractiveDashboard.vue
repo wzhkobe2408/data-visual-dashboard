@@ -8,7 +8,7 @@
         <pieCharts class="gender-bar" />
       </div>
       <div class="top-graph-item" >
-        <h3>Age Distribution</h3>
+        <horizontalBar :data="horizontalBarData" class="ageBar" />
       </div>
       <div class="top-graph-item" >
         <highCharts :options="options"  :styles="styles" />
@@ -81,6 +81,7 @@ import wordCloud from '../components/wordCloud.vue'
 import lineCharts from '../components/lineCharts.js'
 import pieCharts from '../components/pieCharts.js'
 import barCharts from '../components/barCharts.js'
+import horizontalBar from '../components/horizontalBar.js'
 import { mapState } from 'vuex'
 
 import Highcharts from 'highcharts/highstock';
@@ -92,7 +93,8 @@ export default {
     lineCharts,
     pieCharts,
     highCharts,
-    barCharts
+    barCharts,
+    horizontalBar
   },
   computed: {
     ...mapState({
@@ -144,8 +146,18 @@ export default {
           }
       },
       styles: {
-        width: 280,
+        width: 270,
         height: 220
+      },
+      horizontalBarData: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          }
+        ]
       }
     }
   }
@@ -231,14 +243,18 @@ export default {
     height: 200px;
   }
   .gender-bar {
-    width: 280px;
+    width: 270px;
     height: 220px;
   }
   .bottom-graph-item-bottom p {
     margin: 6px 0;
   }
   .average-barcharts {
-    width: 280px;
+    width: 270px;
+    height: 220px;
+  }
+  .ageBar {
+    width: 270px;
     height: 220px;
   }
 </style>
