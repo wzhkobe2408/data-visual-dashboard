@@ -2,10 +2,10 @@
   <div class="dashboard-grid">
     <div class="top-graph">
       <div class="top-graph-item" >
-        <h3>Average</h3>
+        <barCharts class="average-barcharts" />
       </div>
       <div class="top-graph-item" >
-        <barCharts class="gender-bar" />
+        <pieCharts class="gender-bar" />
       </div>
       <div class="top-graph-item" >
         <h3>Age Distribution</h3>
@@ -79,6 +79,7 @@
 import geojsonMap from '../components/geojsonMap.vue'
 import wordCloud from '../components/wordCloud.vue'
 import lineCharts from '../components/lineCharts.js'
+import pieCharts from '../components/pieCharts.js'
 import barCharts from '../components/barCharts.js'
 import { mapState } from 'vuex'
 
@@ -89,8 +90,9 @@ export default {
     geojsonMap,
     wordCloud,
     lineCharts,
-    barCharts,
-    highCharts
+    pieCharts,
+    highCharts,
+    barCharts
   },
   computed: {
     ...mapState({
@@ -234,5 +236,9 @@ export default {
   }
   .bottom-graph-item-bottom p {
     margin: 6px 0;
+  }
+  .average-barcharts {
+    width: 280px;
+    height: 220px;
   }
 </style>
