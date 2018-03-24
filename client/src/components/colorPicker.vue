@@ -1,13 +1,13 @@
 <template>
   <div :style="{backgroundColor:colors.hex}" class="bg">
-    <h1>Vue Color pickers</h1>
+    <h1 :style="{color: textColor}">Vue Color pickers</h1>
     <div class="color-picker-container">
-        <photoshop v-model="colors" class="photoshop" @change-color="onChange"></photoshop>
-        <chrome v-model="colors" class="chrome" @change-color="onChange"></chrome>
-         <sketch v-model="colors" @change-color="onChange"></sketch>
+        <photoshop v-model="colors" class="photoshop" @input="onChange"></photoshop>
+        <chrome v-model="colors" class="chrome" @input="onChange"></chrome>
+         <sketch v-model="colors" @input="onChange"></sketch>
     </div>
     <slider style="margin:20px auto" v-model="colors"
-    @change-color="onChange">
+    @input="onChange">
     </slider>
   </div>
 </template>
@@ -15,6 +15,7 @@
 <script>
 import { Photoshop, Chrome, Sketch, Slider } from 'vue-color'
 import { MapActions, MapGetters, mapActions, mapGetters } from 'vuex'
+import network from '../utils/colorChange.js'
 
 export default {
   components: {
@@ -46,7 +47,8 @@ export default {
           a: 1
         },
         a: 1
-      }
+      },
+      textColor: '#fff'
     }
   },
   computed: {
@@ -58,8 +60,21 @@ export default {
     ...mapActions([
       'changeColor'
     ]),
-    onChange (val) {
-      this.colors = val;
+    hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: Math.round(parseInt(result[1], 16) / 2.55) / 100,
+            g: Math.round(parseInt(result[2], 16) / 2.55) / 100,
+            b: Math.round(parseInt(result[3], 16) / 2.55) / 100
+        } : null;
+    },
+    onChange () {
+      var result = network.run(this.hexToRgb(this.colors.hex));
+      if (result.light > result.dark) {
+        this.textColor = '#1b1b1b'
+      } else {
+        this.textColor = '#fff'
+      }
     }
   }
 }

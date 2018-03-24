@@ -13,21 +13,29 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Confirm</button>
+        <button type="button" @click="submitChange" class="btn btn-primary">Confirm</button>
       </div>
     </div>
   </div>
 </div> 
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   props:[
     'id',
-    'title'
+    'title',
+    'label',
+    'data'
   ],
   data() {
       return {
-
+      }
+    },
+    methods: {
+      submitChange() {
+        console.log('This is the test')
+        console.log(this.props)
       }
     }
 }

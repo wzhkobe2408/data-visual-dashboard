@@ -30,7 +30,7 @@
     <div class="bottom-graph">
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <img src="../assets/bilibili.jpg" alt="img">
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -41,7 +41,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <img src="../assets/bilibili.jpg" alt="img">
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -52,7 +52,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <img src="../assets/bilibili.jpg" alt="img">
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -63,7 +63,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="https://i.ytimg.com/vi/t6ZKCLabiGU/maxresdefault.jpg" alt="img">
+          <img src="../assets/bilibili.jpg" alt="img">
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -112,31 +112,31 @@ export default {
               type: 'treemap',
               layoutAlgorithm: 'squarified',
               data: [{
-                  name: 'A',
+                  name: '舞蹈区',
                   value: 6,
                   colorValue: 1
               }, {
-                  name: 'B',
+                  name: '鬼畜区',
                   value: 6,
                   colorValue: 2
               }, {
-                  name: 'C',
+                  name: '音乐区',
                   value: 4,
                   colorValue: 3
               }, {
-                  name: 'D',
+                  name: '直播区',
                   value: 3,
                   colorValue: 4
               }, {
-                  name: 'E',
+                  name: '科技区',
                   value: 2,
                   colorValue: 5
               }, {
-                  name: 'F',
+                  name: '动画区',
                   value: 2,
                   colorValue: 6
               }, {
-                  name: 'G',
+                  name: '电影区',
                   value: 1,
                   colorValue: 7
               }]
@@ -170,7 +170,7 @@ export default {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 240px auto 280px;
+    grid-template-rows: 240px auto 320px;
   }
   .top-graph {
     grid-column: 1 / -1;
@@ -232,7 +232,7 @@ export default {
     padding: 0;
   }
   .bottom-graph-item-top {
-    height: 154px;
+    height: 190px;
     margin-bottom: 30px;
   }
   .bottom-graph-item-top img {

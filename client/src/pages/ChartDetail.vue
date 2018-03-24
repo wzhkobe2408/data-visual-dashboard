@@ -89,11 +89,11 @@
               </tr>
           </tbody>
       </table>
-      <Modal id="addData" title="Add data">
+      <Modal id="addData" v-bind:label="label" v-bind:data="data" title="Add data">
         <form>
           <div class="form-group">
             <label for="label">Label</label>
-            <input type="text" id="label" class="form-control" />
+            <input v-model="label"  type="text" id="label" class="form-control" />
           </div>
            <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
             <label for="data">X坐标</label>
@@ -109,7 +109,7 @@
           </div>
           <div v-if="this.chartData.data.datasets.length == 1" class="form-group">
             <label for="data">Data</label>
-            <input type="text" class="form-control" id="data" />
+            <input v-model="data"  type="text" class="form-control" id="data" />
           </div>
           <div v-if="this.chartData.data.datasets.length !== 1 && this.chartData.data.labels.length > 0" class="form-group">
             <label for="data1">Data Set-1</label>
@@ -184,7 +184,9 @@ export default {
         date: new Date().toGMTString(),
         renderComponent:'',
         editable: false,
-        editIndex: -1
+        editIndex: -1,
+        label: '',
+        data: ''
       }
     },
     methods: {
