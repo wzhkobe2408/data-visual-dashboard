@@ -22,6 +22,11 @@ npm run build --report
 
 ![Home page](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/home.png)
 
+# Detail page
+
+
+![Detail page](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/detail.PNG)
+
 # Map page
 
 
