@@ -3,22 +3,22 @@
         <div class="profile-content">
             <div class="grid-container">
                 <div @click="handleClick('linechart',0)" class="chart">
-                    <LineChart :data="dataset[0]" class="item"/>
+                    <LineChart :chart-data="dataset[0]" class="item"/>
                 </div>
                 <div @click="handleClick('bubblechart',1)" class="chart">
-                    <BubbleChart :data="dataset[1]"  class="item"/>
+                    <BubbleChart :chart-data="dataset[1]"  class="item"/>
                 </div>
                 <div @click="handleClick('doughnut',2)" class="chart">
-                    <DoughNut :data="dataset[2]"  class="item"/>
+                    <DoughNut :chart-data="dataset[2]"  class="item"/>
                 </div>
                 <div @click="handleClick('radarchart',3)" class="chart">
-                    <RadarChart :data="dataset[3]" class="item"/>
+                    <RadarChart :chart-data="dataset[3]" class="item"/>
                 </div>
                 <div @click="handleClick('polarareachart',4)" class="chart">
-                    <PolarAreaChart :data="dataset[4]" class="item" />
+                    <PolarAreaChart :chart-data="dataset[4]" class="item" />
                 </div>
                 <div @click="handleClick('horizontalbar',5)" class="chart">
-                    <HorizontalBar :data="dataset[5]" class="item"/>
+                    <HorizontalBar :chart-data="dataset[5]" class="item"/>
                 </div>
                 <DyMap class="dymap"/>
             </div>
@@ -80,7 +80,7 @@ export default {
         handleClick(type, index) {
             this.setChartData({
                 type: type,
-                data: this.dataset[index]
+                index: index
             })
             this.$router.push('/chart_detail')
         }

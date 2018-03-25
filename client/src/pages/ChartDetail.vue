@@ -6,9 +6,8 @@
     <span class="date">Created on {{ date }}</span>
     </div>
     <hr />
-      <keep-alive>
         <div class="wrapper">
-          <component class="chart" :is="renderComponent" :data="chartData.data"></component>
+          <component ref="heart" class="chart" :is="renderComponent" :chart-data="dataset[index]" :index="index"></component>
           <div class="button-group">
               <button class="btn btn-primary" data-toggle="modal" data-target="#addData">Add Data</button>
               <button class="btn btn-danger">Remove Data</button>
@@ -23,103 +22,101 @@
                 </div>
               </div>        
           </div>
+          <div class="control-wrapper">
+            <div @click="decreaseIndex" class="left-control">
+              <span>&#x27a4;</span>
+            </div>
+            <div @click="increaseIndex" class="right-control">
+              <span>&#x27a4;</span>
+            </div>
+          </div>
         </div>
-      </keep-alive>
-      <table class="table table-striped table-dark"       v-if="chartData.data.labels.length > 0">
-        <thead>
-            <tr>
-                <th>序号</th>
-                <th>标签</th>
-                <th>数据</th>
-                <th>编辑</th>
-                <th>删除</th>                     
-            </tr>
-        </thead>
-          <tbody>
-              <tr :key="index" v-for="(tableDataItem,index) in tableData">
+          <div>
+              <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>数据标签</th>
+                    <th>数据</th>
+                    <th>编辑</th>
+                    <th>删除</th>                     
+                </tr>
+            </thead>
+            <tbody v-if="chartData.index == 1">
+               <tr v-for="i in (0,dataset[chartData.index].datasets[0].data.length + dataset[chartData.index].datasets[1].data.length)" :key="i">
                   <td>
-                    <span>{{index}}</span>
+                    {{i-1}}
                   </td>
                   <td>
-                    <span>{{tableDataItem.label}}</span>
+                    {{i <= dataset[chartData.index].datasets[0].data.length? dataset[chartData.index].datasets[0].label : dataset[chartData.index].datasets[1].label}}
                   </td>
                   <td>
-                    <input class="form-control" v-if="editIndex == index && editable == true" type="text" :value="tableDataItem.data">
-                    <span v-else >{{tableDataItem.data}}</span>
-                  </td>
-                  <td>
-                    <button v-if="editable && index==editIndex" class="btn btn-outline-danger" @click="cancle">取消</button>
-                    <button v-if="editable && index==editIndex" class="btn btn-outline-success">确定</button>
-                    <button @click="edit(index)" v-else class="btn btn-outline-primary">编辑</button>
-                  </td>
-                  <td><button class="btn btn-outline-danger">删除</button></td>
-              </tr>
-          </tbody>
-      </table>
-
-      <table class="table table-striped table-dark"       v-if="!chartData.data.labels.length > 0">
-        <thead>
-            <tr>
-                <th>数据组</th>
-                <th>x坐标</th>
-                <th>y坐标</th>
-                <th>r半径</th>
-                <th>编辑</th>
-                <th>删除</th>                     
-            </tr>
-        </thead>
-          <tbody>
-              <tr :key="index" v-for="(tableDataItem,index) in tableData">
-                  <td>
-                    <span>{{ tableDataItem.label }}</span>
-                  </td>
-                  <td>
-                    <span>{{ tableDataItem.x }}</span>
-                  </td>
-                  <td>
-                    <span>{{ tableDataItem.y }}</span>
-                  </td>
-                  <td>
-                    <span>{{ tableDataItem.r }}</span>
+                    {{i <= dataset[chartData.index].datasets[0].data.length? 
+                    dataset[chartData.index].datasets[0].data[i-1] : dataset[chartData.index].datasets[1].data[i-1-dataset[chartData.index].datasets[0].data.length]}}
                   </td>
                   <td>
                     <button class="btn btn-outline-primary">编辑</button>
                   </td>
-                  <td><button class="btn btn-outline-danger">删除</button></td>
-              </tr>
-          </tbody>
-      </table>
-      <Modal id="addData" v-bind:label="label" v-bind:data="data" title="Add data">
-        <form>
+                  <td>
+                    <button class="btn btn-outline-danger">删除</button>
+                  </td>
+                </tr>
+             </tbody>
+             <tbody v-else>
+                 <tr :key="index" v-for="(row, index) in dataset[chartData.index].labels">
+                   <td>
+                     <span>{{index}}</span>
+                   </td>
+                   <td>
+                     <span>{{row}}</span>
+                   </td>
+                   <td>
+                     <span>{{ dataset[chartData.index].datasets[0].data[index] }}</span>
+                     <span v-if="dataset[chartData.index].datasets.length>1"> — {{ dataset[chartData.index].datasets[1].data[index] }}</span>
+                   </td>
+                   <td>
+                     <button class="btn btn-outline-primary">编辑</button>
+                   </td>
+                   <td>
+                     <button class="btn btn-outline-danger">删除</button>
+                   </td>
+                 </tr>
+             </tbody>
+         </table>
+          </div>
+      <Modal id="addData" title="Add data">
+        <form slot="main">
           <div class="form-group">
             <label for="label">Label</label>
             <input v-model="label"  type="text" id="label" class="form-control" />
           </div>
-           <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+           <div v-if="dataset[chartData.index].labels.length <= 0" class="form-group">
             <label for="data">X坐标</label>
             <input type="text" class="form-control" id="data" />
           </div>
-          <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+          <div v-if="dataset[chartData.index].labels.length <= 0" class="form-group">
             <label for="data">Y坐标</label>
             <input type="text" class="form-control" id="data" />
           </div>
-          <div v-if="this.chartData.data.labels.length <= 0" class="form-group">
+          <div v-if="dataset[chartData.index].labels.length <= 0" class="form-group">
             <label for="data">Z坐标</label>
             <input type="text" class="form-control" id="data" />
           </div>
-          <div v-if="this.chartData.data.datasets.length == 1" class="form-group">
+          <div v-if="dataset[chartData.index].datasets.length == 1" class="form-group">
             <label for="data">Data</label>
             <input v-model="data"  type="text" class="form-control" id="data" />
           </div>
-          <div v-if="this.chartData.data.datasets.length !== 1 && this.chartData.data.labels.length > 0" class="form-group">
+          <div v-if="dataset[chartData.index].datasets.length !== 1 && dataset[chartData.index].labels.length > 0" class="form-group">
             <label for="data1">Data Set-1</label>
             <input type="text" class="form-control" id="data1" />
           </div>
-          <div v-if="this.chartData.data.datasets.length !== 1 && this.chartData.data.labels.length > 0" class="form-group">
+          <div v-if="dataset[chartData.index].datasets.length !== 1 && dataset[chartData.index].labels.length > 0" class="form-group">
             <label for="data2">Data Set-2</label>
             <input type="text" class="form-control" id="data2" />
           </div>
         </form>
+          <button slot="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" data-dismiss="modal" slot="confirm" class="btn btn-primary" @click="addData">Confirm</button>
       </Modal>
   </div>
 </template>
@@ -142,67 +139,74 @@ export default {
         HorizontalBar,
         Modal
     },
-    computed: {
-      ...mapState({
-        chartData: state => state.chartData
-        }),
-      tableData() {
-        if (this.chartData.data.labels.length > 0) {
-          var tableData = this.chartData.data.labels.map(label => {
-            return { label: label }
-          })
-          for (var i = 0; i < tableData.length; i++) {
-            if(this.chartData.data.datasets.length == 1) {
-              tableData[i].data = this.chartData.data.datasets[0].data[i]
-            } else {
-              tableData[i].data = ''
-              for (var j = 0; j < this.chartData.data.datasets.length; j++) {
-                tableData[i].data += this.chartData.data.datasets[j].data[i] + ' | '
-              }
-              tableData[i].data = tableData[i].data.substring(0,tableData[i].data.length - 2)
-            }
-          }
-          return tableData
-        } else {
-          var tableData = []
-              this.chartData.data.datasets.forEach(element => {
-                  element.data.forEach(item => {
-                    tableData.push({
-                      label: element.label,
-                      x: item.x,
-                      y: item.y,
-                      r: item.r
-                    })
-                  })
-              })
-              return tableData
-           }
-        }
-      },
     data() {
       return {
         date: new Date().toGMTString(),
-        renderComponent:'',
         editable: false,
         editIndex: -1,
         label: '',
         data: ''
       }
     },
-    methods: {
-      addData(chart, label, data) {
-        chart.data.labels.push(label);
-        chart.data.datasets.forEach((dataset) => {
-            dataset.data.push(data);
-        });
-        chart.update();
+    computed: {
+      ...mapState({
+          chartData: state => state.chartData,
+          index: state => state.chartData.index,
+          dataset: state => state.dataset
+        }),
+        renderComponent() {
+          switch (this.chartData.type) {
+          case 'linechart':
+            return 'LineChart'
+            break;
+          case 'bubblechart':
+            return 'BubbleChart'
+            break;
+          case 'doughnut':
+            return 'DoughNut'
+            break;
+          case 'radarchart':
+            return 'RadarChart'
+            break;
+          case 'polarareachart':
+            return 'PolarAreaChart'
+            break;
+          case 'horizontalbar':
+            return 'HorizontalBar'
+            break;
+          default:
+            return ''
+            break;
+        }
+        }
       },
-      removeData(chart) {
-          chart.data.labels.pop();
-          chart.data.datasets.forEach((dataset) => {
-            dataset.data.pop();
-          });
-          chart.update();
+    methods: {
+      ...mapActions([
+        'addChartData',
+        'setChartData'
+      ]),
+      addData() { 
+        this.addChartData({
+          data: this.data,
+          label: this.label
+        }, this.index)
+        this.$refs.heart.renderChart(this.dataset[this.chartData.index])
+      },
+      increaseIndex() {
+        var typeArr = ['linechart','bubblechart','doughnut','radarchart','polarareachart','horizontalbar']
+        var currentIndex = typeArr.indexOf(this.chartData.type)
+        this.setChartData({
+          type: typeArr[currentIndex + 1],
+          index: this.chartData.index + 1
+        }) 
+      },
+      decreaseIndex() {
+        var typeArr = ['linechart','bubblechart','doughnut','radarchart','polarareachart','horizontalbar']
+        var currentIndex = typeArr.indexOf(this.chartData.type)
+        this.setChartData({
+          type: typeArr[currentIndex - 1],
+          index: this.chartData.index - 1
+        }) 
       },
       edit(index) {
         this.editIndex = index;
@@ -214,28 +218,6 @@ export default {
       }
     },
     created() {
-              switch (this.chartData.type) {
-          case 'linechart':
-            this.renderComponent = 'LineChart'
-            break;
-          case 'bubblechart':
-            this.renderComponent = 'BubbleChart'
-            break;
-          case 'doughnut':
-            this.renderComponent = 'DoughNut'
-            break;
-          case 'radarchart':
-            this.renderComponent = 'RadarChart'
-            break;
-          case 'polarareachart':
-            this.renderComponent = 'PolarAreaChart'
-            break;
-          case 'horizontalbar':
-            this.renderComponent = 'HorizontalBar'
-            break;
-          default:
-            break;
-        }
     }
 }
 </script>
@@ -277,6 +259,25 @@ export default {
     .fa-chevron-left {
       color:#000 !important;
       font-size: 20px;
+    }
+    .control-wrapper {
+      font-size: 25px;
+      color: #0084ff;
+      position: absolute;
+      padding: 0 20px;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translate(0, -50%);
+    }
+    .left-control {
+      cursor: pointer;
+      float:left;
+      transform: rotateZ(180deg);
+    }
+    .right-control {
+      cursor: pointer;
+      float:right;
     }
 </style>
 

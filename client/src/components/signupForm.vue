@@ -49,7 +49,7 @@ export default {
           })
             .then(response => {
                 console.log(response)
-                this.$router.push('/login')
+                this.$router.replace('/login')
             })
             .catch(err => {
                 console.log(err)

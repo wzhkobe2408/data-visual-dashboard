@@ -1,9 +1,10 @@
-import { PolarArea } from 'vue-chartjs'
+import { PolarArea,mixins } from 'vue-chartjs'
+const { reactiveProp } = mixins
 
 export default {
   extends: PolarArea,
-  props:['data'],
+  mixins: [reactiveProp],
   mounted () {
-    this.renderChart(this.data, {responsive: true, maintainAspectRatio: false})
+    this.renderChart(this.chartData, {responsive: true, maintainAspectRatio: false})
   }
 }

@@ -22,22 +22,27 @@ const mutations = {
     state.chartData = chartData
   },
   [types.ADD_CHART_DATA](state, addData, index) {
-    switch (index) {
-      case 0:
-      case 5:
-        break;
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      default:
-        break;
-    }
-  },
+      state.chartData.index = state.chartData.index
+      switch (state.chartData.index) {
+        case 0:
+        case 5:
+          state.dataset[state.chartData.index].labels.push(addData.label);
+          state.dataset[state.chartData.index].datasets[0].data.push(Number(addData.data));
+          break;
+        case 1:
+          break;
+        case 2:
+        state.dataset[state.chartData.index].labels.push(addData.label);
+        state.dataset[state.chartData.index].datasets[0].data.push(Number(addData.data));
+          break;
+        case 3:
+          break;
+        case 4:
+          break;
+        default:
+          break;
+      }
+  }
 }
 
 

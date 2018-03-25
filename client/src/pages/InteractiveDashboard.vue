@@ -8,7 +8,7 @@
         <pieCharts class="gender-bar" />
       </div>
       <div class="top-graph-item" >
-        <horizontalBar :data="horizontalBarData" class="ageBar" />
+        <horizontalBar :chart-data="horizontalBarData" class="ageBar" />
       </div>
       <div class="top-graph-item" >
         <highCharts :options="options"  :styles="styles" />
@@ -19,7 +19,7 @@
       <div class="middle-right-graph" >
         <div class="middle-right-graph-item">
           <h3>Timeline change</h3>
-          <lineCharts class="bilibili-linechart" :data="dataSet"/>
+          <lineCharts class="bilibili-linechart" :chart-data="dataSet"/>
         </div>
         <div class="middle-right-graph-item">
           <h3>Bilibili Keyword Cloud</h3>

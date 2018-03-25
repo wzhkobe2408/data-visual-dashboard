@@ -1,9 +1,10 @@
-import { Radar } from 'vue-chartjs'
+import { Radar,mixins } from 'vue-chartjs'
+const { reactiveProp } = mixins
 
 export default {
   extends: Radar,
-  props:['data'],
+  mixins: [reactiveProp],
   mounted () {
-    this.renderChart(this.data, {responsive: true, maintainAspectRatio: false})
+    this.renderChart(this.chartData, {responsive: true, maintainAspectRatio: false})
   }
 }

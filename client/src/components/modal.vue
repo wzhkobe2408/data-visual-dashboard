@@ -9,11 +9,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <slot></slot>
+        <slot name="main"></slot>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" @click="submitChange" class="btn btn-primary">Confirm</button>
+        <slot name="cancel"></slot>
+        <slot name="confirm"></slot>
       </div>
     </div>
   </div>
@@ -24,19 +24,13 @@ import { mapActions } from 'vuex'
 export default {
   props:[
     'id',
-    'title',
-    'label',
-    'data'
+    'title'
   ],
   data() {
       return {
       }
     },
     methods: {
-      submitChange() {
-        console.log('This is the test')
-        console.log(this.props)
-      }
     }
 }
 </script>
