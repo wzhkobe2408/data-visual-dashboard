@@ -183,7 +183,9 @@ export default {
     methods: {
       ...mapActions([
         'addChartData',
-        'setChartData'
+        'setChartData',
+        'stopLoading',
+        'startLoading'
       ]),
       addData() { 
         this.addChartData({
@@ -218,6 +220,12 @@ export default {
       }
     },
     created() {
+    },
+    mounted() {
+        this.stopLoading()
+    },
+    beforeDestroy() {
+        this.startLoading()
     }
 }
 </script>

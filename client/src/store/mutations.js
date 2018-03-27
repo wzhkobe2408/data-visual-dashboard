@@ -42,6 +42,12 @@ const mutations = {
         default:
           break;
       }
+  },
+  [types.START_LOADING](state) {
+    state.loading = true;
+  },
+  [types.STOP_LOADING](state) {
+    state.loading = false;
   }
 }
 

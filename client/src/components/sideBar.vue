@@ -3,7 +3,7 @@
 		<div class="card">
       <div class="card-body text-center">
         <img class="profile-img" src="../assets/avatar.png" alt="img">
-        <p class="mt-1">{{ gettersUserInfo.username }}</p>
+        <router-link to="/user"><p class="mt-1">{{ gettersUserInfo.username }}</p></router-link>
         <p>{{ gettersUserInfo.email }}</p>
         <hr />
         <p>Developer | Student</p>
@@ -87,5 +87,10 @@ export default {
   .badge {
     position: relative;
     top:3px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
   }
 </style>

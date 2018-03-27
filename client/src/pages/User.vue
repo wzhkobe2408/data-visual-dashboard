@@ -15,14 +15,26 @@
   </div>  
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
     computed: {
     ...mapGetters([
       'gettersUserInfo'
-    ])
+      ])
+    },
+    methods:{
+      ...mapActions([
+      'stopLoading',
+      'startLoading'
+      ])
+    },
+    mounted() {
+        this.stopLoading()
+    },
+    beforeDestroy() {
+        this.startLoading()
+    }
   }
-}
 </script>
 <style scoped>
   .profile-container {

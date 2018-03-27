@@ -10,22 +10,22 @@
             <h1>Recent Activity</h1>
             <hr />
             <ul>
-                <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit<span>2017-05-01</span></li>
-                <li>consequatur magnam harum qui aut temporibus dolore<span>2017-05-01</span></li>
-                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
-                <li>Architecto vero aut neque tenetur, suscipit dolore in cum, repellat<span>2017-05-01</span></li>
-                <li>Eos molestias commodi vel quos neque sunt.<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit 😎<span>2017-05-01</span></li>
+                <li>consequatur magnam harum qui aut temporibus dolore 😤<span>2017-05-01</span></li>
+                <li>In a professional context it often happens that private 😍<span>2017-05-01</span></li>
+                <li>Architecto vero aut neque tenetur, suscipit dolore in cum, repellat 😏<span>2017-05-01</span></li>
+                <li>Eos molestias commodi vel quos neque sunt. 😘<span>2017-05-01</span></li>
             </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 2">
             <h1>History Record</h1>
             <hr />
             <ul>
-                <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit<span>2017-05-01</span></li>
-                <li>consequatur magnam harum qui aut temporibus dolore<span>2017-05-01</span></li>
-                <li>Lorem ipsum dolor sit amet consectetur<span>2017-05-01</span></li>
-                <li>Architecto vero aut neque tenetur, suscipit dolore in cum, repellat<span>2017-05-01</span></li>
-                <li>Eos molestias commodi vel quos neque sunt.<span>2017-05-01</span></li>
+                <li>consequatur magnam harum qui aut temporibus dolore 😍<span>2017-05-01</span></li>
+                <li>In a professional context it often happens that private 😘<span>2017-05-01</span></li>
+                <li>Eos molestias commodi vel quos neque sunt. 😤<span>2017-05-01</span></li>
+                <li>Architecto vero aut neque tenetur, suscipit dolore in cum, repellat 😏<span>2017-05-01</span></li>
+                <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit 😎<span>2017-05-01</span></li>
             </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 3">

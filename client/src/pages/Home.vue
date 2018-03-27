@@ -7,7 +7,7 @@
 <script>
 import SideBar from '@/components/sideBar.vue'
 import MainContent from '@/components/MainContent.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters,mapState, mapActions } from 'vuex'
 
 export default {
     data() {
@@ -25,6 +25,12 @@ export default {
             'gettersToken'
         ])
     },
+    methods: {
+        ...mapActions([
+            'startLoading',
+            'stopLoading'
+        ])
+    },
     mounted() {
         if (!localStorage.getItem('jwt')) {
             this.$router.push('/login')
@@ -38,11 +44,15 @@ export default {
                     email: response.data.userinfo.email
                 }
                 localStorage.setItem('userinfo', JSON.stringify(userinfo));
+                this.stopLoading()
             })
             .catch(err => {
                 console.log(err)
             })
         }
+    },
+    beforeDestroy() {
+        this.startLoading()
     }
 }
 </script>

@@ -1,4 +1,5 @@
 const state = {
+    loading: true,
     color: '#194d33',
     token: '',
     userInfo: {

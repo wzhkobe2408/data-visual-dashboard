@@ -27,3 +27,11 @@ export const setChartData = ({commit},chartData) => {
 export const addChartData = ({ commit }, addData, index) => {
   commit(types.ADD_CHART_DATA, addData, index)
 }
+
+export const startLoading = ({ commit }) => {
+  commit(types.START_LOADING)
+}
+
+export const stopLoading = ({ commit }) => {
+  commit(types.STOP_LOADING)
+}

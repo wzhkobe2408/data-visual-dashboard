@@ -39,6 +39,7 @@
 </template>
 <script>
 import ControlMap from '../components/controlMap.vue'
+import { mapActions } from 'vuex'
 
 export default {
     components: {
@@ -91,6 +92,10 @@ export default {
         }
     },
     methods: {
+        ...mapActions([
+            'startLoading',
+            'stopLoading'
+        ]),
         edit(row) {
             row.edit = !row.edit;
             this.newlat = row.lat
@@ -123,6 +128,12 @@ export default {
             this.addLat = ''
             this.addLng = ''
         }
+    },
+    mounted() {
+        this.stopLoading()
+    },
+    beforeDestroy() {
+        this.startLoading()
     }
 }
 </script>

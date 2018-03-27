@@ -10,6 +10,7 @@
            <li><router-link to="/3d">3D</router-link></li>
            <li><router-link to="/manage">Manage Data</router-link></li>
            <li><router-link to="/interativemap">Interative Map</router-link></li>
+           <li v-if="loading"><Loading class="loading" /></li>
          </ul>
        </div>
        <div class="right-nav">
@@ -26,7 +27,8 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapState} from 'vuex'
+import Loading from './loading.vue'
 
 export default {
   props: ['color'],
@@ -34,7 +36,13 @@ export default {
     ...mapGetters([
       'gettersToken',
       'gettersUserInfo'
-    ])
+    ]),
+    ...mapState({
+      loading: state => state.loading
+    })
+  },
+  components: {
+    Loading
   },
   methods: {
     ...mapActions([
@@ -113,5 +121,8 @@ export default {
     background: rgb(27, 27, 27);
     border-bottom: 5px solid rgb(70, 70, 70);
     z-index: 10000;
+  }
+  .loading {
+
   }
 </style>

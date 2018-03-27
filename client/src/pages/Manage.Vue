@@ -75,11 +75,17 @@
 </template>
 <script>
 import Modal from '../components/modal.vue'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: {
     Modal
+  },
+  methods: {
+    ...mapActions([
+      'startLoading',
+      'stopLoading'
+    ])
   },
   data() {
     return {
@@ -90,7 +96,13 @@ export default {
     ...mapState({
       dataset: state => state.dataset
     })
-  }
+  },
+  mounted() {
+        this.stopLoading()
+    },
+  beforeDestroy() {
+        this.startLoading()
+    }
 }
 </script>
 <style scoped>

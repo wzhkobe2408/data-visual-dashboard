@@ -82,7 +82,7 @@ import lineCharts from '../components/lineCharts.js'
 import pieCharts from '../components/pieCharts.js'
 import barCharts from '../components/barCharts.js'
 import horizontalBar from '../components/horizontalBar.js'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import Highcharts from 'highcharts/highstock';
 import highCharts from '../components/highCharts.vue'
@@ -101,6 +101,18 @@ export default {
       dataSet: state => state.dataset[0]
     })
   },
+  methods: {
+    ...mapActions([
+      'stopLoading',
+      'startLoading'
+    ])
+  },
+    mounted() {
+        this.stopLoading()
+    },
+  beforeDestroy() {
+        this.startLoading()
+    },
   data() {
     return {
        options: {

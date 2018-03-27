@@ -5,10 +5,23 @@
 </template>
 <script>
 import ColorPicker from '@/components/colorPicker'
+import { mapActions } from 'vuex'
 
 export default {
     components: {
         ColorPicker
+    },
+    methods: {
+        ...mapActions([
+            'startLoading',
+            'stopLoading'
+        ])
+    },
+    mounted() {
+        setTimeout(this.stopLoading(),1500)
+    },
+    beforeDestroy() {
+        this.startLoading()
     }
 }
 </script>

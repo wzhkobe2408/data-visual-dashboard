@@ -58,6 +58,7 @@
 </template>
 <script>
 import Earth from '@/components/Earth.vue'
+import { mapActions } from 'vuex'
 
 export default {
       components: {
@@ -75,12 +76,22 @@ export default {
       }
     },
     methods: {
+    ...mapActions([
+        'stopLoading',
+        'startLoading'
+    ]),
       formatTooltip(val) {
         return val / 100;
       },
 	  changeSpeed() {
 		this.speed > 0? 0 : 0.01
 	  }
+    },
+    mounted() {
+        this.stopLoading()
+    },
+    beforeDestroy() {
+        this.startLoading()
     }
   }
 </script>

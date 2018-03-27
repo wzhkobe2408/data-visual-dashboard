@@ -30,17 +30,29 @@
             <i class="fas fa-plus"></i>
         </div>
         <Modal id="addData" title="Add new chart">
-             <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Chose Datatype
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Bar</a>
-                  <a class="dropdown-item" href="#">Line</a>
-                  <a class="dropdown-item" href="#">Radar</a>
-                  <a class="dropdown-item" href="#">Polar</a>
+            <div slot="main">
+                <form>
+                    <div class="form-group">
+                    <span>Title</span>
+                    <input type="text" placeholder="Enter chart title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                    <br>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Chose Type
+                        </button>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Bar</a>
+                        <a class="dropdown-item" href="#">Line</a>
+                        <a class="dropdown-item" href="#">Bubble</a>
+                        </div>
+                    </div>
+                    </div>
+                </form>
                 </div>
-              </div>
+                <button slot="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" data-dismiss="modal" slot="confirm" class="btn btn-primary">Confirm</button>
         </Modal>
     </div>
 </template>
