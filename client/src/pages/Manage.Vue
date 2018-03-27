@@ -6,37 +6,37 @@
         <div class="card">
           <div class="card-body">
             <img src="../assets/bars.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[0].title }}</p>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
             <img src="../assets/bubbles.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[1].title }}</p>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
             <img src="../assets/polar.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[2].title }}</p>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
             <img src="../assets/radar.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[3].title }}</p>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
             <img src="../assets/line.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[4].title }}</p>
           </div>
         </div>
         <div class="card">
           <div class="card-body">
             <img src="../assets/doughnut.png" alt="" />
-            <p>This is the data1</p>
+            <p>{{ dataset[5].title }}</p>
           </div>
         </div>
         <div class="card" data-toggle="modal" data-target="#addData">
@@ -46,12 +46,36 @@
           </div>
         </div>
       </div>
-      <Modal id="addData" title="Add data" />
+      <Modal id="addData" title="Add data">
+        <div slot="main">
+          <form>
+            <div class="form-group">
+              <span>Title</span>
+              <input type="text" placeholder="Enter chart title" class="form-control">
+            </div>
+            <div class="form-group">
+              <br>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Chose Type
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Bar</a>
+                  <a class="dropdown-item" href="#">Line</a>
+                  <a class="dropdown-item" href="#">Bubble</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button slot="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" data-dismiss="modal" slot="confirm" class="btn btn-primary">Confirm</button>
+      </Modal>
   </div>
 </template>
 <script>
 import Modal from '../components/modal.vue'
-
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -59,8 +83,13 @@ export default {
   },
   data() {
     return {
-
+      
     }
+  },
+  computed: {
+    ...mapState({
+      dataset: state => state.dataset
+    })
   }
 }
 </script>

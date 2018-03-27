@@ -11,6 +11,7 @@ const state = {
     },
     dataset: [
         {
+            title:'This is the title 1',
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
                 {
@@ -22,6 +23,7 @@ const state = {
             ]
         },
         {
+          title:'This is the title 2',
           datasets:[
             {
                 label: 'Data One',
@@ -67,7 +69,8 @@ const state = {
             }
             ]
         },
-        {
+        {  
+            title:'This is the title 3',
             labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
             datasets: [
                 {
@@ -82,6 +85,7 @@ const state = {
             ]
         },
         {
+            title:'This is the title 4',
             labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
             datasets: [
                 {
@@ -107,6 +111,7 @@ const state = {
             ]
         },
         {
+            title:'This is the title 5',
             labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
             datasets: [
                 {
@@ -130,6 +135,7 @@ const state = {
             ]
         },
         {
+            title:'This is the title 6',
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [
                 {
