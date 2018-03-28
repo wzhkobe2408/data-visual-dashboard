@@ -31,8 +31,8 @@
 				L.marker([34.263, 108.941]).addTo(mymap)
 					.bindPopup("<b>Hello!</b><br />You are now located to Xi'An.").openPopup();
 				L.circle([34.263, 108.941], 500, {
-					color: 'red',
-					fillColor: '#f03',
+					color: 'black',
+					fillColor: '#000',
 					fillOpacity: 0.5
 				}).addTo(mymap).bindPopup("I am a circle.");
 				var lineArr = []

@@ -119,10 +119,7 @@ export default {
     left: 0;
     right: 0;
     background: rgb(27, 27, 27);
-    border-bottom: 5px solid rgb(70, 70, 70);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3);
     z-index: 10000;
-  }
-  .loading {
-
   }
 </style>

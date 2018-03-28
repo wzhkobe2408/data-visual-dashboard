@@ -1,6 +1,7 @@
 <template>
     <div class="mapping-container">
         <h2>Map Table page</h2>
+        <hr />
         <ControlMap class="contorl_map" />
         <form style="margin-bottom:10px" class="form-inline" @submit="addItem">
                 <input type="text" v-model="addLat" class="form-control mr-2 col" placeholder="经度">

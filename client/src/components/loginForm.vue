@@ -30,7 +30,9 @@ export default {
     },
     methods: {
       ...mapActions([
-          'setToken'
+          'setToken',
+          'stopLoading',
+          'startLoading'
       ]),
       handleLogin(e) {
           e.preventDefault();
@@ -46,6 +48,12 @@ export default {
                 console.log(err)
             })
       }
+  },
+  mounted() {
+      this.stopLoading();
+  },
+  beforeDestroy() {
+      this.startLoading();
   }
 }
 </script>

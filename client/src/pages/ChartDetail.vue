@@ -1,5 +1,5 @@
 <template>
-  <div className="chart-detail-container">
+  <div class="chart-detail-container">
     <div class="intro">
       <router-link to="/"><i class="fas fa-chevron-left"></i></router-link>
     <h3 class="detail_title">Chart Detail</h3>

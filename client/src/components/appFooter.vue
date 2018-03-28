@@ -21,7 +21,7 @@ export default {
 <style scoped>
     .app-footer {
         margin-top: 80px;
-        background-color: rgb(48, 48, 48);
+        background-color: rgb(26, 26, 26);
         height: 100px;
         display: flex;
         justify-content: space-between;

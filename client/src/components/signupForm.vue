@@ -27,6 +27,7 @@
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
       return {
@@ -37,6 +38,10 @@ export default {
       }
   },
   methods: {
+      ...mapActions([
+          'startLoading',
+          'stopLoading'
+      ]),
       handleSignup(e) {
           e.preventDefault();
           if (this.password !== this.passwordConfirm) {
@@ -55,6 +60,12 @@ export default {
                 console.log(err)
             })
       }
+  },
+  mounted() {
+      this.stopLoading()
+  },
+  beforeDestroy() {
+      this.startLoading()
   }
 }
 </script>

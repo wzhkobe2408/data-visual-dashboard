@@ -1,6 +1,9 @@
 <template>
+<div class="threed-wrapper">
+    <h2>3D Scene</h2>
+    <hr />
     <div class="threed-container">
-        <h1 class="title">3D Scene</h1>
+        
         <vue-particles
         class="particle-bg"
         color="#20c997"
@@ -55,6 +58,7 @@
             inactive-color="#636fbd">
         </el-switch>
     </div>
+</div>
 </template>
 <script>
 import Earth from '@/components/Earth.vue'
@@ -99,11 +103,18 @@ export default {
     h3 {
         margin-top: 10px;
     }
-    .threed-container {
-        position: relative;
+    .earth {
+        height: 680px;
+    }
+    .threed-wrapper {
         width: 90%;
         margin: 0 auto;
-        height: 480px;
+    }
+    .threed-container {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        height: 680px;
     }
     .control-panel {
         position: absolute;
@@ -123,7 +134,7 @@ export default {
     }
     .switch {
         position: absolute;
-        top: 70px;
+        top: 40px;
         left: 40px;
     }
     .particle-bg {

@@ -118,6 +118,7 @@ export default {
   }
   .card {
     text-align: center;
+    background-color: rgb(240, 240, 240);
   }
   h3 {
     line-height: 1.5;
@@ -130,6 +131,6 @@ export default {
     height: 120px;
   }
   .card:hover {
-    background-color: rgb(240, 240, 240);
+    transform: scale(1.02);
   }
 </style>

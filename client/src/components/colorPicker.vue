@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div class="bg" :style="{'background-color': colors.hex }"></div>
+  <div class="bg" :style="{ 'backgroundColor' : gettersColor }"></div>
   <div class="color-box">
-    <h1 :style="{'color': textColor}">Vue Color pickers</h1>
+    <h1 :style="{ 'color' : textColor}">Vue Color pickers</h1>
     <div class="color-picker-container">
         <photoshop v-model="colors" class="photoshop" @input="onChange"></photoshop>
         <chrome v-model="colors" class="chrome" @input="onChange"></chrome>
@@ -73,6 +73,7 @@ export default {
     },
     onChange () {
       var result = network.run(this.hexToRgb(this.colors.hex));
+      this.changeColor(this.colors.hex)
       if (result.light > result.dark) {
         this.textColor = '#1b1b1b'
       } else {
@@ -83,11 +84,13 @@ export default {
 }
 </script>
 <style scoped>
+  .color-box {
+    margin-top: -300px;
+  }
     h1 {
         margin-top: 50px;
         margin-bottom: 30px;
         text-align: center;
-        color: rgb(0, 0, 0);
     }
     .color-picker-container {
         display: flex;
@@ -98,7 +101,6 @@ export default {
         margin-right: 20px;
     }
     .bg {
-      position: absolute;
       width: 100%;
       height: 60vh;
       margin-top: -50px;
