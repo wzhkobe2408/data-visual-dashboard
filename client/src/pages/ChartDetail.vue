@@ -230,6 +230,10 @@ export default {
 }
 </script>
 <style scoped>
+  .chart-detail-container {
+    width:90%;
+    margin: 0 auto;
+  }
   .table {
     margin-top: 10px;
   }

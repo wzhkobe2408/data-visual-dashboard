@@ -1,6 +1,8 @@
 <template>
-  <div :style="{backgroundColor:colors.hex}" class="bg">
-    <h1 :style="{color: textColor}">Vue Color pickers</h1>
+<div>
+  <div class="bg" :style="{'background-color': colors.hex }"></div>
+  <div class="color-box">
+    <h1 :style="{'color': textColor}">Vue Color pickers</h1>
     <div class="color-picker-container">
         <photoshop v-model="colors" class="photoshop" @input="onChange"></photoshop>
         <chrome v-model="colors" class="chrome" @input="onChange"></chrome>
@@ -10,6 +12,7 @@
     @input="onChange">
     </slider>
   </div>
+</div>
 </template>
 
 <script>
@@ -48,7 +51,7 @@ export default {
         },
         a: 1
       },
-      textColor: '#fff'
+      textColor: '#000'
     }
   },
   computed: {
@@ -84,7 +87,7 @@ export default {
         margin-top: 50px;
         margin-bottom: 30px;
         text-align: center;
-        color: white;
+        color: rgb(0, 0, 0);
     }
     .color-picker-container {
         display: flex;
@@ -95,10 +98,10 @@ export default {
         margin-right: 20px;
     }
     .bg {
-      margin-top:-20px; 
+      position: absolute;
       width: 100%;
-      height: 50vh;
-      background: #333333;
+      height: 60vh;
+      margin-top: -50px;
     }
 </style>
 

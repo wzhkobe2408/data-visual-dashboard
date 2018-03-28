@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row home-container">
         <SideBar />
         <MainContent />
     </div>
@@ -57,5 +57,8 @@ export default {
 }
 </script>
 <style scoped>
-    
+    .home-container {
+        width: 90%;
+        margin: 0 auto;
+    }
 </style>

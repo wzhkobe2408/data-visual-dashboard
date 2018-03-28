@@ -4,11 +4,14 @@
     <div class="custom-container">
       <router-view></router-view>
     </div>
+    <AppFooter />
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
+import AppFooter from './components/appFooter.vue'
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -20,7 +23,8 @@ export default {
     }
   },
   components: {
-    Header
+    Header,
+    AppFooter
   },
   computed: {
     ...mapGetters([
@@ -41,15 +45,13 @@ export default {
 
 <style>
   body {
-    background: #efefef;
+    background: #ffffff;
     margin:0;
   }
   .custom-container {
-    margin: 20px auto 0;
-    width: 90%;
+    margin: 50px auto 0;
   }
   #app {
     min-height: 100vh;
-    padding-bottom: 20px;
   }
 </style>

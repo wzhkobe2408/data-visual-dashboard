@@ -1,6 +1,6 @@
 <template>
     <div class="threed-container">
-        <h1 class="title">This is the 3d scene</h1>
+        <h1 class="title">3D Scene</h1>
         <vue-particles
         class="particle-bg"
         color="#20c997"
@@ -101,7 +101,8 @@ export default {
     }
     .threed-container {
         position: relative;
-        width: 100%;
+        width: 90%;
+        margin: 0 auto;
         height: 480px;
     }
     .control-panel {

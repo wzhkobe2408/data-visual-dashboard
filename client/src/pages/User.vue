@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user-container">
       <h1>User Profile</h1>
       <hr />
       <div class="profile-container">
@@ -37,6 +37,10 @@ export default {
   }
 </script>
 <style scoped>
+.user-container {
+  width: 90%;
+  margin: 0 auto;
+}
   .profile-container {
     margin-top: 40px;
   }

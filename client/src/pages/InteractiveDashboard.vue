@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-grid">
+    <div class="title"><h2>Interative Map</h2></div>
     <div class="top-graph">
       <div class="top-graph-item" >
         <barCharts class="average-barcharts" />
@@ -177,12 +178,16 @@ export default {
 </script>
 <style scoped>
   .dashboard-grid {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     height: 100%;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 240px auto 320px;
+    grid-template-rows: 50px 240px auto 320px;
+  }
+  .title {
+    grid-column: 1 / -1;
   }
   .top-graph {
     grid-column: 1 / -1;

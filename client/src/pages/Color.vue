@@ -26,7 +26,7 @@ export default {
 }
 </script>
 <style scoped>
-    .background {
+    /* .background {
         position: absolute;
         top: 50px;
         left: 0;
@@ -40,5 +40,5 @@ export default {
         left: 50%;
         transform: translateX(-50%);
         z-index: 100;
-    }
+    } */
 </style>

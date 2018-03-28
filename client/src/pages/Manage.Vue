@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <h2>This is the manage page</h2>
+  <div class="manage-container">
+      <h2>Manage page</h2>
       <hr />
       <div class="card-container">
         <div class="card">
@@ -106,6 +106,10 @@ export default {
 }
 </script>
 <style scoped>
+.manage-container {
+  width: 90%;
+  margin: 0 auto;
+}
   .card-container {
     display:grid;
     grid-template-columns: repeat(4,1fr);
