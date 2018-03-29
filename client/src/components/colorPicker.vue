@@ -51,7 +51,7 @@ export default {
         },
         a: 1
       },
-      textColor: '#000'
+      textColor: '#fff'
     }
   },
   computed: {

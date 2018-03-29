@@ -29,7 +29,7 @@
             onLoad () {
                 this.rotate();
             },
-            rotate () {
+            rotate (speed) {
                 this.rotation.y += 0.01;
                 requestAnimationFrame( this.rotate );
             }

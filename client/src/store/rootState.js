@@ -1,6 +1,6 @@
 const state = {
     loading: true,
-    color: '#194d33',
+    color: '#B7EF3E',
     token: '',
     userInfo: {
       username: '',
