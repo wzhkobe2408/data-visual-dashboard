@@ -12,7 +12,7 @@
             <img v-if="chart.type == 'line'" src="../assets/line.png" alt="img" />
             <img v-if="chart.type == 'doughnut'" src="../assets/doughnut.png" alt="img" />
             <p>{{ chart.title }}</p>
-            <i class="far fa-trash-alt"></i>
+            <span @click="deleteChart" class="trash">&times;</span>
           </div>
         </div>
         <div class="card" data-toggle="modal" data-target="#addData">
@@ -32,13 +32,13 @@
             <div class="form-group">
               <br>
               <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button ref="dropdown" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Chose Type
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Bar</a>
-                  <a class="dropdown-item" href="#">Line</a>
-                  <a class="dropdown-item" href="#">Bubble</a>
+                  <a @click="setNewType" class="dropdown-item">Bar</a>
+                  <a @click="setNewType" class="dropdown-item">Line</a>
+                  <a @click="setNewType" class="dropdown-item">Bubble</a>
                 </div>
               </div>
             </div>
@@ -59,6 +59,7 @@ export default {
   },
   data() {
     return {
+      newTitle: ''
     }
   },
   methods: {
@@ -68,6 +69,14 @@ export default {
     ]),
     iconUrl(type) {
       return '../assets/' + type + '.png'
+    },
+    deleteChart(e) {
+      e.target.parentElement.parentElement.style.display = 'none'
+    },
+    setNewType(e) {
+      e.preventDefault()
+      // console.log(this.$refs.dropdown.textContent)
+      this.$refs.dropdown.textContent = e.target.textContent
     }
   },
   data() {
@@ -116,11 +125,15 @@ export default {
   .card:hover {
     transform: scale(1.02);
   }
-  .fa-trash-alt {
+  .trash {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 18px;
-    color: #8f5ea3;
+    top: 0px;
+    right: 15px;
+    font-size: 24px;
+    color: #303030;
+    cursor: pointer;
+  }
+  .dropdown-toggle {
+    width: 130px !important;
   }
 </style>
