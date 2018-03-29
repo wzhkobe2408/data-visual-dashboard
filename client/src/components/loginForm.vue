@@ -1,5 +1,5 @@
 <template>
-    <div class="card col-md-6 mx-auto">
+    <div class="card col-md-4 mx-auto">
         <div class="card-body">
             <h1>Log In</h1>
             <form autocomplete="false" @submit="handleLogin">

@@ -33,7 +33,7 @@
     <div class="bottom-graph">
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="../assets/bilibili.jpg" alt="img">
+          <a target="_blank" href="https://www.bilibili.com"><img src="../assets/bilibili.jpg" alt="img"></a>
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -44,7 +44,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="../assets/bilibili.jpg" alt="img">
+          <a target="_blank" href="https://www.bilibili.com"><img src="../assets/bilibili.jpg" alt="img"></a>
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -55,7 +55,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="../assets/bilibili.jpg" alt="img">
+          <a target="_blank" href="https://www.bilibili.com"><img src="../assets/bilibili.jpg" alt="img"></a>      
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">
@@ -66,7 +66,7 @@
       </div>
       <div class="bottom-graph-item" >
         <div class="bottom-graph-item-top"> 
-          <img src="../assets/bilibili.jpg" alt="img">
+          <a target="_blank" href="https://www.bilibili.com"><img src="../assets/bilibili.jpg" alt="img"></a>          
           <hr>
         </div>
         <div class="bottom-graph-item-bottom">

@@ -3,40 +3,16 @@
       <h2>Manage page</h2>
       <hr />
       <div class="card-container">
-        <div class="card">
+        <div class="card" :key="index" v-for="(chart, index) in dataset">
           <div class="card-body">
-            <img src="../assets/bars.png" alt="" />
-            <p>{{ dataset[0].title }}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img src="../assets/bubbles.png" alt="" />
-            <p>{{ dataset[1].title }}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img src="../assets/polar.png" alt="" />
-            <p>{{ dataset[2].title }}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img src="../assets/radar.png" alt="" />
-            <p>{{ dataset[3].title }}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img src="../assets/line.png" alt="" />
-            <p>{{ dataset[4].title }}</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <img src="../assets/doughnut.png" alt="" />
-            <p>{{ dataset[5].title }}</p>
+            <img v-if="chart.type == 'bars'" src="../assets/bars.png" alt="img" />
+            <img v-if="chart.type == 'bubbles'" src="../assets/bubbles.png" alt="img" />
+            <img v-if="chart.type == 'polar'" src="../assets/polar.png" alt="img" />
+            <img v-if="chart.type == 'radar'" src="../assets/radar.png" alt="img" />
+            <img v-if="chart.type == 'line'" src="../assets/line.png" alt="img" />
+            <img v-if="chart.type == 'doughnut'" src="../assets/doughnut.png" alt="img" />
+            <p>{{ chart.title }}</p>
+            <i class="far fa-trash-alt"></i>
           </div>
         </div>
         <div class="card" data-toggle="modal" data-target="#addData">
@@ -81,11 +57,18 @@ export default {
   components: {
     Modal
   },
+  data() {
+    return {
+    }
+  },
   methods: {
     ...mapActions([
       'startLoading',
       'stopLoading'
-    ])
+    ]),
+    iconUrl(type) {
+      return '../assets/' + type + '.png'
+    }
   },
   data() {
     return {
@@ -132,5 +115,12 @@ export default {
   }
   .card:hover {
     transform: scale(1.02);
+  }
+  .fa-trash-alt {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 18px;
+    color: #8f5ea3;
   }
 </style>

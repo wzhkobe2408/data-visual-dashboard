@@ -1,5 +1,5 @@
 <template>
-    <div class="card panel-default col-md-6 mx-auto">
+    <div class="card panel-default col-md-4 mx-auto">
         <div class="card-body">
             <h1>Sign up</h1>
             <form @submit="handleSignup"> 

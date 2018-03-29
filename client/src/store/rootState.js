@@ -10,8 +10,12 @@ const state = {
         type:'',
         index: -1
     },
+    charts: [
+        'bars', 'bubbles', 'polar', 'radar', 'line', 'doughnut'
+      ],
     dataset: [
         {
+            type: 'bars',
             title:'This is the title 1',
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
@@ -24,6 +28,7 @@ const state = {
             ]
         },
         {
+          type: 'bubbles',
           title:'This is the title 2',
           datasets:[
             {
@@ -70,7 +75,8 @@ const state = {
             }
             ]
         },
-        {  
+        { 
+            type: 'polar', 
             title:'This is the title 3',
             labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
             datasets: [
@@ -86,6 +92,7 @@ const state = {
             ]
         },
         {
+            type: 'radar',
             title:'This is the title 4',
             labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
             datasets: [
@@ -112,6 +119,7 @@ const state = {
             ]
         },
         {
+            type: 'line',
             title:'This is the title 5',
             labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
             datasets: [
@@ -136,6 +144,7 @@ const state = {
             ]
         },
         {
+            type: 'doughnut',
             title:'This is the title 6',
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [
