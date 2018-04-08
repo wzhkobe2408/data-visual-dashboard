@@ -1,8 +1,9 @@
 <template>
-  <div class="dashboard-grid">
+  <div style="margin-bottom: 40px">
     <div class="title"><h2>Interative Map</h2>
       <hr />
     </div>
+  <div class="dashboard-grid">
     <div class="top-graph">
       <div class="top-graph-item" >
         <barCharts class="average-barcharts" />
@@ -25,7 +26,7 @@
           <lineCharts class="bilibili-linechart" :chart-data="dataSet"/>
         </div>
         <div class="middle-right-graph-item">
-          <h3>Bilibili Keyword Cloud</h3>
+          <h3>Keyword Cloud</h3>
           <wordCloud />
         </div>        
       </div>
@@ -76,6 +77,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 <script>
@@ -165,12 +167,12 @@ export default {
         height: 220
       },
       horizontalBarData: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
         datasets: [
           {
             label: 'Data One',
             backgroundColor: '#f87979',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+            data: [40, 20, 12, 39, 10, 40, 39, 27]
           }
         ]
       }
@@ -186,10 +188,10 @@ export default {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 60px 240px auto 320px;
+    grid-template-rows: 240px auto 320px;
   }
   .title {
-    grid-column: 1 / -1;
+    margin-left: 5%;
   }
   .top-graph {
     grid-column: 1 / -1;
@@ -204,9 +206,6 @@ export default {
     grid-template-columns: repeat(4, 1fr);
   }
   .top-graph-item {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
     background-color: #fff;
     border-radius: 4px;
     border:1px solid #d6d6d6;

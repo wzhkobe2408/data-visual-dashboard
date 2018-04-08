@@ -7,7 +7,7 @@
     </div>
     <div class="tab-content-container">
         <div class="tab-content" v-if="showIndex == 1">
-            <h1>Recent Activity</h1>
+            <h3>Recent Activity</h3>
             <hr />
             <ul>
                 <li>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit 😎<span>2017-05-01</span></li>
@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 2">
-            <h1>History Record</h1>
+            <h3>History Record</h3>
             <hr />
             <ul>
                 <li>consequatur magnam harum qui aut temporibus dolore 😍<span>2017-05-01</span></li>
@@ -29,7 +29,7 @@
             </ul>
         </div>
         <div class="tab-content" v-if="showIndex == 3">
-            <h1>Playground</h1>
+            <h3>Playground</h3>
             <hr />
             <div class="playground">
                 <div class="play-item"></div>
@@ -126,6 +126,10 @@ export default {
     }
     .tab-content span {
         float: right;
+    }
+    .tab-content h3 {
+        margin-top: 0px;
+        margin-bottom: 25px;
     }
 </style>
 

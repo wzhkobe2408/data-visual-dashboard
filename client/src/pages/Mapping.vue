@@ -4,9 +4,9 @@
         <hr />
         <ControlMap class="contorl_map" />
         <form style="margin-bottom:10px" class="form-inline" @submit="addItem">
-                <input type="text" v-model="addLat" class="form-control mr-2 col" placeholder="经度">
-                <input type="text" v-model="addLng" class="form-control mr-2 col" placeholder="纬度">
-                <input type="submit" value="Add" class="btn btn-success" @click="addItem"> 
+                <input type="text" v-model="addLat" class="mr-2 col" placeholder="经度">
+                <input type="text" v-model="addLng" class="mr-2 col" placeholder="纬度">
+                <input type="submit" value="Add" class="waves-effect waves-light btn" @click="addItem"> 
         </form>
          <table class="table table-striped table-dark">
             <thead>
@@ -22,18 +22,18 @@
                  <tr :key="index" v-for="(row, index) in tableData">
                      <td>
                          <span v-if="!row.edit">{{ row.lat }}</span>
-                         <input type="text" class="form-control" v-if="row.edit" :value="row.lat" @change="setLat">
+                         <input type="text" v-if="row.edit" :value="row.lat" @change="setLat">
                      </td>
                      <td>
                          <span v-if="!row.edit">{{ row.lng }}</span>
-                         <input type="text" class="form-control" v-if="row.edit" :value="row.lng" @change="setLng">
+                         <input type="text" v-if="row.edit" :value="row.lng" @change="setLng">
                      </td>
                      <td>{{ row.address }}</td>
                      <td>
-                         <button @click="edit(row)" class="btn btn-outline-primary">{{ row.edit? '取消' : '编辑' }}</button>
-                         <button @click="makeChange(row)" v-if="row.edit" class="btn btn-outline-success">确定</button>
+                         <button @click="edit(row)" class="waves-effect waves-light btn">{{ row.edit? '取消' : '编辑' }}</button>
+                         <button @click="makeChange(row)" v-if="row.edit" class="waves-effect waves-light btn blue lighten-2">确定</button>
                     </td>
-                     <td><button class="btn btn-outline-danger" @click="handleDelete(row, index)">删除</button></td>
+                     <td><button class="waves-effect waves-light btn red accent-2" @click="handleDelete(row, index)">删除</button></td>
                  </tr>
              </tbody>
          </table>
@@ -143,5 +143,8 @@ export default {
     .mapping-container {
         width: 90%;
         margin: 0 auto;
+    }
+    td {
+        vertical-align: baseline;
     }
 </style>

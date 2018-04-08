@@ -1,7 +1,7 @@
 <template>
-    <div class="card panel-default col-md-4 mx-auto">
+    <div class="card panel-default col-md-5 mx-auto">
         <div class="card-body">
-            <h1>Sign up</h1>
+            <h2>Sign up</h2>
             <form @submit="handleSignup"> 
                 <div class="form-group">
                     <label>Email</label>
@@ -70,5 +70,11 @@ export default {
 }
 </script>
 <style scoped>
-
+    .card {
+        margin-top: 60px;
+    }
+    h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
 </style>

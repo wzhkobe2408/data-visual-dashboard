@@ -4,7 +4,7 @@
   <div class="info-window">
     <img class="maker-photo" src="https://images.unsplash.com/photo-1510776632413-f3e527a8dc42?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a5703227ec13ae76e69fda1ad27da26f&auto=format&fit=crop&w=750&q=80" alt="img">
     <div class="text-part">
-      <h3>This is the name</h3>
+      <h4 style="margin-bottom: 10px;margin-top: 0px">This is the name</h4>
       <p>This is the introduction: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet totam, distinctio recusandae fugit adipisci vitae porro non! Eligendi amet omnis </p>
       <p>This is the mode <span>😄</span></p>
       <p>2018-04-01</p>

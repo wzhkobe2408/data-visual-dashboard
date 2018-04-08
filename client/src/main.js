@@ -7,11 +7,13 @@ import store from './store/index';
 import VueParticles from 'vue-particles'
 import ElementUI from 'element-ui'
 import axios from 'axios'
+import Materials from "vue-materials"
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false
 
 Vue.use(VueParticles)
 Vue.use(ElementUI)
+Vue.use(Materials)
 
 window.axios = axios; 
 

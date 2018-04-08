@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <div id="background-contain"></div>
-    <Header class="top-nav" :color="this.headerColor" :username="username"/>
-    <div class="custom-container">
+    <div class="custom-container" style="margin-left:100px">
+      <GlobalSideNav />
       <router-view></router-view>
     </div>
-    <AppFooter />
+    <!-- <AppFooter style="margin-left:100px" /> -->
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
 import AppFooter from './components/appFooter.vue'
+import GlobalSideNav from './pages/GlobalSideNav.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -25,7 +26,8 @@ export default {
   },
   components: {
     Header,
-    AppFooter
+    AppFooter,
+    GlobalSideNav
   },
   computed: {
     ...mapGetters([
@@ -45,9 +47,6 @@ export default {
 </script>
 
 <style>
-  .custom-container {
-    margin: 50px auto 0;
-  }
   #app {
     min-height: 100vh;
   }

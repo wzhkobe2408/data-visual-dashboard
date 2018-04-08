@@ -56,6 +56,10 @@ export default {
     width: 120px;
     height: auto;
   }
+  .card {
+    margin-top: 0;
+    box-shadow: 0 0 1px rgba(0,0,0,0.1);
+  }
   .profile-img:hover {
 	filter: brightness(0.5);
   }
@@ -92,5 +96,8 @@ export default {
     text-decoration: none;
     font-size: 20px;
     color: rgb(0, 0, 0);
+  }
+  .badge-dark {
+    color: #fff;
   }
 </style>

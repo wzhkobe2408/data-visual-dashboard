@@ -24,7 +24,7 @@
       >
       </vue-particles>
         <div class="control-panel">
-            <h3>This is the control-panel</h3>
+            <h4>Control Panel</h4>
             <div class="block">
                 <span class="demonstration">光强</span>
                 <el-slider v-model="particlesNumber" ></el-slider>
@@ -141,5 +141,8 @@ export default {
         position: absolute;
         width: 100%;
         height: 100%
+    }
+    .control-panel {
+        width: 350px;
     }
 </style>

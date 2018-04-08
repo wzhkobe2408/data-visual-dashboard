@@ -8,7 +8,7 @@
     <hr />
         <div class="wrapper">
           <component ref="heart" class="chart" :is="renderComponent" :chart-data="dataset[index]" :index="index"></component>
-          <div class="button-group">
+          <div class="btn-group">
               <button class="btn btn-primary" data-toggle="modal" data-target="#addData">Add Data</button>
               <button class="btn btn-danger">Remove Data</button>
               <div class="btn-group">
@@ -259,10 +259,10 @@ export default {
       margin-bottom: 10px;
       padding-bottom: 80px;
     }
-    .button-group button {
+    .btn-group button {
       margin-right: 20px;
     }
-    .button-group {
+    .btn-group {
       position: absolute;
       bottom: 20px;
       left: 50%;
