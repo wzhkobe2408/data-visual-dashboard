@@ -7,7 +7,7 @@
         <p>{{ gettersUserInfo.email }}</p>
         <hr />
         <p>Developer | Student</p>
-        <button class="btn btn-outline-primary btn-block">Edit</button>
+        <button class="btn btn-block">Edit</button>
       </div>
       	<div class="profile-usermenu">
           <div class="nav-item">

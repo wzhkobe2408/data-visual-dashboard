@@ -1,7 +1,7 @@
 <template>
     <div class="row home-container">
-        <SideBar style="margin-top: 20px"/>
         <MainContent style="margin-top: 20px" />
+        <SideBar style="margin-top: 20px"/>
     </div>
 </template>
 <script>
@@ -31,26 +31,26 @@ export default {
             'stopLoading'
         ])
     },
-    // mounted() {
-    //     if (!localStorage.getItem('jwt')) {
-    //         this.$router.push('/login')
-    //     } else {
-    //         axios.get('/api/userinfo',{
-    //             headers: {'x-access-token': localStorage.getItem('jwt')}
-    //         })
-    //         .then(response => {
-    //             var userinfo = {
-    //                 username: response.data.userinfo.username,
-    //                 email: response.data.userinfo.email
-    //             }
-    //             localStorage.setItem('userinfo', JSON.stringify(userinfo));
-    //             this.stopLoading()
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    //     }
-    // },
+    mounted() {
+        if (!localStorage.getItem('jwt')) {
+            this.$router.push('/login')
+        } else {
+            axios.get('/api/userinfo',{
+                headers: {'x-access-token': localStorage.getItem('jwt')}
+            })
+            .then(response => {
+                var userinfo = {
+                    username: response.data.userinfo.username,
+                    email: response.data.userinfo.email
+                }
+                localStorage.setItem('userinfo', JSON.stringify(userinfo));
+                this.stopLoading()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    },
     beforeDestroy() {
         this.startLoading()
     }

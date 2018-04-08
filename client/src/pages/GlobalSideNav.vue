@@ -56,7 +56,7 @@ import {mapActions, mapGetters, mapState} from 'vuex'
         text-decoration: none;
     }
     .router-link-exact-active.router-link-active {
-    background-color: rgba(50,50,50,0.75);
+    background-color: rgba(26, 26, 26, 0.75);
     font-weight: bold;
     color: #fff;
   }

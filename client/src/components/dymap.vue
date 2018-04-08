@@ -1,5 +1,5 @@
 <template>
-	<div id="mapid" style="width: 100%; height: 400px;">
+	<div id="mapid" style="width: 100%; height: 400px;border: 1px solid #d6d6d6;box-shadow: 0 0 1px rgba(0,0,0,0.2);">
 	</div>
 </template>
 <script>

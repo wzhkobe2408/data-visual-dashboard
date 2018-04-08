@@ -39,7 +39,7 @@
                     <div class="form-group">
                     <br>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Chose Type
                         </button>
                         <div class="dropdown-menu">
@@ -150,11 +150,14 @@ export default {
         font-size: 24px;
         border-radius: 50%;
         color: white;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         z-index: 1000;
     }
     .dymap {
         margin-bottom: 10px;
+    }
+    .dropdown-menu{
+        width: 100%;
     }
 </style>
 

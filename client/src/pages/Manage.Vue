@@ -31,11 +31,11 @@
             </div>
             <div class="form-group">
               <br>
-              <div class="btn-group">
-                <button ref="dropdown" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div>
+                <button ref="dropdown" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Chose Type
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" style="width: 165px">
                   <a @click="setNewType" class="dropdown-item">Bar</a>
                   <a @click="setNewType" class="dropdown-item">Line</a>
                   <a @click="setNewType" class="dropdown-item">Bubble</a>
@@ -132,9 +132,6 @@ export default {
     font-size: 24px;
     color: #303030;
     cursor: pointer;
-  }
-  .dropdown-toggle {
-    width: 130px !important;
   }
   .card {
     box-shadow: 0 0 1px rgba(0,0,0,0.2);

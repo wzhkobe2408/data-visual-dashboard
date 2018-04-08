@@ -9,7 +9,7 @@
           <p><span>Email: </span>{{ gettersUserInfo.email }}</p>
           <p><span>Address: </span>{{ gettersUserInfo.address || 'empty' }}</p>
           <p><span>Career: </span>{{ gettersUserInfo.career || 'empty' }}</p>
-          <button class="btn btn-primary">Edit</button>
+          <button class="btn">Edit</button>
        </div>
       </div>
   </div>  
@@ -45,9 +45,9 @@ export default {
     margin-top: 40px;
   }
   .profile-container .user-img {
-    height:264px;
+    height:258px;
     position: relative;
-    top:-93px;
+    top:-91px;
     left:6px;
   }
   .text-info {

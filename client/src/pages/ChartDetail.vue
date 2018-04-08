@@ -3,24 +3,23 @@
     <div class="intro">
       <router-link to="/"><i class="fas fa-chevron-left"></i></router-link>
     <h3 class="detail_title">Chart Detail</h3>
-    <span class="date">Created on {{ date }}</span>
     </div>
     <hr />
         <div class="wrapper">
           <component ref="heart" class="chart" :is="renderComponent" :chart-data="dataset[index]" :index="index"></component>
-          <div class="btn-group">
-              <button class="btn btn-primary" data-toggle="modal" data-target="#addData">Add Data</button>
-              <button class="btn btn-danger">Remove Data</button>
-              <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Change Datatype
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Bar</a>
-                  <a class="dropdown-item" href="#">Line</a>
-                  <a class="dropdown-item" href="#">Radar</a>
+          <div class="my-btn-group">
+              <button class="btn" data-toggle="modal" data-target="#addData">Add Data</button>
+              <button class="btn">Remove Data</button>
+                  <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Chose Type
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Bar</a>
+                    <a class="dropdown-item" href="#">Line</a>
+                    <a class="dropdown-item" href="#">Bubble</a>
+                    </div>
                 </div>
-              </div>        
           </div>
           <div class="control-wrapper">
             <div @click="decreaseIndex" class="left-control">
@@ -58,7 +57,7 @@
                     <button class="btn btn-outline-primary">编辑</button>
                   </td>
                   <td>
-                    <button class="btn btn-outline-danger">删除</button>
+                    <button class="waves-effect waves-light btn red accent-2">删除</button>
                   </td>
                 </tr>
              </tbody>
@@ -78,7 +77,7 @@
                      <button class="btn btn-outline-primary">编辑</button>
                    </td>
                    <td>
-                     <button class="btn btn-outline-danger">删除</button>
+                     <button class="waves-effect waves-light btn red accent-2">删除</button>
                    </td>
                  </tr>
              </tbody>
@@ -237,14 +236,14 @@ export default {
   .table {
     margin-top: 10px;
   }
+  .intro a {
+    line-height: 40px;
+  }
   .detail_title {
     display:inline-block;
     margin-left: 20px;
     margin-bottom: 0;
     vertical-align: bottom;
-  }
-  .date {
-    float: right;
   }
   .wrapper {
     position: relative;
@@ -259,10 +258,10 @@ export default {
       margin-bottom: 10px;
       padding-bottom: 80px;
     }
-    .btn-group button {
+    .my-btn-group button {
       margin-right: 20px;
     }
-    .btn-group {
+    .my-btn-group {
       position: absolute;
       bottom: 20px;
       left: 50%;
@@ -290,6 +289,9 @@ export default {
     .right-control {
       cursor: pointer;
       float:right;
+    }
+    .dropdown-menu {
+      width: 100%;
     }
 </style>
 

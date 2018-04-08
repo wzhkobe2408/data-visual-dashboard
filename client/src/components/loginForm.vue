@@ -5,11 +5,11 @@
             <form autocomplete="false" @submit="handleLogin">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="Enter your email" v-model="email">
+                    <input type="text" name="email" placeholder="Enter your email" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" v-model="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" name="password" v-model="password"  placeholder="Enter your password">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary btn-block">
