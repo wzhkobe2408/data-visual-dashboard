@@ -52,5 +52,13 @@ import {mapActions, mapGetters, mapState} from 'vuex'
     .side-nav a {
         padding-left: 20px !important;
     }
+    .side-nav a:hover {
+        text-decoration: none;
+    }
+    .router-link-exact-active.router-link-active {
+    background-color: rgba(50,50,50,0.75);
+    font-weight: bold;
+    color: #fff;
+  }
 </style>
 

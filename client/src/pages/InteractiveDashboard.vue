@@ -192,6 +192,7 @@ export default {
   }
   .title {
     margin-left: 5%;
+    margin-right: 5%;
   }
   .top-graph {
     grid-column: 1 / -1;

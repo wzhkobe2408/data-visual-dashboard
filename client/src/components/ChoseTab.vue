@@ -75,7 +75,7 @@ export default {
         cursor:pointer;
     }
     .tab-active {
-        border-bottom: 2px solid rgb(236, 188, 55);
+        border-bottom: 2px solid rgb(255, 223, 42);
     }
     .tab-content-container {
         padding: 10px 20px 20px;

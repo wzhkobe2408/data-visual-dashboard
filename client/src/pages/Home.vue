@@ -59,6 +59,6 @@ export default {
 <style scoped>
     .home-container {
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 20px;
     }
 </style>
