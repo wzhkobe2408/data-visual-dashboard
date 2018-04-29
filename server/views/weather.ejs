@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      #windyty {    height: 100vh; width: 100%; 
+                    margin-left: auto; margin-right: auto;
+                    position: relative;
+                    /* margin-top: 50px;  */
+                }
+      #overlays {
+        position: absolute;
+        left: 50px;
+        top: 50%;
+        transform: translate(0, -50%);
+        color:#fff;
+      }
+      #overlays li {
+        list-style: none;
+      }
+      #overlays a{
+        display: inline-block;
+        color: #fff;
+        background: rgba(0, 0, 0,0.4);
+        border-radius: 250px;
+        padding: 5px 20px;
+        margin-bottom: 3px;
+        cursor: pointer;
+      }
+      #range {
+        position: absolute;
+        bottom: 40px;
+        width: 90%;
+        left: 5%;
+        -webkit-appearance: none;
+        height: 10px;
+        border-radius: 5px;
+        background: rgba(46, 46, 46,0.5);
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    #range:hover {
+        opacity: 1;
+    }
+
+    #range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    #range::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+    #timeline {
+      position: absolute;
+      bottom: 50px;
+      left: 5%;
+      color: #fff;
+    }
+    #layer-label {
+      position: absolute;
+      left: 50px;
+      top: 20px;
+      color:#fff;
+    }
+    #layer-label span span {
+      color: rgb(41, 41, 41);
+      padding: 5px 10px;
+      margin-right: 10px;
+      border-radius: 250px;
+      background: #fff;
+      box-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+    }
+    #levels {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      right: 50px;
+      color: #fff;
+    }
+    #levels li {
+      list-style: none;
+      display: inline-block;
+    }
+    #levels a {
+      cursor: pointer;
+      display: inline-block;
+      padding: 5px 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 250px;
+      margin-bottom: 4px;
+    }
+    .label {
+      font-size: 20px;
+      font-weight: lighter;
+      line-height: 2;
+      border-bottom: 1px solid #fff;
+    }
+    #animation-contorl {
+      position: absolute;
+      top: 36px;
+      right: 126px;
+      color: #fff;
+    }
+    #animation-contorl p {
+      display: inline-block;
+      margin:0;
+      padding:0;
+      position: relative;
+      top:-5px;
+      font-weight: lighter;
+    }
+    #box {
+      width: 40px;
+      height: 20px;
+      border: 1px solid #fff;
+      display: inline-block;
+      border-radius: 250px;
+      cursor: pointer;
+    }
+    #box > div {
+      position: relative;
+      top: 1px;
+      left: 1px;
+      transition: all 0.2s ease-out;
+      width: 18px;
+      height: 18px;
+      border-radius: 250px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .sideBar {
+      position: absolute;
+      z-index:1000;
+      top: 0;
+      right: -400px;
+      height: 100%;
+      width: 400px;
+      transition: all 0.3s ease-out;
+      background: #fff;
+      box-shadow: 2px 0 20px rgba(0,0,0,0.7);
+      overflow: auto;
+    }
+    .sideBar div:nth-child(2n) {
+      padding: 15px;
+      text-align: center;
+      /* border-bottom: 1px solid #000; */
+      background: #363636;
+      color: #fff;
+    }
+    .sideBar div:nth-child(2n-1) {
+      padding: 15px;
+      text-align: center;
+      /* border-bottom: 1px solid #000; */
+      background: #2e2e2e;
+      color: #fff;
+    }
+    .sideBar .land {
+      position: absolute;
+      bottom: 0;
+    }
+    #quit {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+    }
+    .top-search-bar {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+    .top-search-bar input {
+      height: 40px;
+      width: 350px;
+      outline: none;
+      border-radius: 351px;
+      border: none;
+      padding: 0 0 0 48px;
+      font-size: 16px;
+      font-weight: lighter;
+      box-sizing: border-box;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+    }
+    .top-search-bar img {
+      position: relative;
+      top: 8px;
+      left: 45px;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- Map -->
+    <div id="windyty"></div>
+
+    <!-- 时间Range -->
+    <input type="range" id="range" min="0" max="10" defaultValue="5" >
+
+    <!-- Layer 信息 -->
+    <p id="layer-label" style="font-weight: lighter;">Layer:<span id="layerState"></span></p>
+
+    <!-- Timeline 信息 -->
+    <p id="timeline" style="font-weight: lighter;">Timeline: <span id="timeState"></span></p>
+
+    <!--顶部搜索栏  -->
+    <div class="top-search-bar">
+      <img src="Search.png" alt="">
+      <input type="text" placeholder="Search city" id="city-locator" />
+    </div>
+
+    <!-- Overlay 选择 -->
+    <div id="overlays">
+      <p id="level-label" class="label">Overlays: </p>
+      <li><a>wind</a></li>
+      <li><a>temp</a></li>
+      <li><a>pressure</a></li>
+      <li><a>clouds</a></li>
+      <li><a>waves</a></li>
+      <li><a>currents</a></li>
+      <li><a>swellperiod</a></li>
+      <li><a>lclouds</a></li>
+    </div>
+
+    <!-- 控制Animation开关 -->
+    <div id="animation-contorl">
+      <p>Animation:</p> 
+      <div id="box">
+        <div id="box-inner-circle"></div>
+      </div>
+    </div>
+
+    <!-- Level选择 -->
+    <div id="levels" class="custom-select" style="width:200px;">
+      <p class="label">Levels: </p>
+          <li><a>surface</a></li>
+          <li><a>975h</a></li>
+          <li><a>950h</a></li>
+          <li><a>925h</a></li>
+          <li><a>900h</a></li>
+          <li><a>850h</a></li>
+          <li><a>750h</a></li>
+          <li><a>700h</a></li>
+          <li><a>550h</a></li>
+          <li><a>450h</a></li>
+          <li><a>350h</a></li>
+          <li><a>300h</a></li>
+          <li><a>250h</a></li>
+    </div>
+
+
+    <!-- 侧边栏展示天气信息 -->
+    <div class="sideBar">
+      <img src="Delete.png" alt="" id="quit" />
+    </div>
+
+    <script type="text/javascript">
+      // 初始化  
+      var windytyInit = {
+        key: 'PsL-At-XpsPTZexBwUkO7Mx5I',
+        lat: 47.443, lon: 60.250, zoom: 5,
+      }
+
+      function windytyMain(map) {
+
+        // 定义变量
+        var overlays = document.getElementById('overlays'),
+            levels = document.getElementById('levels'),
+            layerState = document.getElementById('layerState'), 
+            range = document.getElementById('range'),
+            timeState = document.getElementById('timeState');
+            animationControl = document.getElementById('animation-control')
+            box = document.getElementById('box')
+            boxInnerCircle = document.getElementById('box-inner-circle')
+            sideBar = document.querySelector('.sideBar')
+            windyty = document.getElementById('windyty')
+            searchInput = document.querySelector('.top-search-bar input')
+            AppId = 'df427929d67da43778518dcccdf5f82d';
+
+        // Geojson文件
+        var url = 'capitals.json'
+
+        // 为Maker注册事件
+        function onEachFeature(feature, layer) {
+          layer.on({
+            mouseover: highlightFeature,
+            click: showSideBar
+          });
+        }
+
+        // 鼠标悬浮在Maker上调用该方法
+        function highlightFeature(e) {
+          var layer = e.target;
+          var name = 'name:zh'
+          layer.bindPopup(layer.feature.properties[name] || layer.feature.properties.name)
+          .openPopup();
+        }
+
+        searchInput.addEventListener('keyup', function(e) {
+          if (e.keyCode == 13) {
+            var locatUrl = `http://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&APPID=${AppId}`
+            fetch(locatUrl)
+              .then(response => response.json())
+              .then(data => {
+                W.maps.panTo(new L.LatLng(data.coord.lat, data.coord.lon))
+                e.target.value = ''
+              })
+          }
+        })
+
+        // 加载Geojson文件
+        fetch(url)
+          .then(response => response.json())
+          .then(result => {
+            L.geoJson(result, {
+              onEachFeature: onEachFeature
+            }).addTo(W.maps)
+          })
+
+        // 显示侧边栏，并展示对应城市天气信息
+        function showSideBar(e) {
+          var layer = e.target;
+          var lat = parseFloat(layer.feature.geometry.coordinates[0].toFixed(0))
+          var lon = parseFloat(layer.feature.geometry.coordinates[1].toFixed(0))
+          var weatherUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${AppId}`
+            fetch(weatherUrl)
+            .then(response => response.json())
+            .then(data => {
+              console.log(data)
+              var date = new Date()
+              sideBar.innerHTML = `
+                <img src="Delete.png" alt="" id="quit" />
+                <div><span>日出时间：</span>${new Date(data.sys.sunrise).toLocaleString()}</div>
+                <div><span>日落时间：</span>${new Date(data.sys.sunset).toLocaleString()}</div>
+                <div><span>天气概况：</span>${data.weather[0].description}</div>
+                <div><span>温度：</span>${data.main.temp}华氏度</div>
+                <div><span>湿度：</span>${data.main.humidity}</div>
+                <div><span>气压：</span>${data.main.pressure}KPa</div>
+                <div><span>风速：</span>${data.wind.speed}km/h</div>
+                <div><span>风向：</span>${data.wind.deg}度</div>
+                <img class="land" src="https://source.unsplash.com/400x240/?${data.name}&i=${date}" />
+              `;
+              quit = document.querySelector('#quit')
+              quit.addEventListener('click', function() {
+                this.parentElement.style.right = '-400px'
+              })
+              sideBar.style.right = '0px'
+            })
+          // console.log(layer.feature.geometry)
+        }
+
+        // 开关控制动画(点圆)  
+        boxInnerCircle.onclick = function(event) {
+          event.stopPropagation();
+          if (event.target.style.left == '1px') {
+            event.target.style.left = '21px';
+            W.animation.stop()
+          } else {
+            event.target.style.left = '1px'
+            W.animation.run()
+          }
+        }
+
+        // 开关控制动画(点开关槽)
+        box.onclick = function(event) {
+          event.stopPropagation();
+          if (boxInnerCircle.style.left == '1px') {
+            boxInnerCircle.style.left = '21px';
+            W.animation.stop()
+          } else {
+            boxInnerCircle.style.left = '1px'
+            W.animation.run()
+          }
+        }
+
+        // 设置Range的范围
+        range.max = W.timeline.end;
+        range.min = W.timeline.start;
+
+        // 更新时间戳
+        range.onchange = function(event) {
+            W.setTimestamp(+event.target.value) 
+        }  
+
+        // 更新时间信息
+        W.on('redrawFinished',function( displayedParams ) {
+          timeState.innerHTML = new Date( displayedParams.timestamp ).toLocaleString();
+        })
+
+        // 设置Overlay
+        overlays.onclick = function(event) {
+            W.setOverlay(event.target.innerHTML)
+        }  
+
+        // 设置Level
+        levels.onclick = function(event) {
+            W.setLevel(event.target.innerHTML);
+        }
+
+        // 更新Map状态信息
+        W.on('redrawFinished',function( displayedParams ) {
+          layerState.innerHTML = `
+            <span>${displayedParams.overlay}</span>
+            <span>${displayedParams.level}</span>
+          `
+        })
+
+      }
+    </script>
+    <script async defer src="https://api.windytv.com/v2.3/boot.js"></script> 
+  </body>
+</html>

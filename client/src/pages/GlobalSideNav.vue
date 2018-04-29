@@ -5,6 +5,7 @@
                 <li><router-link to="/">Home</router-link></li>
                 <li><router-link to="/color">Color</router-link></li>
                 <li><router-link to="/map">Map</router-link></li>
+                <li><router-link to="/weathermap">Weather</router-link></li>
                 <li><router-link to="/3d">3D</router-link></li>
                 <li><router-link to="/manage">Manage</router-link></li>
                 <li><router-link to="/interativemap">Interative</router-link></li>

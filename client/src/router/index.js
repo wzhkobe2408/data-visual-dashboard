@@ -11,6 +11,7 @@ import User from '@/pages/User.vue'
 import ChartDetail from '@/pages/ChartDetail.vue'
 import notFound from '@/components/notFound'
 import InterativeDashboard from '@/pages/InteractiveDashboard.vue'
+import WeatherMap from '@/pages/WeatherMap.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -65,6 +66,10 @@ export default new Router({
       path:'/interativemap',
       name: 'InterativeDashboard',
       component: InterativeDashboard
+    },{
+      path: '/weathermap',
+      name: 'WeatherMap',
+      component: WeatherMap
     }
   ]
 })
