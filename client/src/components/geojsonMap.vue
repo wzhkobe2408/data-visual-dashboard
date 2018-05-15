@@ -1,10 +1,17 @@
 <template>
-	<div id='map'></div>
+	<div id='map' @click="updateDashboard"></div>
 </template>
 <script>
 // load data
 import chinaData from './china.geojson'
+import { mapActions } from 'vuex'
+
 export default {
+	methods: {
+		...mapActions([
+			'updateDashboard'
+		])
+	},
 	mounted() {
 			// init map
 			var map = L.map('map').setView([37.797409, 105.158793], 4);

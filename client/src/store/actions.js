@@ -35,3 +35,7 @@ export const startLoading = ({ commit }) => {
 export const stopLoading = ({ commit }) => {
   commit(types.STOP_LOADING)
 }
+
+export const updateDashboard = ({ commit }) => {
+  commit(types.UPDATE_DASHBOARD)
+}

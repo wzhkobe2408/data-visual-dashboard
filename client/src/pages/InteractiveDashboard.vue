@@ -78,6 +78,7 @@
       </div>
     </div>
   </div>
+  <iframe width="1134" id="shiny-app" src="https://wzhkobe2408.shinyapps.io/co2Emission/"></iframe>
   </div>
 </template>
 <script>
@@ -275,5 +276,17 @@ export default {
   .ageBar {
     width: 270px;
     height: 220px;
+  }
+  #shiny-app {
+    margin-left:63px;
+    width:1134px;
+    margin-top:30px;
+    height:1000px;
+    border:1px solid #d6d6d6;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+    border-radius: 4px;
+  }
+  .dataTables_wrapper.no-footer {
+    overflow:auto;
   }
 </style>

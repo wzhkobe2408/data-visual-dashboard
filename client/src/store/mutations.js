@@ -48,6 +48,12 @@ const mutations = {
   },
   [types.STOP_LOADING](state) {
     state.loading = false;
+  },
+  [types.UPDATE_DASHBOARD](state) {
+    state.dashboard.barChartData.datasets[0].data = 
+    state.dashboard.barChartData.datasets[0].data.map(item => {
+      return Math.ceil(80*Math.random())
+    })
   }
 }
 
