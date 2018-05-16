@@ -68,4 +68,9 @@ npm run build --report
 
 ![dynamic](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/weather.png)
 
+#  Shiny app
+
+
+![dynamic](https://github.com/wzhkobe2408/data-visual-dashboard/blob/master/shiny.png)
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
