@@ -2,7 +2,7 @@
   <div class="map-wrapper">
   <div id='map'></div>
   <div class="info-window">
-    <img class="maker-photo" src="https://images.unsplash.com/photo-1510776632413-f3e527a8dc42?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a5703227ec13ae76e69fda1ad27da26f&auto=format&fit=crop&w=750&q=80" alt="img">
+    <img class="maker-photo" :src="imgUrl" alt="img">
     <div class="text-part">
       <h4 style="margin-bottom: 10px;margin-top: 0px">This is the name</h4>
       <p>This is the introduction: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet totam, distinctio recusandae fugit adipisci vitae porro non! Eligendi amet omnis </p>
@@ -14,6 +14,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      imgUrl: 'https://images.unsplash.com/photo-1510776632413-f3e527a8dc42?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a5703227ec13ae76e69fda1ad27da26f&auto=format&fit=crop&w=750&q=80'
+    }
+  },
   mounted() {
     	var cities = L.layerGroup();
       L.marker([34.29353, 108.94197]).bindPopup('This is Wei Yang.').addTo(cities),
@@ -54,7 +59,7 @@ export default {
       margin-bottom: 10px;
       border-radius: 4px 0 0 4px;
       border: 1px solid #d6d6d6;
-      width: 920px !important;
+      width: 840px !important;
       box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
 		}
     .info-window {

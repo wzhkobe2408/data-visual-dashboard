@@ -12,6 +12,20 @@
     @input="onChange">
     </slider>
   </div>
+  <div style="padding:0 60px;position: relative">
+    <h3>Color palette generator</h3>
+    <hr />
+    <button style="position:absolute;top: 20px; right: 60px;outline:none" @click="getRandomColor" class="waves-effect waves-light btn blue-grey lighten-1">Generate</button>
+    <div class="palette-wrapper" style="margin-bottom:60px">
+      <div 
+        v-for="(item, index) in colorPalette" 
+        :key="index"
+        :style="{ 'position':'relative','backgroundColor': item, 'height': '180px', 'width': '100%' }"
+        >
+        <span style="position:absolute;bottom:-25px;left:50%;letter-spacing:1px;transform:translate(-50%, 0)">{{ item }}</span>
+        </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -51,7 +65,14 @@ export default {
         },
         a: 1
       },
-      textColor: '#fff'
+      textColor: '#fff',
+      colorPalette: [
+          'rgb(214,78,69)',
+          'rgb(247,242,163)',
+          'rgb(201,216,147)',
+          'rgb(57,141,112)',
+          'rgb(62,80,64)'
+        ]
     }
   },
   computed: {
@@ -70,6 +91,23 @@ export default {
             g: Math.round(parseInt(result[2], 16) / 2.55) / 100,
             b: Math.round(parseInt(result[3], 16) / 2.55) / 100
         } : null;
+    },
+    getRandomColor() {
+      fetch('http://colormind.io/api/', {
+        method: 'POST',
+        body: JSON.stringify({model : "default"})
+      }).then(
+        res => res.json()
+      )
+      .then(data => {
+        console.log(data)
+        this.colorPalette = data.result.map(color => {
+          return 'rgb(' + color.join(',') + ')'
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
     },
     onChange () {
       var result = network.run(this.hexToRgb(this.colors.hex));
@@ -104,6 +142,10 @@ export default {
       width: 100%;
       height: 60vh;
       margin-top: -50px;
+    }
+    .palette-wrapper {
+      display: flex;
+      justify-content: space-between;
     }
 </style>
 
