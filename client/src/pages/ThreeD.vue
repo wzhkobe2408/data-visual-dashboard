@@ -58,6 +58,7 @@
             inactive-color="#636fbd">
         </el-switch>
     </div>
+    <iframe id="population-globe" src="http://localhost:3001/globe" width="1134" height="800"></iframe>
 </div>
 </template>
 <script>
@@ -144,5 +145,11 @@ export default {
     }
     .control-panel {
         width: 350px;
+    }
+    #population-globe{
+        margin-top:30px;
+        border:1px solid #d6d6d6;
+        box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+        border-radius: 4px;
     }
 </style>

@@ -21,6 +21,10 @@ app.get('/weathermap', (req, res) => {
 	res.render('weather')
 })
 
+app.get('/globe', (req, res) => {
+	res.render('globe')
+})
+
 app.use('/', bundleRoute)
 
 
