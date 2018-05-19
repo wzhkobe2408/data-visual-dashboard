@@ -25,6 +25,10 @@ app.get('/globe', (req, res) => {
 	res.render('globe')
 })
 
+app.get('/crossfilter', (req, res) => {
+	res.render('crossfilter')
+})
+
 app.use('/', bundleRoute)
 
 

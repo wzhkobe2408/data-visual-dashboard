@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<head>
+    <title>Custom Pratice</title>
+    <link rel="stylesheet" type="text/css" href="/css/dc.min.css"/>	
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>  	
+	  <script type="text/javascript" src="/js/d3.min.js"></script>
+    <script type="text/javascript" src="/js/crossfilter.min.js"></script>   
+    <script type="text/javascript" src="/js/dc.min.js"></script>  
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <style>
+      #filter-wrapper::after {
+        content:'';
+        display: block;
+        clear:both;
+      }
+    </style>
+</head>
+
+<body>
+      <div id="filter-wrapper" style="padding-left:20px">
+		  <center><h2>Cross - Filter</h2></center>
+		  <br>
+
+      <div class="col-md-4" id="chart-ring-year">
+
+        <strong>Pie Chart</strong>
+        
+        <a class="reset" href="javascript:yearRingChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+        <div class="clearfix"></div>
+        
+        <span class="reset" style="display: none;">Current filter: <span class="filter"></span></span>
+        <br>
+      </div>
+    <div class="col-md-8" id="chart-line-hitsperday">
+
+      <strong>Line Chart</strong>
+
+      <a class="reset" href="javascript:hitslineChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+      <div class="clearfix"></div>
+
+      <span class="reset" style="display: none;">Current filter: <span class="filter"></span></span>
+      <br>
+    </div>
+  </div>
+
+
+
+    <script>
+      var data = [
+          {"quarter":"Q1","hits":0,"date":"01/01/2011"},
+          {"quarter":"Q1","hits":0,"date":"01/15/2011"},
+          {"quarter":"Q1","hits":0,"date":"02/01/2011"},
+          {"quarter":"Q1","hits":0,"date":"02/15/2011"},
+          {"quarter":"Q1","hits":0,"date":"03/01/2011"},
+          {"quarter":"Q1","hits":0,"date":"03/15/2011"},
+          {"quarter":"Q2","hits":0,"date":"04/01/2011"},
+          {"quarter":"Q2","hits":0,"date":"04/15/2011"},
+          {"quarter":"Q2","hits":0,"date":"05/01/2011"},
+          {"quarter":"Q2","hits":0,"date":"05/15/2011"},
+          {"quarter":"Q2","hits":0,"date":"06/01/2011"},
+          {"quarter":"Q2","hits":0,"date":"06/15/2011"},
+          {"quarter":"Q3","hits":0,"date":"07/01/2011"},
+          {"quarter":"Q3","hits":0,"date":"07/15/2011"},
+          {"quarter":"Q3","hits":0,"date":"08/01/2011"},
+          {"quarter":"Q3","hits":0,"date":"08/15/2011"},
+          {"quarter":"Q3","hits":0,"date":"09/01/2011"},
+          {"quarter":"Q3","hits":0,"date":"09/15/2011"},
+          {"quarter":"Q4","hits":12,"date":"10/01/2011"},
+          {"quarter":"Q4","hits":13,"date":"10/15/2011"},
+          {"quarter":"Q4","hits":16,"date":"11/01/2011"},
+          {"quarter":"Q4","hits":15,"date":"11/15/2011"},
+          {"quarter":"Q4","hits":12,"date":"12/01/2011"},
+          {"quarter":"Q4","hits":10,"date":"12/15/2011"},
+
+          {"quarter":"Q1","hits":25,"date":"01/01/2012"},
+          {"quarter":"Q1","hits":27,"date":"01/15/2012"},
+          {"quarter":"Q1","hits":28,"date":"02/01/2012"},
+          {"quarter":"Q1","hits":26,"date":"02/15/2012"},
+          {"quarter":"Q1","hits":29,"date":"03/01/2012"},
+          {"quarter":"Q1","hits":24,"date":"03/15/2012"},
+          {"quarter":"Q2","hits":36,"date":"04/01/2012"},
+          {"quarter":"Q2","hits":33,"date":"04/15/2012"},
+          {"quarter":"Q2","hits":35,"date":"05/01/2012"},
+          {"quarter":"Q2","hits":35,"date":"05/15/2012"},
+          {"quarter":"Q2","hits":39,"date":"06/01/2012"},
+          {"quarter":"Q2","hits":34,"date":"06/15/2012"},
+          {"quarter":"Q3","hits":41,"date":"07/01/2012"},
+          {"quarter":"Q3","hits":45,"date":"07/15/2012"},
+          {"quarter":"Q3","hits":40,"date":"08/01/2012"},
+          {"quarter":"Q3","hits":42,"date":"08/15/2012"},
+          {"quarter":"Q3","hits":47,"date":"09/01/2012"},
+          {"quarter":"Q3","hits":43,"date":"09/15/2012"},
+          {"quarter":"Q4","hits":55,"date":"10/01/2012"},
+          {"quarter":"Q4","hits":57,"date":"10/15/2012"},
+          {"quarter":"Q4","hits":54,"date":"11/01/2012"},
+          {"quarter":"Q4","hits":53,"date":"11/15/2012"},
+          {"quarter":"Q4","hits":51,"date":"12/01/2012"},
+          {"quarter":"Q4","hits":50,"date":"12/15/2012"},
+
+          {"quarter":"Q1","hits":32,"date":"01/01/2013"},
+          {"quarter":"Q1","hits":36,"date":"01/15/2013"},
+          {"quarter":"Q1","hits":34,"date":"02/01/2013"},
+          {"quarter":"Q1","hits":31,"date":"02/15/2013"},
+          {"quarter":"Q1","hits":33,"date":"03/01/2013"},
+          {"quarter":"Q1","hits":36,"date":"03/15/2013"},
+          {"quarter":"Q2","hits":45,"date":"04/01/2013"},
+          {"quarter":"Q2","hits":40,"date":"04/15/2013"},
+          {"quarter":"Q2","hits":42,"date":"05/01/2013"},
+          {"quarter":"Q2","hits":49,"date":"05/15/2013"},
+          {"quarter":"Q2","hits":44,"date":"06/01/2013"},
+          {"quarter":"Q2","hits":42,"date":"06/15/2013"},
+          {"quarter":"Q3","hits":58,"date":"07/01/2013"},
+          {"quarter":"Q3","hits":53,"date":"07/15/2013"},
+          {"quarter":"Q3","hits":58,"date":"08/01/2013"},
+          {"quarter":"Q3","hits":52,"date":"08/15/2013"},
+          {"quarter":"Q3","hits":54,"date":"09/01/2013"},
+          {"quarter":"Q3","hits":58,"date":"09/15/2013"},
+          {"quarter":"Q4","hits":65,"date":"10/01/2013"},
+          {"quarter":"Q4","hits":63,"date":"10/15/2013"},
+          {"quarter":"Q4","hits":66,"date":"11/01/2013"},
+          {"quarter":"Q4","hits":64,"date":"11/15/2013"},
+          {"quarter":"Q4","hits":68,"date":"12/01/2013"},
+          {"quarter":"Q4","hits":63,"date":"12/15/2013"}
+        ];
+          var ndx = crossfilter(data);
+          var parseDate = d3.time.format("%m/%d/%Y").parse;
+            var parseDate2 = d3.time.format("%m/%d").parse;
+          data.forEach(function(d) {
+            d.date = parseDate(d.date);
+            d.qtime = parseDate2((d.date.getMonth()+1)+"/"+d.date.getDate());
+                d.Year=d.date.getFullYear();
+          });
+
+
+        var yearRingChart   = dc.pieChart("#chart-ring-year");
+        var yearDim  = ndx.dimension(function(d) {return +d.Year;});
+        //var year_total = yearDim.group().reduceSum(function(d) {return d.http_200+d.http_302+d.http_404;});
+        var year_total = yearDim.group().reduceSum(function(d) {return d.hits;});
+        yearRingChart
+            .width(150).height(150)
+            .radius(70)
+            .dimension(yearDim)
+            .group(year_total)
+            .innerRadius(30);
+
+
+          var hitslineChart  = dc.lineChart("#chart-line-hitsperday");
+          var dateDim = ndx.dimension(function(d) {return d.qtime;});
+          var hits = dateDim.group().reduceSum(function(d) {return d.hits;});
+          var minDate = new Date("01/01/1900");
+          var maxDate = new Date("12/30/1900");
+
+        var hits_2011=dateDim.group().reduceSum(function(d) {if (d.Year===2011) {return d.hits;}else{return 0;}});
+        var hits_2012=dateDim.group().reduceSum(function(d) {if (d.Year===2012) {return d.hits;}else{return 0;}});
+        var hits_2013=dateDim.group().reduceSum(function(d) {if (d.Year===2013) {return d.hits;}else{return 0;}});
+
+
+          hitslineChart
+            .width(590).height(200)
+            .dimension(dateDim)
+                .group(hits_2011,"2011")
+                .stack(hits_2012,"2012")
+                .stack(hits_2013,"2013")   
+                .renderArea(true)
+            .x(d3.time.scale().domain([minDate,maxDate]))
+                .elasticX(true)
+                .brushOn(true)
+                .legend(dc.legend().x(60).y(10).itemHeight(13).gap(5))
+            .yAxisLabel("Hits per day")
+            ;
+            
+            hitslineChart.renderlet(function (chart) {
+              // rotate x-axis labels
+              chart.selectAll('g.x text')
+                .attr('transform', 'translate(-10,10) rotate(350)') 
+              });
+
+          dc.renderAll();
+    </script>
+	
+
+</body>
+</html>

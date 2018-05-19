@@ -20,6 +20,8 @@
                 <div @click="handleClick('horizontalbar',5)" class="chart">
                     <HorizontalBar :chart-data="dataset[5]" class="item"/>
                 </div>
+                <iframe src="http://localhost:3001/crossfilter"
+                width="836" height="360" id="crossfilter"></iframe>
                 <DyMap class="dymap"/>
             </div>
         </div>
@@ -158,6 +160,12 @@ export default {
     }
     .dropdown-menu{
         width: 100%;
+    }
+    #crossfilter {
+        margin-bottom:10px;
+        border:1px solid #d6d6d6;
+        border-radius:4px;
+        box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
     }
 </style>
 
