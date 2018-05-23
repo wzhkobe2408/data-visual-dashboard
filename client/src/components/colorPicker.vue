@@ -15,7 +15,7 @@
   <div style="padding:0 60px;position: relative">
     <h3>Color palette generator</h3>
     <hr />
-    <button style="position:absolute;top: 20px; right: 60px;outline:none" @click="getRandomColor" class="waves-effect waves-light btn blue-grey lighten-1">Generate</button>
+    <button style="position:absolute;top: 20px; right: 60px;outline:none" @click="getRandomColor" class="waves-effect waves-light btn">Generate</button>
     <div class="palette-wrapper" style="margin-bottom:60px">
       <div 
         v-for="(item, index) in colorPalette" 

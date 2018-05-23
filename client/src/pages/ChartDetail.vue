@@ -1,5 +1,6 @@
 <template>
   <div class="chart-detail-container">
+    <div v-if="alert" id="alert">Successfully added new data</div>
     <div class="intro">
       <router-link to="/"><i class="fas fa-chevron-left"></i></router-link>
     <h3 class="detail_title">Chart Detail</h3>
@@ -115,7 +116,7 @@
           </div>
         </form>
           <button slot="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" data-dismiss="modal" slot="confirm" class="btn btn-primary" @click="addData">Confirm</button>
+          <button type="button" data-dismiss="modal" slot="confirm" class="btn btn-primary"  @click="addData">Confirm</button>
       </Modal>
   </div>
 </template>
@@ -140,6 +141,7 @@ export default {
     },
     data() {
       return {
+        alert: false,
         date: new Date().toGMTString(),
         editable: false,
         editIndex: -1,
@@ -187,6 +189,12 @@ export default {
         'startLoading'
       ]),
       addData() { 
+        setTimeout(() => {
+          this.alert = true;
+        }, 500)
+        setTimeout(() => {
+          this.alert = false
+        },3000)
         this.addChartData({
           data: this.data,
           label: this.label
@@ -292,6 +300,17 @@ export default {
     }
     .dropdown-menu {
       width: 100%;
+    }
+    #alert {
+      position: fixed;
+      padding: 10px 20px;
+      border-radius:100px;
+      z-index:10000;
+      top:20px;
+      right:60px;
+      background-color: rgb(54, 54, 54);
+      color: #fff;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
     }
 </style>
 

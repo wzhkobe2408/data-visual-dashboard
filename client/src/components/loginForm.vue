@@ -12,7 +12,7 @@
                     <input autocomplete="off" type="password" name="password" v-model="password"  placeholder="Enter your password">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Login" class="btn btn-primary btn-block">
+                    <input type="submit" value="Log In" class="btn btn-primary btn-block">
                 </div>
             </form>
         </div>

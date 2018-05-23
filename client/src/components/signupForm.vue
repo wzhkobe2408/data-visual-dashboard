@@ -20,7 +20,7 @@
                     <input autocomplete="off" type="password" name="passwordConfirm" v-model="passwordConfirm" class="form-control" placeholder="Enter your password">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Login" class="btn btn-block btn-primary">
+                    <input type="submit" value="Sign up" class="btn btn-block btn-primary">
                 </div>
             </form>
         </div>
