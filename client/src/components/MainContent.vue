@@ -132,6 +132,7 @@ export default {
         height: 320px;
         margin-right: 10px;
         margin-bottom: 10px;
+        cursor:pointer;
     }
     .chart:nth-child(3n) {
         margin-right: 0;

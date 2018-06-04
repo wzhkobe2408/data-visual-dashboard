@@ -1,9 +1,11 @@
 <template>
   <div class="chart-detail-container">
     <div v-if="alert" id="alert">Successfully added new data</div>
-    <div class="intro">
-      <router-link to="/"><i class="fas fa-chevron-left"></i></router-link>
-    <h3 class="detail_title">Chart Detail</h3>
+    <div class="intro row">
+      <router-link id="back-home" to="/" class="col-md-4"><i class="fas fa-chevron-left"></i><span>Back Home</span></router-link>
+    <div class="col-md-4" style="text-align:center">
+      <h3 id="detail-title" class="detail_title">Chart Detail</h3>
+    </div>
     </div>
     <hr />
         <div class="wrapper">
@@ -311,6 +313,22 @@ export default {
       background-color: rgb(54, 54, 54);
       color: #fff;
       box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+    }
+    #back-home {
+      text-decoration: none;
+      position: relative;
+      top: 26px;
+      left: -12px;
+    }
+    #back-home span {
+      color:#000;
+      margin-left:8px;
+      position: absolute;
+      top:-1px;
+    }
+    h3#detail-title {
+      margin-top: 20px;
+      margin-left: 0;
     }
 </style>
 
